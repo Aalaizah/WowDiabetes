@@ -26,6 +26,24 @@
 				<FontString name="$parentText" inherits="GameFontNormalSmall" justifyH="CENTER" setAllPoints="true" text="WowDiabetes"/>
 			</Layer>
 		</Layers>
+
+		<Scripts>
+			<OnLoad>
+				WowDiabetes_OnLoad(self)
+			</OnLoad>
+			<OnEvent>
+				WowDiabetes_OnEvent(self, event, ...)
+			</OnEvent>
+			<OnClick>
+				WowDiabetes_OnClickFrame()
+			</OnClick>
+			<OnDragStart>
+				self:StartMoving()
+			</OnDragStart>
+			<OnDragStop>
+				self:StopMovingOrSizing()
+			</OnDragStop>
+		</Scripts>
 	</Button>
 
 </Ui>
