@@ -23,20 +23,15 @@ end
 -- Called whenever an event is triggered
 function WowDiabetes_OnEvent(frame, event, ...)
 	if event == "PLAYER_REGEN_DISABLED" then
-		-- Combat entered
-		ColorPrint("Combat entered")
+		WowDiabetes_HandleEnterCombat(...)
 	elseif event == "PLAYER_REGEN_ENABLED" then
-		-- Combat exited
-		ColorPrint("Combat exited")
+		WowDiabetes_HandleExitCombat(...)
 	elseif event == "UNIT_SPELLCAST_SUCCEEDED" then
-		-- Spell cast; may be food/drink consumed
 		WowDiabetes_HandleSpellCast(...)
 	elseif event == "UNIT_AURA" then
-		-- Player buffs changed, may be due to food/drink
-		ColorPrint("Auras changed")
+		WowDiabetes_HandleUnitAuraChanged(...)
 	elseif event == "BAG_UPDATE" then
-		-- Bags have changed; check for food/drink consumed if needed
-		ColorPrint("Bags changed")
+		WowDiabetes_HandleBagUpdate(...)
 	end
 end
 
@@ -45,6 +40,17 @@ function WowDiabetes_OnClickFrame()
 	ColorPrint("Frame clicked")
 end
 
+-- Called whenever the player enters combat
+function WowDiabetes_HandleEnterCombat()
+	ColorPrint("Player entered combat!")
+end
+
+-- Called whenever the player exits combat
+function WowDiabetes_HandleExitCombat()
+	ColorPrint("Player exited combat!")
+end
+
+-- Called whenever a spell is cast, including usage of food/drink
 function WowDiabetes_HandleSpellCast(unitId, spell, rank, lineId, spellId)
 	if unitId == "player" then
 		-- Check for food/drink
@@ -54,4 +60,17 @@ function WowDiabetes_HandleSpellCast(unitId, spell, rank, lineId, spellId)
 			ColorPrint("Player is about to eat")
 		end
 	end
+end
+
+-- Called whenever someone's buffs/debuffs (auras) change
+function WowDiabetes_HandleUnitAuraChanged(unitId)
+	if unitId == "player" then
+		ColorPrint("Player's auras (buffs/debuffs) changed!")
+	end
+end
+
+-- Called whenever there is a change in bags
+function WowDiabetes_HandleBagUpdate(bagId)
+	ColorPrint("Bag number " .. bagId .. " changed!")
+	--TODO: check for items consumed to see if it was food/drink
 end
