@@ -1,20 +1,37 @@
--- Utility functions/variables
+-------------------------------------------------------------------------------
+-- Utility functions and variables
+-------------------------------------------------------------------------------
 local L = WowDiabetesLocalization
 
+-- Prints text with a specific color.
+-- NOTE: Any inlined color changes (e.g. from links) will cancel out the color
 local function ColorPrint(text, color)
 	color = color or "ffffff00" -- Default to yellow
 	print("|c" .. color .. text)
 end
 
+-------------------------------------------------------------------------------
+-- Local variables
+-------------------------------------------------------------------------------
+-- Tells the addon to check the for the next reduction in food/drink
+local playerIsAboutToEat = false
+local playerIsAboutToDrink = false
+
+-- Keeps track of the items in the player's bags
+local bagCounts = {}
+
+-------------------------------------------------------------------------------
+-- Main AddOn logic
+-------------------------------------------------------------------------------
 -- Called when the main frame first loads
 function WowDiabetes_OnLoad(frame)
+	frame:RegisterEvent("ADDON_LOADED")
 	-- Combat enter/leave
 	frame:RegisterEvent("PLAYER_REGEN_ENABLED")
 	frame:RegisterEvent("PLAYER_REGEN_DISABLED")
 	-- Food/drink consumption
 	frame:RegisterEvent("UNIT_SPELLCAST_SUCCEEDED")
 	frame:RegisterEvent("UNIT_AURA")
-	frame:RegisterEvent("BAG_UPDATE")
 	-- Mouse handling
 	frame:RegisterForClicks("RightButtonUp")
 	frame:RegisterForDrag("LeftButton")
@@ -22,7 +39,13 @@ end
 
 -- Called whenever an event is triggered
 function WowDiabetes_OnEvent(frame, event, ...)
-	if event == "PLAYER_REGEN_DISABLED" then
+	if event == "ADDON_LOADED" and ... == "WowDiabetes" then
+		for bagId = 0, NUM_BAG_SLOTS do
+			WowDiabetes_ScanBag(bagId, false)
+		end
+		frame:UnregisterEvent("ADDON_LOADED")
+		frame:RegisterEvent("BAG_UPDATE")
+	elseif event == "PLAYER_REGEN_DISABLED" then
 		WowDiabetes_HandleEnterCombat(...)
 	elseif event == "PLAYER_REGEN_ENABLED" then
 		WowDiabetes_HandleExitCombat(...)
@@ -56,8 +79,10 @@ function WowDiabetes_HandleSpellCast(unitId, spell, rank, lineId, spellId)
 		-- Check for food/drink
 		if spell == L["DRINK_AURA_NAME"] then
 			ColorPrint("Player is about to drink")
+			playerIsAboutToDrink = true
 		elseif spell == L["FOOD_AURA_NAME"] then
 			ColorPrint("Player is about to eat")
+			playerIsAboutToEat = true
 		end
 	end
 end
@@ -71,6 +96,67 @@ end
 
 -- Called whenever there is a change in bags
 function WowDiabetes_HandleBagUpdate(bagId)
-	ColorPrint("Bag number " .. bagId .. " changed!")
-	--TODO: check for items consumed to see if it was food/drink
+	-- Update bag counts
+	local changedItems = WowDiabetes_ScanBag(bagId)
+
+	-- If necessary, print changed item(s)
+	if playerIsAboutToEat or playerIsAboutToDrink then
+		for itemId, count in pairs(changedItems) do
+			local itemName, link = GetItemInfo(itemId)
+
+			if playerIsAboutToEat then
+				ColorPrint("Player ate: " .. link .. ", change in count: " .. count)
+				playerIsAboutToEat = false
+			elseif playerIsAboutToDrink then
+				ColorPrint("Player drank: " .. link .. ", change in count: " .. count)
+				playerIsAboutToDrink = false
+			end
+		end
+	end
+end
+
+-- Counts and stores the number of items in each bag
+-- @param bagId The bag index to check
+-- @param returnChanges (Defaults to true) If true, will return a collection of items changed
+--                      where returnVal[itemId] == changeInCount
+function WowDiabetes_ScanBag(bagId, returnChanges)
+	returnChanges = returnChanges or true
+
+	-- Count the number of each item in the bag
+	if not bagCounts[bagId] then
+		bagCounts[bagId] = {}
+	end
+
+	local itemCounts = {}
+	for slot = 0, GetContainerNumSlots(bagId) do
+		local texture, count, locked, quality, readable, lootable, link = GetContainerItemInfo(bagId, slot)
+
+		if texture then
+			local itemId = tonumber(link:match("|Hitem:(%d+):"))
+			if not itemCounts[itemId] then
+				itemCounts[itemId] = count
+			else
+				itemCounts[itemId] = itemCounts[itemId] + count
+			end
+		end
+	end
+
+	-- Compare against the old counts
+	local changedItems = {}
+	if returnChanges then
+		for itemId, oldCount in pairs(bagCounts[bagId]) do
+			local newCount = itemCounts[itemId] or 0
+
+			if oldCount ~= newCount then
+				changedItems[itemId] = newCount - oldCount
+			end
+		end
+	end
+
+	-- Store the new item counts
+	bagCounts[bagId] = itemCounts
+
+	if returnChanges then
+		return changedItems
+	end
 end

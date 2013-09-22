@@ -1,5 +1,5 @@
 ## Interface: 50400
-## Title: WoW Diabetes Mod
+## Title: WowDiabetes
 ## Notes: Mod used for diabetes research. Tracks eating/drinking, combat, etc.
 
 Localization.enUS.lua
