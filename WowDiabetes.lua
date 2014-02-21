@@ -5,8 +5,9 @@ local L = WowDiabetesLocalization
 
 -- Prints text with a specific color.
 -- NOTE: Any inlined color changes (e.g. from links) will cancel out the color
+-- 
 local function ColorPrint(text, color)
-	color = color or "ffffff00" -- Default to yellow
+	color = color or "ff00ffff" -- Default to cyan
 	print("|c" .. color .. text)
 end
 
@@ -19,6 +20,9 @@ local playerIsAboutToDrink = false
 
 -- Keeps track of the items in the player's bags
 local bagCounts = {}
+
+-- test variable
+local purpleBag = 0;
 
 -------------------------------------------------------------------------------
 -- Main AddOn logic
@@ -106,6 +110,7 @@ function WowDiabetes_HandleBagUpdate(bagId)
 
 			if playerIsAboutToEat then
 				ColorPrint("Player ate: " .. link .. ", change in count: " .. count)
+				purpleBag = itemName
 				playerIsAboutToEat = false
 			elseif playerIsAboutToDrink then
 				ColorPrint("Player drank: " .. link .. ", change in count: " .. count)
@@ -159,4 +164,6 @@ function WowDiabetes_ScanBag(bagId, returnChanges)
 	if returnChanges then
 		return changedItems
 	end
+	
+	
 end
