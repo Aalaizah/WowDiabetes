@@ -164,6 +164,11 @@ function WowDiabetes_ScanBag(bagId, returnChanges)
 	if returnChanges then
 		return changedItems
 	end
-	
-	
 end
+
+-- Glycemic Indexes
+local foodList = {"Tough Hunk of Bread", "Freshly Baked Bread", "Moist Cornbread", "Slitherskin Mackerel", "Longjaw Mud Snapper", "Bristle Whisker Catfish",
+	"Forest Mushroom Cap", "Red-speckled Mushroom", "Tough Jerky", "Haunch of Meat", "Mutton Chop", "Darnassian Bleu", "Dalaran Sharp", "Dwarven Mild",
+	"Shiny Red Apple", "Tel'Abim Banana", "Snapvine Watermelon"}
+local drinkList = {"Refreshing Spring Water", "Ice Cold Milk", "Melon Juice", "Bottle of Pinot Noir", "Skin of Dwarven Stout", "Flask of Port", 
+	"Flagon of Mead", "Junglevine Wine", "Rhapsody Malt", "Thunder Ale"}
