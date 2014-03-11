@@ -1,6 +1,7 @@
 ## Interface: 50400
 ## Title: WowDiabetes
 ## Notes: Mod used for diabetes research. Tracks eating/drinking, combat, etc.
+## SavedVariables: PurpleBag
 
 Localization.enUS.lua
 Localization.deDE.lua
