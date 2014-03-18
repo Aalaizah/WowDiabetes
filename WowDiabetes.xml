@@ -1,6 +1,5 @@
 <Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
-  <Script file="Frame.lua" />
-  <Frame name="WowDiabetes" parent="UIParent" toplevel="true" movable="true" enableMouse="true">
+  <Frame name="WowDiabetesFrame" parent="UIParent" toplevel="true" movable="true" enableMouse="true">
     <Size x="200" y="200" />
     <Anchors>
       <Anchor point="CENTER">
@@ -110,7 +109,7 @@
             self:SetMinMaxValues(0,100);
             self:SetValue(50);
             self:SetStatusBarTexture("Interface\\RaidFrame\\Raid-Bar-Hp-Fill");
-            WowDiabetesGlucoseLevelString:SetText(self:GetValue());
+            WowDiabetesGlucoseLevelString:SetText(self:GetValue() .. "mg/dL");
           </OnLoad>
           <OnValueChanged>
             WowDiabetesGlucoseLevelBar_OnValueChanged()
@@ -118,16 +117,22 @@
         </Scripts>
       </StatusBar>
     </Frames>
+	
     <Scripts>
       <OnLoad>
-        self:RegisterForDrag("LeftButton");
-        WowDiabetes_OnLoad()
+        WowDiabetes_OnLoad(self)
       </OnLoad>
+	  <OnEvent>
+		WowDiabetes_OnEvent(self, event, ...)
+	  </OnEvent>
+	  <OnClick>
+		WowDiabetes_OnClickFrame()
+	  </OnClick>
       <OnDragStart>
-        self:StartMoving();
+        self:StartMoving()
       </OnDragStart>
       <OnDragStop>
-        self:StopMovingOrSizing();
+        self:StopMovingOrSizing()
       </OnDragStop>
     </Scripts>
   </Frame>

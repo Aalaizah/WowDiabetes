@@ -17,15 +17,10 @@ Locals:
 (*temporary) = 50
 (*temporary) = <function> defined =[C]:-1
 
-## OnLoad Bug
 
-Lua is breaking when it loads. FIX ASAP!!!
+## Close Button Bug
 
-1x Diabetes\Diabetes.lua:31: attempt to index local "frame" (a nil value)
-Diabetes\Diabetes.lua:31: in function "WowDiabetes_OnLoad"
-<string>:"*:OnLoad":2: in function <string>:"*:OnLoad":1
+14x <string>:"WowDiabetesCloseButton:OnClick":1: attempt to call global "WowDiabetesCloseButton_OnClick" (a nil value)
+<string>:"*:OnClick":1: in function <string>:"*:OnClick":1
 
 Locals:
-self = WowDiabetes {
- 0 = <userdata>
-}

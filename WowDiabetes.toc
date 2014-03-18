@@ -8,5 +8,5 @@ Localization.deDE.lua
 Localization.esES.lua
 Localization.frFR.lua
 
-WowDiabetes.xml
 WowDiabetes.lua
+WowDiabetes.xml

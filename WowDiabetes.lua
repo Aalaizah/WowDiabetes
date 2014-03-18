@@ -37,7 +37,7 @@ function WowDiabetes_OnLoad(frame)
 	frame:RegisterEvent("UNIT_SPELLCAST_SUCCEEDED")
 	frame:RegisterEvent("UNIT_AURA")
 	-- Mouse handling
-	frame:RegisterForClicks("RightButtonUp")
+	--frame:RegisterForClicks("RightButtonUp")
 	frame:RegisterForDrag("LeftButton")
 end
 
