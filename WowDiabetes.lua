@@ -44,6 +44,14 @@ function WowDiabetes_OnLoad(frame)
 	frame:RegisterForDrag("LeftButton")
 end
 
+-- Called when the status bar loads
+function WowDiabetesGlucoseLevelBar_OnLoad(statusBar)
+	statusBar:SetMinMaxValues(40,180);
+    statusBar:SetValue(glucoseLevel);
+    statusBar:SetStatusBarTexture("Interface\\RaidFrame\\Raid-Bar-Hp-Fill");
+    WowDiabetesFrameGlucoseLevelString:SetText(statusBar:GetValue() .. " mg/dL");
+end
+
 -- Called whenever an event is triggered
 function WowDiabetes_OnEvent(frame, event, ...)
 	if event == "ADDON_LOADED" and ... == "WowDiabetes" then
@@ -73,6 +81,8 @@ end
 -- Called whenever the player enters combat
 function WowDiabetes_HandleEnterCombat()
 	ColorPrint("Player entered combat!")
+	glucoseLevel = glucoseLevel - 1
+	WowDiabetesFrameGlucoseLevelBar:SetValue(glucoseLevel)
 end
 
 -- Called whenever the player exits combat
@@ -121,7 +131,7 @@ function WowDiabetes_HandleBagUpdate(bagId)
 			end
 		end
 		glucoseLevel = glucoseLevel + 1
-		WowDiabetesGlucoseLevelBar_SetValue(glucoseLevel)
+		WowDiabetesFrameGlucoseLevelBar:SetValue(glucoseLevel)
 	end
 end
 
@@ -173,6 +183,10 @@ end
 
 function WowDiabetesCloseButton_OnClick()
 	WowDiabetesFrame:Hide()
+end
+
+function WowDiabetesGlucoseLevelBar_OnValueChanged()
+	WowDiabetesFrameGlucoseLevelString:SetText(glucoseLevel .. " mg/dL")
 end
 
 -- Glycemic Indexes

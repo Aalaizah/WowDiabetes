@@ -43,7 +43,7 @@
             </Anchor>
           </Anchors>
         </FontString>
-        <FontString name="$parentGlucoseLevelString" inherits="GameFontNormal" text="99mg/dL">
+        <FontString name="$parentGlucoseLevelString" inherits="GameFontNormal" text ="50">
           <Size x="134" y="20" />
           <Anchors>
             <Anchor point="TOPLEFT">
@@ -106,10 +106,7 @@
         </Layers>
         <Scripts>
           <OnLoad>
-            self:SetMinMaxValues(0,100);
-            self:SetValue(50);
-            self:SetStatusBarTexture("Interface\\RaidFrame\\Raid-Bar-Hp-Fill");
-            WowDiabetesGlucoseLevelString:SetText(self:GetValue() .. "mg/dL");
+			WowDiabetesGlucoseLevelBar_OnLoad(self)
           </OnLoad>
           <OnValueChanged>
             WowDiabetesGlucoseLevelBar_OnValueChanged()
