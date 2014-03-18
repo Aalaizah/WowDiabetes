@@ -21,8 +21,11 @@ local playerIsAboutToDrink = false
 -- Keeps track of the items in the player's bags
 local bagCounts = {}
 
+-- Blood level
+local glucoseLevel = 90
+
 -- test variable
-local purpleBag = 0;
+local purpleBag = 0
 
 -------------------------------------------------------------------------------
 -- Main AddOn logic
@@ -117,6 +120,8 @@ function WowDiabetes_HandleBagUpdate(bagId)
 				playerIsAboutToDrink = false
 			end
 		end
+		glucoseLevel = glucoseLevel + 1
+		WowDiabetesGlucoseLevelBar_SetValue(glucoseLevel)
 	end
 end
 
@@ -164,6 +169,10 @@ function WowDiabetes_ScanBag(bagId, returnChanges)
 	if returnChanges then
 		return changedItems
 	end
+end
+
+function WowDiabetesCloseButton_OnClick()
+	WowDiabetesFrame:Hide()
 end
 
 -- Glycemic Indexes
