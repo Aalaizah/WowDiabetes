@@ -124,6 +124,11 @@ function WowDiabetes_HandleBagUpdate(bagId)
 			if playerIsAboutToEat then
 				ColorPrint("Player ate: " .. link .. ", change in count: " .. count)
 				purpleBag = itemName
+				for i=1, 18 do
+					if foodlist[i].name == itemName
+						then ColorPrint("Food Noted")
+					end
+				end
 				playerIsAboutToEat = false
 			elseif playerIsAboutToDrink then
 				ColorPrint("Player drank: " .. link .. ", change in count: " .. count)
@@ -189,9 +194,12 @@ function WowDiabetesGlucoseLevelBar_OnValueChanged()
 	WowDiabetesFrameGlucoseLevelString:SetText(glucoseLevel .. " mg/dL")
 end
 
--- Glycemic Indexes
-local foodList = {"Tough Hunk of Bread", "Freshly Baked Bread", "Moist Cornbread", "Slitherskin Mackerel", "Longjaw Mud Snapper", "Bristle Whisker Catfish",
-	"Forest Mushroom Cap", "Red-speckled Mushroom", "Tough Jerky", "Haunch of Meat", "Mutton Chop", "Darnassian Bleu", "Dalaran Sharp", "Dwarven Mild",
-	"Shiny Red Apple", "Tel'Abim Banana", "Snapvine Watermelon"}
+-- Glycemic Loads where g is the glicemic load of its food
+local foodList = {{name="Tough Hunk of Bread", g=29.44}, {name="Freshly Baked Bread", g=288}, {name="Moist Cornbread", g=244.1}, 
+	{name="Slitherskin Mackerel", g=0}, {name="Longjaw Mud Snapper", g=0}, {name="Bristle Whisker Catfish", g=0}, 
+	{name="Forest Mushroom Cap", g=0}, {name="Red-speckled Mushroom", g=0}, {name="Spongy Morel", g=1}, 
+	{name="Tough Jerky", g=1}, {name="Haunch of Meat", g=0}, {name="Mutton Chop", g=0}, 
+	{name="Darnassian Bleu", g=0}, {name="Dalaran Sharp", g=0}, {name="Dwarven Mild",g=0}, 
+	{name="Shiny Red Apple", g=6.1}, {name="Tel'Abim Banana", g=10.4}, {name="Snapvine Watermelon", g=3.6}}
 local drinkList = {"Refreshing Spring Water", "Ice Cold Milk", "Melon Juice", "Bottle of Pinot Noir", "Skin of Dwarven Stout", "Flask of Port", 
 	"Flagon of Mead", "Junglevine Wine", "Rhapsody Malt", "Thunder Ale"}
