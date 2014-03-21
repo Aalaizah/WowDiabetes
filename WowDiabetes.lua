@@ -27,6 +27,16 @@ local glucoseLevel = 90
 -- test variable
 local purpleBag = 0
 
+-- Glycemic Loads where g is the glicemic load of its food
+local foodList = {{name="Tough Hunk of Bread", g=29.44}, {name="Freshly Baked Bread", g=288}, {name="Moist Cornbread", g=244.1}, 
+	{name="Slitherskin Mackerel", g=0}, {name="Longjaw Mud Snapper", g=0}, {name="Bristle Whisker Catfish", g=0}, 
+	{name="Forest Mushroom Cap", g=0}, {name="Red-speckled Mushroom", g=0}, {name="Spongy Morel", g=1}, 
+	{name="Tough Jerky", g=1}, {name="Haunch of Meat", g=0}, {name="Mutton Chop", g=0}, 
+	{name="Darnassian Bleu", g=0}, {name="Dalaran Sharp", g=0}, {name="Dwarven Mild",g=0}, 
+	{name="Shiny Red Apple", g=6.1}, {name="Tel'Abim Banana", g=10.4}, {name="Snapvine Watermelon", g=3.6}}
+local drinkList = {"Refreshing Spring Water", "Ice Cold Milk", "Melon Juice", "Bottle of Pinot Noir", "Skin of Dwarven Stout", "Flask of Port", 
+	"Flagon of Mead", "Junglevine Wine", "Rhapsody Malt", "Thunder Ale"}
+
 -------------------------------------------------------------------------------
 -- Main AddOn logic
 -------------------------------------------------------------------------------
@@ -124,9 +134,9 @@ function WowDiabetes_HandleBagUpdate(bagId)
 			if playerIsAboutToEat then
 				ColorPrint("Player ate: " .. link .. ", change in count: " .. count)
 				purpleBag = itemName
-				for i=1, 18 do
-					if foodlist[i].name == itemName
-						then ColorPrint("Food Noted")
+				for i=1, #foodList do
+					if foodList[i].name == itemName
+						then ColorPrint(foodList[i].g)
 					end
 				end
 				playerIsAboutToEat = false
@@ -190,16 +200,11 @@ function WowDiabetesCloseButton_OnClick()
 	WowDiabetesFrame:Hide()
 end
 
+function WowDiabetesMedicineButton_OnClick()
+	glucoseLevel = glucoseLevel + 5
+	WowDiabetesFrameGlucoseLevelBar:SetValue(glucoseLevel)
+end
+
 function WowDiabetesGlucoseLevelBar_OnValueChanged()
 	WowDiabetesFrameGlucoseLevelString:SetText(glucoseLevel .. " mg/dL")
 end
-
--- Glycemic Loads where g is the glicemic load of its food
-local foodList = {{name="Tough Hunk of Bread", g=29.44}, {name="Freshly Baked Bread", g=288}, {name="Moist Cornbread", g=244.1}, 
-	{name="Slitherskin Mackerel", g=0}, {name="Longjaw Mud Snapper", g=0}, {name="Bristle Whisker Catfish", g=0}, 
-	{name="Forest Mushroom Cap", g=0}, {name="Red-speckled Mushroom", g=0}, {name="Spongy Morel", g=1}, 
-	{name="Tough Jerky", g=1}, {name="Haunch of Meat", g=0}, {name="Mutton Chop", g=0}, 
-	{name="Darnassian Bleu", g=0}, {name="Dalaran Sharp", g=0}, {name="Dwarven Mild",g=0}, 
-	{name="Shiny Red Apple", g=6.1}, {name="Tel'Abim Banana", g=10.4}, {name="Snapvine Watermelon", g=3.6}}
-local drinkList = {"Refreshing Spring Water", "Ice Cold Milk", "Melon Juice", "Bottle of Pinot Noir", "Skin of Dwarven Stout", "Flask of Port", 
-	"Flagon of Mead", "Junglevine Wine", "Rhapsody Malt", "Thunder Ale"}
