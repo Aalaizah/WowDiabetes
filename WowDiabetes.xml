@@ -19,7 +19,7 @@
     </Backdrop>
     <Layers>
       <Layer level="OVERLAY">
-        <FontString name="$parentGlucoseString" inherits="GameFontNormal" text="Glucose">
+        <FontString name="$parentGlucoseString" inherits="GameFontNormal" text="GLUCOSE_STRING_TEXT">
           <Size x="64" y="20" />
           <Anchors>
             <Anchor point="TOPLEFT">
@@ -27,7 +27,7 @@
             </Anchor>
           </Anchors>
         </FontString>
-        <FontString name="$parentMedsString" inherits="GameFontNormal" text="Medicine">
+        <FontString name="$parentMedsString" inherits="GameFontNormal" text="MEDICINE_STRING_TEXT">
           <Size x="64" y="20" />
           <Anchors>
             <Anchor point="TOPLEFT">
@@ -35,7 +35,7 @@
             </Anchor>
           </Anchors>
         </FontString>
-        <FontString name="$parentGlucoseLevelString" inherits="GameFontNormal" text ="50">
+        <FontString name="$parentGlucoseLevelString" inherits="GameFontNormal">
           <Size x="134" y="20" />
           <Anchors>
             <Anchor point="TOPLEFT">
@@ -55,7 +55,7 @@
 			</Texture>
 		</Layer>
 		<Layer level="OVERLAY">
-			<FontString name="$parentString" inherits="GameFontNormal" text="Wow Diabetes">
+			<FontString name="$parentString" inherits="GameFontNormal" text="TITLE_TEXT">
 				<Size x="134" y="20" />
 				<Anchors>
 					<Anchor point="TOP" relativeTo="WowDiabetesFrame" relativePoint="TOP">
@@ -66,7 +66,7 @@
 		</Layer>
     </Layers>
     <Frames>
-      <Button name="$parentGlucoseButton" inherits="UIPanelButtonTemplate" text="Check">
+      <Button name="$parentGlucoseButton" inherits="UIPanelButtonTemplate" text="GLUCOSE_BUTTON_TEXT">
         <Size x="64" y="23" />
         <Anchors>
           <Anchor point="TOPLEFT">
@@ -79,7 +79,7 @@
 			</OnClick>
 		</Scripts>
       </Button>
-      <Button name="$parentMedicineButton" inherits="UIPanelButtonTemplate" text="Use">
+      <Button name="$parentMedicineButton" inherits="UIPanelButtonTemplate" text="MEDICINE_BUTTON_TEXT">
         <Size x="64" y="23" />
         <Anchors>
           <Anchor point="TOPLEFT">
@@ -92,7 +92,7 @@
 			</OnClick>
 		</Scripts>
       </Button>
-      <Button name="$parentCloseButton" inherits="UIPanelButtonTemplate" text="Close">
+      <Button name="$parentCloseButton" inherits="UIPanelButtonTemplate" text="CLOSE_BUTTON_TEXT">
         <Size x="64" y="23" />
         <Anchors>
           <Anchor point="TOPLEFT">
