@@ -6,7 +6,7 @@
         <Offset x="-456" y="199" />
       </Anchor>
     </Anchors>
-    <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background-Dark" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+    <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
       <BackgroundInsets>
         <AbsInset left="11" right="12" top="12" bottom="11" />
       </BackgroundInsets>
@@ -55,7 +55,7 @@
 			</Texture>
 		</Layer>
 		<Layer level="OVERLAY">
-			<FontString name="$parentString" inherits="GameFontNormal" text="WowDiabetes">
+			<FontString name="$parentString" inherits="GameFontNormal" text="Wow Diabetes">
 				<Size x="134" y="20" />
 				<Anchors>
 					<Anchor point="TOP" relativeTo="WowDiabetesFrame" relativePoint="TOP">
@@ -107,20 +107,19 @@
             <Offset x="2" y="55" />
           </Anchor>
         </Anchors>
-        <Backdrop bgFile="" />
-        <Layers>
-          <Layer>
-            <Texture name="$parentStatus" file="Interface\RaidFrame\Raid-Bar-Hp-Fill">
-              <Size x="150" y="14" />
-              <Anchors>
-                <Anchor point="LEFT">
-                  <Offset />
-                </Anchor>
-              </Anchors>
-              <Color r="0" g="0.784" b="0" />
-            </Texture>
-          </Layer>
-        </Layers>
+        <Backdrop bgFile=""/>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture file="Interface\RAIDFRAME\Raid-Bar-Hp-Bg">
+					<Size><AbsDimension x="150" y="28"/></Size>
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset><AbsDimension x="0" y="-0"/></Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
         <Scripts>
           <OnLoad>
 			WowDiabetesGlucoseLevelBar_OnLoad(self)

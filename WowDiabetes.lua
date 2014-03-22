@@ -54,12 +54,28 @@ function WowDiabetes_OnLoad(frame)
 	frame:RegisterForDrag("LeftButton")
 end
 
+-- Changes the color of the glucose bar depending on how well the player is doing
+function ChangeGlucoseBarColor()
+	if glucoseLevel > 89 and glucoseLevel < 110 then
+		WowDiabetesFrameGlucoseLevelBar:SetStatusBarColor(0,1,0,1)
+	elseif glucoseLevel > 70 and glucoseLevel < 90 then
+		WowDiabetesFrameGlucoseLevelBar:SetStatusBarColor(1,1,0,1)
+	elseif glucoseLevel > 110 and glucoseLevel < 130 then
+		WowDiabetesFrameGlucoseLevelBar:SetStatusBarColor(1,1,0,1)
+	elseif glucoseLevel < 70 then
+		WowDiabetesFrameGlucoseLevelBar:SetStatusBarColor(1,0,0,1)
+	elseif glucoseLevel > 130 then
+		WowDiabetesFrameGlucoseLevelBar:SetStatusBarColor(1,0,0,1)
+	end	
+end
+
 -- Called when the status bar loads
 function WowDiabetesGlucoseLevelBar_OnLoad(statusBar)
-	statusBar:SetMinMaxValues(40,180);
-    statusBar:SetValue(glucoseLevel);
-    statusBar:SetStatusBarTexture("Interface\\RaidFrame\\Raid-Bar-Hp-Fill");
-    WowDiabetesFrameGlucoseLevelString:SetText(statusBar:GetValue() .. " mg/dL");
+	statusBar:SetMinMaxValues(40,180)
+    statusBar:SetValue(glucoseLevel)
+    statusBar:SetStatusBarTexture("Interface\\RaidFrame\\Raid-Bar-Hp-Fill")
+    WowDiabetesFrameGlucoseLevelString:SetText(statusBar:GetValue() .. " mg/dL")
+	ChangeGlucoseBarColor()
 end
 
 -- Called whenever an event is triggered
@@ -135,8 +151,8 @@ function WowDiabetes_HandleBagUpdate(bagId)
 				ColorPrint("Player ate: " .. link .. ", change in count: " .. count)
 				purpleBag = itemName
 				for i=1, #foodList do
-					if foodList[i].name == itemName
-						then ColorPrint(foodList[i].g)
+					if foodList[i].name == itemName then
+						ColorPrint(foodList[i].g)
 					end
 				end
 				playerIsAboutToEat = false
@@ -207,4 +223,5 @@ end
 
 function WowDiabetesGlucoseLevelBar_OnValueChanged()
 	WowDiabetesFrameGlucoseLevelString:SetText(glucoseLevel .. " mg/dL")
+	ChangeGlucoseBarColor()
 end
