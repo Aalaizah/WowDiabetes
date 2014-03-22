@@ -73,6 +73,11 @@
             <Offset x="32" y="-61" />
           </Anchor>
         </Anchors>
+		 <Scripts>
+			<OnClick>
+				WowDiabetesGlucoseButton_OnClick()
+			</OnClick>
+		</Scripts>
       </Button>
       <Button name="$parentMedicineButton" inherits="UIPanelButtonTemplate" text="Use">
         <Size x="64" y="23" />

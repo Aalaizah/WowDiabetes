@@ -213,7 +213,18 @@ function WowDiabetes_ScanBag(bagId, returnChanges)
 end
 
 function WowDiabetesCloseButton_OnClick()
-	WowDiabetesFrame:Hide()
+	--WowDiabetesFrame:Hide()
+	WowDiabetesFrameGlucoseLevelBar:Hide()
+	WowDiabetesFrameGlucoseLevelString:Hide()
+	WowDiabetesFrameCloseButton:Hide()
+	WowDiabetesFrame:SetSize(200, 100)
+end
+
+function WowDiabetesGlucoseButton_OnClick()
+	WowDiabetesFrame:SetSize(200, 185)
+	WowDiabetesFrameGlucoseLevelBar:Show()
+	WowDiabetesFrameGlucoseLevelString:Show()
+	WowDiabetesFrameCloseButton:Show()
 end
 
 function WowDiabetesMedicineButton_OnClick()
