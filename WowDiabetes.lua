@@ -24,6 +24,9 @@ local bagCounts = {}
 -- Blood level
 local glucoseLevel = 90
 
+-- timer
+local total = 0
+
 -- test variable
 local purpleBag = 0
 
@@ -212,14 +215,28 @@ function WowDiabetes_ScanBag(bagId, returnChanges)
 	end
 end
 
-function WowDiabetesCloseButton_OnClick()
-	--WowDiabetesFrame:Hide()
-	WowDiabetesFrameGlucoseLevelBar:Hide()
-	WowDiabetesFrameGlucoseLevelString:Hide()
-	WowDiabetesFrameCloseButton:Hide()
-	WowDiabetesFrame:SetSize(200, 100)
+
+-- If the frame has been completely open for longer than a minute, 
+-- hide part of it so the player has to learn to keep track on their own
+ function WowDiabetes_OnUpdate(self, elapsed)
+	if WowDiabetesFrameGlucoseLevelBar:IsShown() then
+		total = total + elapsed
+		if total >= 60 then
+			WowDiabetesFrameGlucoseLevelBar:Hide()
+			WowDiabetesFrameGlucoseLevelString:Hide()
+			WowDiabetesFrameCloseButton:Hide()
+			WowDiabetesFrame:SetSize(200, 100)
+			total = 0
+		end
+	end
 end
 
+-- Hide the frame entirely
+function WowDiabetesCloseButton_OnClick()
+	WowDiabetesFrame:Hide()
+end
+
+-- Shows the frame entirely so player can check glucose levels
 function WowDiabetesGlucoseButton_OnClick()
 	WowDiabetesFrame:SetSize(200, 185)
 	WowDiabetesFrameGlucoseLevelBar:Show()
@@ -227,11 +244,13 @@ function WowDiabetesGlucoseButton_OnClick()
 	WowDiabetesFrameCloseButton:Show()
 end
 
+-- Raise your glucose level when medicine is used
 function WowDiabetesMedicineButton_OnClick()
 	glucoseLevel = glucoseLevel + 5
 	WowDiabetesFrameGlucoseLevelBar:SetValue(glucoseLevel)
 end
 
+-- Update string above status bar with the new glucose level
 function WowDiabetesGlucoseLevelBar_OnValueChanged()
 	WowDiabetesFrameGlucoseLevelString:SetText(glucoseLevel .. " mg/dL")
 	ChangeGlucoseBarColor()

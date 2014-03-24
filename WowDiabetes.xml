@@ -143,6 +143,9 @@
 	  <OnEvent>
 		WowDiabetes_OnEvent(self, event, ...)
 	  </OnEvent>
+	  <OnUpdate>
+		WowDiabetes_OnUpdate(self, elapsed)
+	  </OnUpdate>
 	  <OnClick>
 		WowDiabetes_OnClickFrame()
 	  </OnClick>
