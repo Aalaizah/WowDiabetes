@@ -12,4 +12,7 @@ if GetLocale() == "deDE" then
 	MEDICINE_STRING_TEXT = "Geneeskunde"
 	MEDICINE_BUTTON_TEXT = "Gebruiken"
 	CLOSE_BUTTON_TEXT = "Afsluiten"
+	GOOD_TEXT = "Jullie beginnen zich beter te voelen"
+	OKAY_TEXT = "Je begint te duizelig voelt"
+	BAD_TEXT = "Je voelt je alsof je over te geven uit bent"
 end

@@ -12,4 +12,7 @@ if GetLocale() == "frFR" then
 	MEDICINE_STRING_TEXT = "Médecine"
 	MEDICINE_BUTTON_TEXT = "Utilisez"
 	CLOSE_BUTTON_TEXT = "Proche"
+	GOOD_TEXT = "Vous commencez à vous sentir mieux"
+	OKAY_TEXT = "Vous commencez à vous sentir étourdi"
+	BAD_TEXT = "Vous vous sentez comme si vous êtes sur le point de passer à"
 end

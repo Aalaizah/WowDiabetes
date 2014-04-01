@@ -22,7 +22,7 @@ local playerIsAboutToDrink = false
 local bagCounts = {}
 
 -- Blood level
-local glucoseLevel = 90
+local glucoseLevel = 89
 local glucoseLevelString = "good"
 
 -- medicine
@@ -70,30 +70,39 @@ end
 function ChangeGlucoseBarColor()
 	if glucoseLevel > 89 and glucoseLevel < 110 then
 		WowDiabetesFrameGlucoseLevelBar:SetStatusBarColor(0,1,0,1)
+		if glucoseLevelString ~= "good" then
+			ColorPrint(GOOD_TEXT, "ff00ff00")
+			UIErrorsFrame:AddMessage(GOOD_TEXT, 0, 1, 0)
+			glucoseLevelString = "good"
+		end
 	elseif glucoseLevel > 70 and glucoseLevel < 90 then
 		WowDiabetesFrameGlucoseLevelBar:SetStatusBarColor(1,1,0,1)
 		if(glucoseLevelString ~= "okay") then
-			ColorPrint("You are starting to feel dizzy", "ffffff00")
+			ColorPrint(OKAY_TEXT, "ffffff00")
+			UIErrorsFrame:AddMessage(OKAY_TEXT, 1, 1, 0)
+			glucoseLevelString = "okay"
 		end
-		glucoseLevelString = "okay"
 	elseif glucoseLevel > 110 and glucoseLevel < 130 then
 		WowDiabetesFrameGlucoseLevelBar:SetStatusBarColor(1,1,0,1)
 		if(glucoseLevelString ~= "okay") then
-			ColorPrint("You are starting to feel dizzy", "ffffff00")
+			ColorPrint(OKAY_TEXT, "ffffff00")
+			UIErrorsFrame:AddMessage(OKAY_TEXT, 1, 1, 0)
+			glucoseLevelString = "okay"
 		end
-		glucoseLevelString = "okay"
 	elseif glucoseLevel < 70 then
 		WowDiabetesFrameGlucoseLevelBar:SetStatusBarColor(1,0,0,1)
 		if(glucoseLevelString ~= "bad") then
-			ColorPrint("You feel as if you're about to pass out", "ffff0f0f")
+			ColorPrint(BAD_TEXT, "ffff0f0f")
+			UIErrorsFrame:AddMessage(BAD_TEXT, 1, 0, 0)
+			glucoseLevelString = "bad"
 		end
-		glucoseLevelString = "bad"
 	elseif glucoseLevel > 130 then
 		WowDiabetesFrameGlucoseLevelBar:SetStatusBarColor(1,0,0,1)
 		if(glucoseLevelString ~= "bad") then
-			ColorPrint("You feel as if you're about to pass out", "ffff0f0f")
+			ColorPrint(BAD_TEXT, "ffff0f0f")
+			UIErrorsFrame:AddMessage(BAD_TEXT, 1, 0, 0)
+			glucoseLevelString = "bad"
 		end
-		glucoseLevelString = "bad"
 	end	
 end
 

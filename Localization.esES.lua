@@ -11,5 +11,8 @@ if GetLocale() == "esES" then
 	GLUCOSE_BUTTON_TEXT = "Controlar"
 	MEDICINE_STRING_TEXT = "Medicina"
 	MEDICINE_BUTTON_TEXT = "Utilizar"
-	CLOSE_BUTTON_TEXT = "Cerrar"
+	CLOSE_BUTTON_TEXT = "Cerrar"		
+	GOOD_TEXT = "Usted está comenzando a sentirse mejor"
+	OKAY_TEXT = "Vous commencez à vous sentir étourdi"
+	BAD_TEXT = "Te sientes como si estuvieras a punto de desmayarse"
 end
