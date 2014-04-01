@@ -35,11 +35,19 @@
             </Anchor>
           </Anchors>
         </FontString>
+        <FontString name="$parentMedsAmountString" inherits="GameFontNormal">
+          <Size x="64" y="20" />
+          <Anchors>
+            <Anchor point="TOPLEFT">
+              <Offset x="102" y="-50" />
+            </Anchor>
+          </Anchors>
+        </FontString>
         <FontString name="$parentGlucoseLevelString" inherits="GameFontNormal">
           <Size x="134" y="20" />
           <Anchors>
             <Anchor point="TOPLEFT">
-              <Offset x="32" y="-90" />
+              <Offset x="32" y="-96" />
             </Anchor>
           </Anchors>
         </FontString>
@@ -70,7 +78,7 @@
         <Size x="64" y="23" />
         <Anchors>
           <Anchor point="TOPLEFT">
-            <Offset x="32" y="-61" />
+            <Offset x="32" y="-70" />
           </Anchor>
         </Anchors>
 		 <Scripts>
@@ -83,7 +91,7 @@
         <Size x="64" y="23" />
         <Anchors>
           <Anchor point="TOPLEFT">
-            <Offset x="102" y="-61" />
+            <Offset x="102" y="-70" />
           </Anchor>
         </Anchors>
 		<Scripts>
@@ -96,7 +104,7 @@
         <Size x="64" y="23" />
         <Anchors>
           <Anchor point="TOPLEFT">
-            <Offset x="113" y="-136" />
+            <Offset x="113" y="-141" />
           </Anchor>
         </Anchors>
         <Scripts>
@@ -109,7 +117,7 @@
         <Size x="150" y="14" />
         <Anchors>
           <Anchor point="BOTTOM">
-            <Offset x="2" y="55" />
+            <Offset x="2" y="53" />
           </Anchor>
         </Anchors>
         <Backdrop bgFile=""/>

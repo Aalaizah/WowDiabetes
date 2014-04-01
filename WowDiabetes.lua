@@ -23,9 +23,16 @@ local bagCounts = {}
 
 -- Blood level
 local glucoseLevel = 90
+local glucoseLevelString = "good"
+
+-- medicine
+local insulin = 10
 
 -- timer
 local total = 0
+
+-- screen res
+local screenRes = ""
 
 -- test variable
 local purpleBag = 0
@@ -55,6 +62,8 @@ function WowDiabetes_OnLoad(frame)
 	-- Mouse handling
 	--frame:RegisterForClicks("RightButtonUp")
 	frame:RegisterForDrag("LeftButton")
+	screenRes = GetCVar("gxResolution")
+	WowDiabetesFrameMedsAmountString:SetText(insulin)
 end
 
 -- Changes the color of the glucose bar depending on how well the player is doing
@@ -63,12 +72,28 @@ function ChangeGlucoseBarColor()
 		WowDiabetesFrameGlucoseLevelBar:SetStatusBarColor(0,1,0,1)
 	elseif glucoseLevel > 70 and glucoseLevel < 90 then
 		WowDiabetesFrameGlucoseLevelBar:SetStatusBarColor(1,1,0,1)
+		if(glucoseLevelString ~= "okay") then
+			ColorPrint("You are starting to feel dizzy", "ffffff00")
+		end
+		glucoseLevelString = "okay"
 	elseif glucoseLevel > 110 and glucoseLevel < 130 then
 		WowDiabetesFrameGlucoseLevelBar:SetStatusBarColor(1,1,0,1)
+		if(glucoseLevelString ~= "okay") then
+			ColorPrint("You are starting to feel dizzy", "ffffff00")
+		end
+		glucoseLevelString = "okay"
 	elseif glucoseLevel < 70 then
 		WowDiabetesFrameGlucoseLevelBar:SetStatusBarColor(1,0,0,1)
+		if(glucoseLevelString ~= "bad") then
+			ColorPrint("You feel as if you're about to pass out", "ffff0f0f")
+		end
+		glucoseLevelString = "bad"
 	elseif glucoseLevel > 130 then
 		WowDiabetesFrameGlucoseLevelBar:SetStatusBarColor(1,0,0,1)
+		if(glucoseLevelString ~= "bad") then
+			ColorPrint("You feel as if you're about to pass out", "ffff0f0f")
+		end
+		glucoseLevelString = "bad"
 	end	
 end
 
@@ -112,11 +137,17 @@ function WowDiabetes_HandleEnterCombat()
 	ColorPrint("Player entered combat!")
 	glucoseLevel = glucoseLevel - 1
 	WowDiabetesFrameGlucoseLevelBar:SetValue(glucoseLevel)
+	if UnitIsTrivial("target") then
+		ColorPrint(UnitIsTrivial("target"))
+	end
+	ColorPrint(UnitLevel("target"))
 end
 
 -- Called whenever the player exits combat
 function WowDiabetes_HandleExitCombat()
 	ColorPrint("Player exited combat!")
+	insulin = insulin + 1
+	WowDiabetesFrameMedsAmountString:SetText(insulin)
 end
 
 -- Called whenever a spell is cast, including usage of food/drink
@@ -221,11 +252,11 @@ end
  function WowDiabetes_OnUpdate(self, elapsed)
 	if WowDiabetesFrameGlucoseLevelBar:IsShown() then
 		total = total + elapsed
-		if total >= 60 then
+		if total >= 30 then
 			WowDiabetesFrameGlucoseLevelBar:Hide()
 			WowDiabetesFrameGlucoseLevelString:Hide()
 			WowDiabetesFrameCloseButton:Hide()
-			WowDiabetesFrame:SetSize(200, 100)
+			WowDiabetesFrame:SetSize(200, 114)
 			total = 0
 		end
 	end
@@ -246,8 +277,12 @@ end
 
 -- Raise your glucose level when medicine is used
 function WowDiabetesMedicineButton_OnClick()
-	glucoseLevel = glucoseLevel + 5
-	WowDiabetesFrameGlucoseLevelBar:SetValue(glucoseLevel)
+	if insulin > 0 then
+		glucoseLevel = glucoseLevel + 5
+		WowDiabetesFrameGlucoseLevelBar:SetValue(glucoseLevel)
+		insulin = insulin - 1
+		WowDiabetesFrameMedsAmountString:SetText(insulin)
+	end
 end
 
 -- Update string above status bar with the new glucose level
