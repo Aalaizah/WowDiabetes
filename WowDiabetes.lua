@@ -21,21 +21,14 @@ local playerIsAboutToDrink = false
 -- Keeps track of the items in the player's bags
 local bagCounts = {}
 
--- Blood level
-local glucoseLevel = 89
-local glucoseLevelString = "good"
-
--- medicine
-local insulin = 10
+-- Boolean to check if first time loading
+isFirstTime = true
 
 -- timer
 local total = 0
 
 -- screen res
 local screenRes = ""
-
--- test variable
-local purpleBag = 0
 
 -- Glycemic Loads where g is the glicemic load of its food
 local foodList = {{name="Tough Hunk of Bread", g=29.44}, {name="Freshly Baked Bread", g=288}, {name="Moist Cornbread", g=244.1}, 
@@ -63,7 +56,6 @@ function WowDiabetes_OnLoad(frame)
 	--frame:RegisterForClicks("RightButtonUp")
 	frame:RegisterForDrag("LeftButton")
 	screenRes = GetCVar("gxResolution")
-	WowDiabetesFrameMedsAmountString:SetText(insulin)
 end
 
 -- Changes the color of the glucose bar depending on how well the player is doing
@@ -106,15 +98,6 @@ function ChangeGlucoseBarColor()
 	end	
 end
 
--- Called when the status bar loads
-function WowDiabetesGlucoseLevelBar_OnLoad(statusBar)
-	statusBar:SetMinMaxValues(40,180)
-    statusBar:SetValue(glucoseLevel)
-    statusBar:SetStatusBarTexture("Interface\\RaidFrame\\Raid-Bar-Hp-Fill")
-    WowDiabetesFrameGlucoseLevelString:SetText(statusBar:GetValue() .. " mg/dL")
-	ChangeGlucoseBarColor()
-end
-
 -- Called whenever an event is triggered
 function WowDiabetes_OnEvent(frame, event, ...)
 	if event == "ADDON_LOADED" and ... == "WowDiabetes" then
@@ -123,6 +106,15 @@ function WowDiabetes_OnEvent(frame, event, ...)
 		end
 		frame:UnregisterEvent("ADDON_LOADED")
 		frame:RegisterEvent("BAG_UPDATE")
+		if isFirstTime then
+			glucoseLevel = 90
+			glucoseLevelString = "good"
+			insulin = 10
+			timeGood = 0
+			isFirstTime = false
+		end
+		WowDiabetesFrameMedsAmountString:SetText(insulin)
+		WowDiabetesGlucoseLevelBar_OnLoad(WowDiabetesFrameGlucoseLevelBar)
 	elseif event == "PLAYER_REGEN_DISABLED" then
 		WowDiabetes_HandleEnterCombat(...)
 	elseif event == "PLAYER_REGEN_ENABLED" then
@@ -134,6 +126,15 @@ function WowDiabetes_OnEvent(frame, event, ...)
 	elseif event == "BAG_UPDATE" then
 		WowDiabetes_HandleBagUpdate(...)
 	end
+end
+
+-- Called when the status bar loads
+function WowDiabetesGlucoseLevelBar_OnLoad(statusBar)
+	statusBar:SetMinMaxValues(40,180)
+    statusBar:SetValue(glucoseLevel)
+    statusBar:SetStatusBarTexture("Interface\\RaidFrame\\Raid-Bar-Hp-Fill")
+    WowDiabetesFrameGlucoseLevelString:SetText(statusBar:GetValue() .. " mg/dL")
+	ChangeGlucoseBarColor()
 end
 
 -- Called whenever the user clicks on the main WowDiabetes frame
