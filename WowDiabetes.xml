@@ -162,5 +162,11 @@
       </OnDragStop>
     </Scripts>
   </Frame>
-  
+  <Frame name="WowBlurryEffect" parent="UIParent" >
+	<Size><RelDimension x="1" y="1"/></Size>
+	<Anchors>
+		<Anchor point="CENTER"/>
+	</Anchors>
+	<Layer level="overlay">
+   </Frame>
 </Ui>
