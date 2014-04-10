@@ -134,6 +134,9 @@
 			</Layer>
 		</Layers>
         <Scripts>
+          <OnLoad>
+			WowDiabetesGlucoseLevelBar_OnLoad(self)
+          </OnLoad>
           <OnValueChanged>
             WowDiabetesGlucoseLevelBar_OnValueChanged()
           </OnValueChanged>

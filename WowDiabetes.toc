@@ -1,7 +1,7 @@
 ## Interface: 50400
 ## Title: WowDiabetes
 ## Notes: Mod used for diabetes research. Tracks eating/drinking, combat, etc.
-## SavedVariablesPerCharacter: glucoseLevel, glucoseLevelString, insulin, timeGood, isFirstTime
+## SavedVariables: purpleBag, glucoseLevel, glucoseLevelString, insulin
 
 Localization.enUS.lua
 Localization.deDE.lua
