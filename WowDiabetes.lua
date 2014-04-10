@@ -137,9 +137,7 @@ end
 
 -- Called whenever an event is triggered
 function WowDiabetes_OnEvent(frame, event, ...)
-		ColorPrint("hi")
 	if event == "ADDON_LOADED" and ... == "WowDiabetes" then
-		end
 		for bagId = 0, NUM_BAG_SLOTS do
 			WowDiabetes_ScanBag(bagId, false)
 		end
@@ -151,6 +149,7 @@ function WowDiabetes_OnEvent(frame, event, ...)
 			insulin = 10
 			timeGood = 0
 			isFirstTime = false
+		end
 		WowDiabetesFrameMedsAmountString:SetText(insulin)
 		WowDiabetesGlucoseLevelBar_OnLoad(WowDiabetesFrameGlucoseLevelBar)
 	elseif event == "PLAYER_REGEN_DISABLED" then
