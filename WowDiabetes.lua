@@ -82,7 +82,7 @@ function ChangeGlucoseBarColor()
 	-- Slighty bad glucose level, character is dizzy
 	elseif glucoseLevel > 70 and glucoseLevel < 90 then
 		WowBlurryEffect:Show()
-		WowBlurryEffect:SetAlpha(.2)
+		WowBlurryEffect:SetAlpha(.5)
 		WowDiabetesFrameGlucoseLevelBar:SetStatusBarColor(1,1,0,1)
 		if(glucoseLevelString ~= "okay") then
 			ColorPrint(OKAY_TEXT, "ffffff00")
@@ -92,7 +92,7 @@ function ChangeGlucoseBarColor()
 	-- Very bad glucose level, character is about to pass out
 	elseif glucoseLevel > 110 and glucoseLevel < 130 then
 	WowBlurryEffect:Show()
-		WowBlurryEffect:SetAlpha(.4)
+		WowBlurryEffect:SetAlpha(.8)
 		WowDiabetesFrameGlucoseLevelBar:SetStatusBarColor(1,1,0,1)
 		if(glucoseLevelString ~= "okay") then
 			ColorPrint(OKAY_TEXT, "ffffff00")
@@ -102,7 +102,7 @@ function ChangeGlucoseBarColor()
 	-- the worst glucos level, low end
 	elseif glucoseLevel < 70 then
 	WowBlurryEffect:Show()
-		WowBlurryEffect:SetAlpha(.6)
+		WowBlurryEffect:SetAlpha(1)
 		WowDiabetesFrameGlucoseLevelBar:SetStatusBarColor(1,0,0,1)
 		if(glucoseLevelString ~= "bad") then
 			ColorPrint(BAD_TEXT, "ffff0f0f")
@@ -112,7 +112,7 @@ function ChangeGlucoseBarColor()
 	-- the worst glucose level, high end
 	elseif glucoseLevel > 130 then
 	WowBlurryEffect:Show()
-		WowBlurryEffect:SetAlpha(.6)
+		WowBlurryEffect:SetAlpha(1)
 		WowDiabetesFrameGlucoseLevelBar:SetStatusBarColor(1,0,0,1)
 		if(glucoseLevelString ~= "bad") then
 			ColorPrint(BAD_TEXT, "ffff0f0f")
