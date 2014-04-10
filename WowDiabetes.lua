@@ -24,6 +24,12 @@ local bagCounts = {}
 -- Blood level
 local glucoseLevel = 89
 local glucoseLevelString = "good"
+<<<<<<< HEAD
+=======
+
+-- medicine
+local insulin = 10
+>>>>>>> parent of c94d7ab... fixed saved variables
 
 -- medicine
 local insulin = 10
@@ -36,6 +42,7 @@ local dayTimer = 0
 local screenRes = ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 -- glucose variables
 p1 = 0
 p2 = 0
@@ -47,6 +54,10 @@ Gt = 0
 Xt = 0
 Ipt = 0
 Rat = 0
+=======
+-- test variable
+local purpleBag = 0
+>>>>>>> parent of c94d7ab... fixed saved variables
 =======
 -- test variable
 local purpleBag = 0
@@ -168,6 +179,7 @@ end
 function WowDiabetes_OnEvent(frame, event, ...)
 	if event == "ADDON_LOADED" and ... == "WowDiabetes" then
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ColorPrint("hi")
 		if glucoseLevel == nil then
 			glucoseLevel = 90
@@ -178,14 +190,19 @@ function WowDiabetes_OnEvent(frame, event, ...)
 		end
 =======
 >>>>>>> parent of c94d7ab... fixed saved variables
+=======
+>>>>>>> parent of c94d7ab... fixed saved variables
 		for bagId = 0, NUM_BAG_SLOTS do
 			WowDiabetes_ScanBag(bagId, false)
 		end
 		frame:UnregisterEvent("ADDON_LOADED")
 		frame:RegisterEvent("BAG_UPDATE")
 <<<<<<< HEAD
+<<<<<<< HEAD
 		WowDiabetesFrameMedsAmountString:SetText(insulin)
 		WowDiabetesGlucoseLevelBar_OnLoad(WowDiabetesFrameGlucoseLevelBar)
+=======
+>>>>>>> parent of c94d7ab... fixed saved variables
 =======
 >>>>>>> parent of c94d7ab... fixed saved variables
 	elseif event == "PLAYER_REGEN_DISABLED" then
