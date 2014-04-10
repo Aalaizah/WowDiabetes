@@ -179,4 +179,5 @@
         self:StopMovingOrSizing()
       </OnDragStop>
     </Scripts>
+	</Frame>
 </Ui>
