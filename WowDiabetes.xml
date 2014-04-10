@@ -139,7 +139,23 @@
           </OnValueChanged>
         </Scripts>
       </StatusBar>
-    </Frames>
+  </Frame>
+	<!--<Frame name="WowBlurryEffect">
+		<Size><RelDimension x="1" y="1"/></Size>
+		<Anchors>
+			<Anchor point="CENTER"/>
+		</Anchors>
+		<Layers>
+			<Layer level="overlay">
+				<Texture file="blackout">
+					<Anchors>
+						<Anchor point="CENTER">
+					</Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+	</Frame>
+    </Frames>-->
 	
     <Scripts>
       <OnLoad>
@@ -161,20 +177,4 @@
         self:StopMovingOrSizing()
       </OnDragStop>
     </Scripts>
-  </Frame>
-  <Frame name="WowBlurryEffect" parent="UIParent">
-	<Size><RelDimension x="1" y="1"/></Size>
-	<Anchors>
-		<Anchor point="CENTER"/>
-	</Anchors>
-	<Layers>
-	<Layer level="overlay">
-	 <Texture file="blackout">
-	 <Anchors>
-		<Anchor point="CENTER">
-	</Anchors>
-	</Texture>
-	</Layer>
-	</Layers>
-   </Frame>
 </Ui>
