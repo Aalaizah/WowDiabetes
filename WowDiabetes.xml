@@ -2,8 +2,8 @@
   <Frame name="WowDiabetesFrame" parent="UIParent" toplevel="true" movable="true" enableMouse="true">
     <Size x="200" y="185" /> 
     <Anchors>
-      <Anchor point="CENTER">
-        <Offset x="-456" y="199" />
+      <Anchor point="TOP" relativeTo="PlayerFrame" relativePoint="BOTTOM">
+        <Offset x="20" y="0" />
       </Anchor>
     </Anchors>
     <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">

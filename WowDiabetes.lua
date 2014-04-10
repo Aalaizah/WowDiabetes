@@ -21,14 +21,24 @@ local playerIsAboutToDrink = false
 -- Keeps track of the items in the player's bags
 local bagCounts = {}
 
--- Boolean to check if first time loading
-isFirstTime = true
-
--- timer
-local total = 0
+-- timers
+local meterTimer = 0
+local dayTimer = 0
 
 -- screen res
 local screenRes = ""
+
+-- glucose variables
+p1 = 0
+p2 = 0
+p3 = 0
+Vs = 0
+Gb = 0
+
+Gt = 0
+Xt = 0
+Ipt = 0
+Rat = 0
 
 -- Glycemic Loads where g is the glicemic load of its food
 local foodList = {{name="Tough Hunk of Bread", g=29.44}, {name="Freshly Baked Bread", g=288}, {name="Moist Cornbread", g=244.1}, 
@@ -120,12 +130,13 @@ function WowDiabetes_OnEvent(frame, event, ...)
 		end
 		frame:UnregisterEvent("ADDON_LOADED")
 		frame:RegisterEvent("BAG_UPDATE")
-		if isFirstTime then
+		if glucoseLevel == nil then
 			glucoseLevel = 90
 			glucoseLevelString = "good"
 			insulin = 10
 			timeGood = 0
 			isFirstTime = false
+			playTimer = 0;
 		end
 		WowDiabetesFrameMedsAmountString:SetText(insulin)
 		WowDiabetesGlucoseLevelBar_OnLoad(WowDiabetesFrameGlucoseLevelBar)
@@ -275,14 +286,19 @@ end
 -- hide part of it so the player has to learn to keep track on their own
  function WowDiabetes_OnUpdate(self, elapsed)
 	if WowDiabetesFrameGlucoseLevelBar:IsShown() then
-		total = total + elapsed
-		if total >= 30 then
+		meterTimer = meterTimer + elapsed
+		if meterTimer >= 30 then
 			WowDiabetesFrameGlucoseLevelBar:Hide()
 			WowDiabetesFrameGlucoseLevelString:Hide()
 			WowDiabetesFrameCloseButton:Hide()
 			WowDiabetesFrame:SetSize(200, 114)
-			total = 0
+			meterTimer = 0
 		end
+	end
+	dayTimer = dayTimer + elapsed
+	--Gt/dt = (-p1-Xt)Gt+(p1 x Gb) + Rat/Vs
+	if dayTimer > 1440 then
+		dayTimer = 0
 	end
 end
 
