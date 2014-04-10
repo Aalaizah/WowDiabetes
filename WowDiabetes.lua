@@ -21,24 +21,8 @@ local playerIsAboutToDrink = false
 -- Keeps track of the items in the player's bags
 local bagCounts = {}
 
--- Blood level
-local glucoseLevel = 89
-local glucoseLevelString = "good"
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
-
--- medicine
-local insulin = 10
->>>>>>> parent of c94d7ab... fixed saved variables
-
--- medicine
-local insulin = 10
->>>>>>> parent of c94d7ab... fixed saved variables
-
--- medicine
-local insulin = 10
+-- Boolean to check if first time loading
+isFirstTime = true
 
 -- timers
 local meterTimer = 0
@@ -47,9 +31,6 @@ local dayTimer = 0
 -- screen res
 local screenRes = ""
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 -- glucose variables
 p1 = 0
 p2 = 0
@@ -61,18 +42,6 @@ Gt = 0
 Xt = 0
 Ipt = 0
 Rat = 0
-=======
--- test variable
-local purpleBag = 0
->>>>>>> parent of c94d7ab... fixed saved variables
-=======
--- test variable
-local purpleBag = 0
->>>>>>> parent of c94d7ab... fixed saved variables
-=======
--- test variable
-local purpleBag = 0
->>>>>>> parent of c94d7ab... fixed saved variables
 
 -- Glycemic Loads where g is the glicemic load of its food
 local foodList = {{name="Tough Hunk of Bread", g=29.44}, {name="Freshly Baked Bread", g=288}, {name="Moist Cornbread", g=244.1}, 
@@ -116,13 +85,8 @@ function ChangeGlucoseBarColor()
 		end
 	-- Slighty bad glucose level, character is dizzy
 	elseif glucoseLevel > 70 and glucoseLevel < 90 then
-<<<<<<< HEAD
 		--WowBlurryEffect:Show()
 		--WowBlurryEffect:SetAlpha(.2)
-=======
-		WowBlurryEffect:Show()
-		WowBlurryEffect:SetAlpha(.5)
->>>>>>> 5ee06ea4885b444fedd8aef0b947aa40e26c5e81
 		WowDiabetesFrameGlucoseLevelBar:SetStatusBarColor(1,1,0,1)
 		if(glucoseLevelString ~= "okay") then
 			ColorPrint(OKAY_TEXT, "ffffff00")
@@ -131,13 +95,8 @@ function ChangeGlucoseBarColor()
 		end
 	-- Very bad glucose level, character is about to pass out
 	elseif glucoseLevel > 110 and glucoseLevel < 130 then
-<<<<<<< HEAD
 		--WowBlurryEffect:Show()
 		--WowBlurryEffect:SetAlpha(.4)
-=======
-	WowBlurryEffect:Show()
-		WowBlurryEffect:SetAlpha(.8)
->>>>>>> 5ee06ea4885b444fedd8aef0b947aa40e26c5e81
 		WowDiabetesFrameGlucoseLevelBar:SetStatusBarColor(1,1,0,1)
 		if(glucoseLevelString ~= "okay") then
 			ColorPrint(OKAY_TEXT, "ffffff00")
@@ -146,13 +105,8 @@ function ChangeGlucoseBarColor()
 		end
 	-- the worst glucos level, low end
 	elseif glucoseLevel < 70 then
-<<<<<<< HEAD
 		--WowBlurryEffect:Show()
 		--WowBlurryEffect:SetAlpha(.6)
-=======
-	WowBlurryEffect:Show()
-		WowBlurryEffect:SetAlpha(1)
->>>>>>> 5ee06ea4885b444fedd8aef0b947aa40e26c5e81
 		WowDiabetesFrameGlucoseLevelBar:SetStatusBarColor(1,0,0,1)
 		if(glucoseLevelString ~= "bad") then
 			ColorPrint(BAD_TEXT, "ffff0f0f")
@@ -161,13 +115,8 @@ function ChangeGlucoseBarColor()
 		end
 	-- the worst glucose level, high end
 	elseif glucoseLevel > 130 then
-<<<<<<< HEAD
 		--WowBlurryEffect:Show()
 		--WowBlurryEffect:SetAlpha(.6)
-=======
-	WowBlurryEffect:Show()
-		WowBlurryEffect:SetAlpha(1)
->>>>>>> 5ee06ea4885b444fedd8aef0b947aa40e26c5e81
 		WowDiabetesFrameGlucoseLevelBar:SetStatusBarColor(1,0,0,1)
 		if(glucoseLevelString ~= "bad") then
 			ColorPrint(BAD_TEXT, "ffff0f0f")
@@ -188,40 +137,22 @@ end
 
 -- Called whenever an event is triggered
 function WowDiabetes_OnEvent(frame, event, ...)
-	if event == "ADDON_LOADED" and ... == "WowDiabetes" then
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 		ColorPrint("hi")
-		if glucoseLevel == nil then
-			glucoseLevel = 90
-			glucoseLevelString = "good"
-			insulin = 10
-			timeGood = 0
-			isFirstTime = false
+	if event == "ADDON_LOADED" and ... == "WowDiabetes" then
 		end
-=======
->>>>>>> parent of c94d7ab... fixed saved variables
-=======
->>>>>>> parent of c94d7ab... fixed saved variables
-=======
->>>>>>> parent of c94d7ab... fixed saved variables
 		for bagId = 0, NUM_BAG_SLOTS do
 			WowDiabetes_ScanBag(bagId, false)
 		end
 		frame:UnregisterEvent("ADDON_LOADED")
 		frame:RegisterEvent("BAG_UPDATE")
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+		if isFirstTime then
+			glucoseLevel = 90
+			glucoseLevelString = "good"
+			insulin = 10
+			timeGood = 0
+			isFirstTime = false
 		WowDiabetesFrameMedsAmountString:SetText(insulin)
 		WowDiabetesGlucoseLevelBar_OnLoad(WowDiabetesFrameGlucoseLevelBar)
-=======
->>>>>>> parent of c94d7ab... fixed saved variables
-=======
->>>>>>> parent of c94d7ab... fixed saved variables
-=======
->>>>>>> parent of c94d7ab... fixed saved variables
 	elseif event == "PLAYER_REGEN_DISABLED" then
 		WowDiabetes_HandleEnterCombat(...)
 	elseif event == "PLAYER_REGEN_ENABLED" then
