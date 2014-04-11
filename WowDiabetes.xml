@@ -165,7 +165,7 @@
       </OnDragStop>
     </Scripts>
 	</Frame>
-	<Frame name="WowBlurryEffect" parent="UIParent">
+	<!--<Frame name="WowBlurryEffect" parent="UIParent">
 		<Size x="200" y="200"/>
 		<Anchors>
 			<Anchor point="CENTER"/>
@@ -179,5 +179,5 @@
 				</Texture>
 			</Layer>
 		</Layers>
-	</Frame>
+	</Frame>-->
 </Ui>

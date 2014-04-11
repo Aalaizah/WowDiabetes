@@ -27,29 +27,18 @@ isFirstTime = true
 -- timers
 local meterTimer = 0
 local dayTimer = 0
+local combatTimer = 0
 
 -- screen res
 local screenRes = ""
 
--- glucose variables
-p1 = 0
-p2 = 0
-p3 = 0
-Vs = 0
-Gb = 0
-
-Gt = 0
-Xt = 0
-Ipt = 0
-Rat = 0
-
 -- Glycemic Loads where g is the glicemic load of its food
-local foodList = {{name="Tough Hunk of Bread", g=29.44}, {name="Freshly Baked Bread", g=288}, {name="Moist Cornbread", g=244.1}, 
-	{name="Slitherskin Mackerel", g=0}, {name="Longjaw Mud Snapper", g=0}, {name="Bristle Whisker Catfish", g=0}, 
-	{name="Forest Mushroom Cap", g=0}, {name="Red-speckled Mushroom", g=0}, {name="Spongy Morel", g=1}, 
-	{name="Tough Jerky", g=1}, {name="Haunch of Meat", g=0}, {name="Mutton Chop", g=0}, 
-	{name="Darnassian Bleu", g=0}, {name="Dalaran Sharp", g=0}, {name="Dwarven Mild",g=0}, 
-	{name="Shiny Red Apple", g=6.1}, {name="Tel'Abim Banana", g=10.4}, {name="Snapvine Watermelon", g=3.6}}
+local foodList = {["Tough Hunk of Bread"] = 29.44, ["Freshly Baked Bread"] = 288, ["Moist Cornbread"] = 244.1, 
+	["Slitherskin Mackerel"] = 0, ["Longjaw Mud Snapper"] = 0, ["Bristle Whisker Catfish"] = 0, 
+	["Forest Mushroom Cap"] = 0, ["Red-speckled Mushroom"] = 0, ["Spongy Morel"] = 1, 
+	["Tough Jerky"] = 1, ["Haunch of Meat"] = 0, ["Mutton Chop"] = 0, 
+	["Darnassian Bleu"] = 0, ["Dalaran Sharp"] = 0, ["Dwarven Mild"] = 0, 
+	["Shiny Red Apple"] = 6.1, ["Tel'Abim Banana"] = 10.4, ["Snapvine Watermelon"] = 3.6}
 local drinkList = {"Refreshing Spring Water", "Ice Cold Milk", "Melon Juice", "Bottle of Pinot Noir", "Skin of Dwarven Stout", "Flask of Port", 
 	"Flagon of Mead", "Junglevine Wine", "Rhapsody Malt", "Thunder Ale"}
 
@@ -75,7 +64,7 @@ end
 function ChangeGlucoseBarColor()
 	-- good glucose level
 	if glucoseLevel > 89 and glucoseLevel < 110 then
-		WowBlurryEffect:Hide()
+		--WowBlurryEffect:Hide()
 		WowDiabetesFrameGlucoseLevelBar:SetStatusBarColor(0,1,0,1)
 		if glucoseLevelString ~= "good" then
 			ColorPrint(GOOD_TEXT, "ff00ff00")
@@ -84,8 +73,8 @@ function ChangeGlucoseBarColor()
 		end
 	-- Slighty bad glucose level, character is dizzy
 	elseif glucoseLevel > 70 and glucoseLevel < 90 then
-		WowBlurryEffect:Show()
-		WowBlurryEffect:SetAlpha(.2)
+		--WowBlurryEffect:Show()
+		--WowBlurryEffect:SetAlpha(.2)
 		WowDiabetesFrameGlucoseLevelBar:SetStatusBarColor(1,1,0,1)
 		if(glucoseLevelString ~= "okay") then
 			ColorPrint(OKAY_TEXT, "ffffff00")
@@ -94,8 +83,8 @@ function ChangeGlucoseBarColor()
 		end
 	-- Very bad glucose level, character is about to pass out
 	elseif glucoseLevel > 110 and glucoseLevel < 130 then
-		WowBlurryEffect:Show()
-		WowBlurryEffect:SetAlpha(.4)
+		--WowBlurryEffect:Show()
+		--WowBlurryEffect:SetAlpha(.4)
 		WowDiabetesFrameGlucoseLevelBar:SetStatusBarColor(1,1,0,1)
 		if(glucoseLevelString ~= "okay") then
 			ColorPrint(OKAY_TEXT, "ffffff00")
@@ -104,8 +93,8 @@ function ChangeGlucoseBarColor()
 		end
 	-- the worst glucos level, low end
 	elseif glucoseLevel < 70 then
-		WowBlurryEffect:Show()
-		WowBlurryEffect:SetAlpha(.6)
+		--WowBlurryEffect:Show()
+		--WowBlurryEffect:SetAlpha(.6)
 		WowDiabetesFrameGlucoseLevelBar:SetStatusBarColor(1,0,0,1)
 		if(glucoseLevelString ~= "bad") then
 			ColorPrint(BAD_TEXT, "ffff0f0f")
@@ -114,8 +103,8 @@ function ChangeGlucoseBarColor()
 		end
 	-- the worst glucose level, high end
 	elseif glucoseLevel > 130 then
-		WowBlurryEffect:Show()
-		WowBlurryEffect:SetAlpha(.6)
+		--WowBlurryEffect:Show()
+		--WowBlurryEffect:SetAlpha(.6)
 		WowDiabetesFrameGlucoseLevelBar:SetStatusBarColor(1,0,0,1)
 		if(glucoseLevelString ~= "bad") then
 			ColorPrint(BAD_TEXT, "ffff0f0f")
@@ -130,7 +119,7 @@ function WowDiabetesGlucoseLevelBar_OnLoad(statusBar)
 	statusBar:SetMinMaxValues(40,180)
     statusBar:SetValue(glucoseLevel)
     statusBar:SetStatusBarTexture("Interface\\RaidFrame\\Raid-Bar-Hp-Fill")
-    WowDiabetesFrameGlucoseLevelString:SetText(statusBar:GetValue() .. " mg/dL")
+    WowDiabetesFrameGlucoseLevelString:SetText(string.format("%.0f", statusBar:GetValue()) .. " mg/dL")
 	ChangeGlucoseBarColor()
 end
 
@@ -142,12 +131,11 @@ function WowDiabetes_OnEvent(frame, event, ...)
 		end
 		frame:UnregisterEvent("ADDON_LOADED")
 		frame:RegisterEvent("BAG_UPDATE")
-		if isFirstTime then
+		if glucoseLevel == nil then
 			glucoseLevel = 90
 			glucoseLevelString = "good"
 			insulin = 10
 			timeGood = 0
-			isFirstTime = false
 		end
 		WowDiabetesFrameMedsAmountString:SetText(insulin)
 		WowDiabetesGlucoseLevelBar_OnLoad(WowDiabetesFrameGlucoseLevelBar)
@@ -172,18 +160,16 @@ end
 -- Called whenever the player enters combat
 function WowDiabetes_HandleEnterCombat()
 	ColorPrint("Player entered combat!")
-	glucoseLevel = glucoseLevel - 1
-	WowDiabetesFrameGlucoseLevelBar:SetValue(glucoseLevel)
-	if UnitIsTrivial("target") then
-		ColorPrint(UnitIsTrivial("target"))
-	end
-	ColorPrint(UnitLevel("target"))
+	combatTimer = 0
 end
 
 -- Called whenever the player exits combat
 function WowDiabetes_HandleExitCombat()
 	ColorPrint("Player exited combat!")
 	insulin = insulin + 1
+	newGlucose = combatTimer / 5
+	glucoseLevel = glucoseLevel - newGlucose
+	WowDiabetesFrameGlucoseLevelBar:SetValue(glucoseLevel)
 	WowDiabetesFrameMedsAmountString:SetText(insulin)
 end
 
@@ -220,12 +206,8 @@ function WowDiabetes_HandleBagUpdate(bagId)
 
 			if playerIsAboutToEat then
 				ColorPrint("Player ate: " .. link .. ", change in count: " .. count)
-				purpleBag = itemName
-				for i=1, #foodList do
-					if foodList[i].name == itemName then
-						ColorPrint(foodList[i].g)
-					end
-				end
+				local foodVal = foodList[itemName]
+				glucoseLevel = glucoseLevel + (foodVal / 10)
 				playerIsAboutToEat = false
 			elseif playerIsAboutToDrink then
 				ColorPrint("Player drank: " .. link .. ", change in count: " .. count)
@@ -289,7 +271,7 @@ end
  function WowDiabetes_OnUpdate(self, elapsed)
 	if WowDiabetesFrameGlucoseLevelBar:IsShown() then
 		meterTimer = meterTimer + elapsed
-		if meterTimer >= 30 then
+		if meterTimer >= 15 then
 			WowDiabetesFrameGlucoseLevelBar:Hide()
 			WowDiabetesFrameGlucoseLevelString:Hide()
 			WowDiabetesFrameCloseButton:Hide()
@@ -302,6 +284,7 @@ end
 	if dayTimer > 1440 then
 		dayTimer = 0
 	end
+	combatTimer = combatTimer + elapsed
 end
 
 -- Hide the frame entirely
@@ -320,7 +303,8 @@ end
 -- Raise your glucose level when medicine is used
 function WowDiabetesMedicineButton_OnClick()
 	if insulin > 0 then
-		glucoseLevel = glucoseLevel + 5
+		local insulinVal = math.random(1, 10)
+		glucoseLevel = glucoseLevel + insulinVal
 		WowDiabetesFrameGlucoseLevelBar:SetValue(glucoseLevel)
 		insulin = insulin - 1
 		WowDiabetesFrameMedsAmountString:SetText(insulin)
@@ -329,6 +313,6 @@ end
 
 -- Update string above status bar with the new glucose level
 function WowDiabetesGlucoseLevelBar_OnValueChanged()
-	WowDiabetesFrameGlucoseLevelString:SetText(glucoseLevel .. " mg/dL")
+	WowDiabetesFrameGlucoseLevelString:SetText(string.format("%.0f", glucoseLevel) .. " mg/dL")
 	ChangeGlucoseBarColor()
 end
