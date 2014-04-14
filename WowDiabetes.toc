@@ -1,5 +1,8 @@
 ## Interface: 50400
-## Title: WowDiabetes
+## Title: Wow Diabetes
+## Title-deDE: WoW Suikerziekte
+## Title-esES: WoW Diabetes
+## Title-frFR: WoW Diabète
 ## Notes: Mod used for diabetes research. Tracks eating/drinking, combat, etc.
 ## Version: 1.1
 ## SavedVariables: p1, p2, p3, Vs, Gb, Gt, Xt, Ipt, Rat

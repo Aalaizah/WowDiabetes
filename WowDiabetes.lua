@@ -282,7 +282,8 @@ end
 			WowDiabetesFrameGlucoseLevelBar:Hide()
 			WowDiabetesFrameGlucoseLevelString:Hide()
 			WowDiabetesFrameCloseButton:Hide()
-			WowDiabetesFrame:SetSize(200, 114)
+			WowDiabetesFrameCloseButton2:Show()
+			WowDiabetesFrame:SetSize(200, 138)
 			meterTimer = 0
 		end
 	end
@@ -305,6 +306,7 @@ function WowDiabetesGlucoseButton_OnClick()
 	WowDiabetesFrameGlucoseLevelBar:Show()
 	WowDiabetesFrameGlucoseLevelString:Show()
 	WowDiabetesFrameCloseButton:Show()
+	WowDiabetesFrameCloseButton2:Hide()
 	
 	-- used for testing(REMOVE LATER)
 	glucoseLevel = glucoseLevel - 5
@@ -326,4 +328,9 @@ end
 function WowDiabetesGlucoseLevelBar_OnValueChanged()
 	WowDiabetesFrameGlucoseLevelString:SetText(string.format("%.0f", glucoseLevel) .. " mg/dL")
 	ChangeGlucoseBarColor()
+end
+
+SLASH_WOWDIABETES1, SLASH_WOWDIABETES2 = '/wowdiabetes', '/wd'
+function SlashCmdList.WOWDIABETES(msg, editbox)
+	WowDiabetesFrame:Show()
 end

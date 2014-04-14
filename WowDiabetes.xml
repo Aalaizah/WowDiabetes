@@ -117,6 +117,19 @@
 			  </OnClick>
 			</Scripts>
 		</Button>
+		<Button name="$parentCloseButton2" inherits="UIPanelButtonTemplate" text="CLOSE_BUTTON_TEXT" hidden="true">
+			<Size x="64" y="23" />
+			<Anchors>
+				<Anchor point="TOPLEFT">
+					<Offset x="113" y="-97" />
+				</Anchor>
+			</Anchors>
+			<Scripts>
+			  <OnClick>
+				WowDiabetesCloseButton_OnClick()
+			  </OnClick>
+			</Scripts>
+		</Button>
 		<StatusBar name="$parentGlucoseLevelBar" inherits="AchievementProgressBarTemplate" toplevel="true">
 			<Size x="150" y="14" />
 			<Anchors>
