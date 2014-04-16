@@ -33,14 +33,14 @@ local combatTimer = 0
 local screenRes = ""
 
 -- Glycemic Loads where g is the glicemic load of its food
-local foodList = {["Tough Hunk of Bread"] = 29.44, ["Freshly Baked Bread"] = 288, ["Moist Cornbread"] = 244.1, 
+--[[local foodList = {["Tough Hunk of Bread"] = 29.44, ["Freshly Baked Bread"] = 288, ["Moist Cornbread"] = 244.1, 
 	["Slitherskin Mackerel"] = 0, ["Longjaw Mud Snapper"] = 0, ["Bristle Whisker Catfish"] = 0, 
 	["Forest Mushroom Cap"] = 0, ["Red-speckled Mushroom"] = 0, ["Spongy Morel"] = 1, 
 	["Tough Jerky"] = 1, ["Haunch of Meat"] = 0, ["Mutton Chop"] = 0, 
 	["Darnassian Bleu"] = 0, ["Dalaran Sharp"] = 0, ["Dwarven Mild"] = 0, 
 	["Shiny Red Apple"] = 6.1, ["Tel'Abim Banana"] = 10.4, ["Snapvine Watermelon"] = 3.6}
 local drinkList = {"Refreshing Spring Water", "Ice Cold Milk", "Melon Juice", "Bottle of Pinot Noir", "Skin of Dwarven Stout", "Flask of Port", 
-	"Flagon of Mead", "Junglevine Wine", "Rhapsody Malt", "Thunder Ale"}
+	"Flagon of Mead", "Junglevine Wine", "Rhapsody Malt", "Thunder Ale"}]]
 
 -------------------------------------------------------------------------------
 -- Main AddOn logic
