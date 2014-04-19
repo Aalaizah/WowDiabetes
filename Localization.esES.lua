@@ -6,7 +6,7 @@ if GetLocale() == "esES" then
 	WowDiabetesLocalization["DRINK_AURA_NAME"] = "Beber"
 	WowDiabetesLocalization["FOOD_AURA_NAME"] = "Comida"
 
-	TITLE_TEXT = "Wow Diabetes"
+	TITLE_TEXT = "WoW Diabetes"
 	GLUCOSE_STRING_TEXT = "Glucosa"
 	GLUCOSE_BUTTON_TEXT = "Controlar"
 	MEDICINE_STRING_TEXT = "Medicina"

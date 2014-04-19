@@ -1,13 +1,25 @@
 ## Interface: 50400
-## Title: WowDiabetes
+## Title: Wow Diabetes
+## Title-deDE: WoW Suikerziekte
+## Title-esES: WoW Diabetes
+## Title-frFR: WoW Diabète
 ## Notes: Mod used for diabetes research. Tracks eating/drinking, combat, etc.
+<<<<<<< HEAD
 ## SavedVariables: MinimapPos, p1, p2, p3, Vs, Gb, Gt, Xt, Ipt, Rat
+=======
+## Version: 1.1
+## SavedVariables: p1, p2, p3, Vs, Gb, Gt, Xt, Ipt, Rat
+>>>>>>> origin/dev
 ## SavedVariablesPerCharacter: glucoseLevel, glucoseLevelString, insulin, timeGood
+## Author: Alexandria Mack, AJ Mandula, Zach Hoefler, Anna Sort
 
 Localization.enUS.lua
 Localization.deDE.lua
 Localization.esES.lua
 Localization.frFR.lua
+
+foodList.lua
+drinkList.lua
 
 WowDiabetes.lua
 WowDiabetes.xml
