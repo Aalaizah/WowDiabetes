@@ -32,6 +32,11 @@ local combatTimer = 0
 -- screen res
 local screenRes = ""
 
+-- minimap button
+WowDiabetes_Settings = {
+	MinimapPos = 45 -- default position of the minimap icon in degrees
+}
+
 -- Glycemic Loads where g is the glicemic load of its food
 local foodList = {["Tough Hunk of Bread"] = 29.44, ["Freshly Baked Bread"] = 288, ["Moist Cornbread"] = 244.1, 
 	["Slitherskin Mackerel"] = 0, ["Longjaw Mud Snapper"] = 0, ["Bristle Whisker Catfish"] = 0, 
@@ -48,6 +53,7 @@ local drinkList = {"Refreshing Spring Water", "Ice Cold Milk", "Melon Juice", "B
 -- Called when the main frame first loads
 function WowDiabetes_OnLoad(frame)
 	frame:RegisterEvent("ADDON_LOADED")
+	frame:RegisterEvent("VARIABLES_LOADED")
 	-- Combat enter/leave
 	frame:RegisterEvent("PLAYER_REGEN_ENABLED")
 	frame:RegisterEvent("PLAYER_REGEN_DISABLED")
@@ -137,8 +143,12 @@ function WowDiabetes_OnEvent(frame, event, ...)
 			insulin = 10
 			timeGood = 0
 		end
+	elseif event == "VARIABLES_LOADED" then
 		WowDiabetesFrameMedsAmountString:SetText(insulin)
 		WowDiabetesGlucoseLevelBar_OnLoad(WowDiabetesFrameGlucoseLevelBar)
+		function WowDiabetes_MinimapButton_Reposition()
+			WowDiabetes_MinimapButton:SetPoint("TOPLEFT","Minimap","TOPLEFT",52-(80*cos(WowDiabetes_Settings.MinimapPos)),(80*sin(WowDiabetes_Settings.MinimapPos))-52)
+		end
 	elseif event == "PLAYER_REGEN_DISABLED" then
 		WowDiabetes_HandleEnterCombat(...)
 	elseif event == "PLAYER_REGEN_ENABLED" then
@@ -292,6 +302,11 @@ function WowDiabetesCloseButton_OnClick()
 	WowDiabetesFrame:Hide()
 end
 
+-- Show the frame entirely
+function WowDiabetes_MinimapButton_OnClick()
+	WowDiabetesFrame:Show()
+end
+
 -- Shows the frame entirely so player can check glucose levels
 function WowDiabetesGlucoseButton_OnClick()
 	WowDiabetesFrame:SetSize(200, 185)
@@ -315,4 +330,17 @@ end
 function WowDiabetesGlucoseLevelBar_OnValueChanged()
 	WowDiabetesFrameGlucoseLevelString:SetText(string.format("%.0f", glucoseLevel) .. " mg/dL")
 	ChangeGlucoseBarColor()
+end
+
+-- Move the minimap button
+function WowDiabetes_MinimapButton_DraggingFrame_OnUpdate()
+
+	local xpos,ypos = GetCursorPosition()
+	local xmin,ymin = Minimap:GetLeft(), Minimap:GetBottom()
+
+	xpos = xmin-xpos/UIParent:GetScale()+70 -- get coordinates as differences from the center of the minimap
+	ypos = ypos/UIParent:GetScale()-ymin-70
+
+	WowDiabetes_Settings.MinimapPos = math.deg(math.atan2(ypos,xpos)) -- save the degrees we are relative to the minimap center
+	WowDiabetes_MinimapButton_Reposition() -- move the button
 end
