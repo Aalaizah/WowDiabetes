@@ -1,4 +1,4 @@
-"Tough Hunk of Bread" = 29.44
+--[["Tough Hunk of Bread" = 29.44
 "Freshly Baked Bread" = 288
 "Moist Cornbread" = 244.1
 "Slitherskin Mackerel" = 0
@@ -15,4 +15,4 @@
 "Dwarven Mild" = 0
 "Shiny Red Apple" = 6.1
 "Tel'Abim Banana" = 10.4
-"Snapvine Watermelon" = 3.6
+"Snapvine Watermelon" = 3.6]]

@@ -38,14 +38,14 @@ WowDiabetes_Settings = {
 }
 
 -- Glycemic Loads where g is the glicemic load of its food
---[[local foodList = {["Tough Hunk of Bread"] = 29.44, ["Freshly Baked Bread"] = 288, ["Moist Cornbread"] = 244.1, 
+local foodList = {["Tough Hunk of Bread"] = 29.44, ["Freshly Baked Bread"] = 288, ["Moist Cornbread"] = 244.1, 
 	["Slitherskin Mackerel"] = 0, ["Longjaw Mud Snapper"] = 0, ["Bristle Whisker Catfish"] = 0, 
 	["Forest Mushroom Cap"] = 0, ["Red-speckled Mushroom"] = 0, ["Spongy Morel"] = 1, 
 	["Tough Jerky"] = 1, ["Haunch of Meat"] = 0, ["Mutton Chop"] = 0, 
 	["Darnassian Bleu"] = 0, ["Dalaran Sharp"] = 0, ["Dwarven Mild"] = 0, 
 	["Shiny Red Apple"] = 6.1, ["Tel'Abim Banana"] = 10.4, ["Snapvine Watermelon"] = 3.6}
 local drinkList = {"Refreshing Spring Water", "Ice Cold Milk", "Melon Juice", "Bottle of Pinot Noir", "Skin of Dwarven Stout", "Flask of Port", 
-	"Flagon of Mead", "Junglevine Wine", "Rhapsody Malt", "Thunder Ale"}]]
+	"Flagon of Mead", "Junglevine Wine", "Rhapsody Malt", "Thunder Ale"}
 
 -------------------------------------------------------------------------------
 -- Main AddOn logic
@@ -113,7 +113,7 @@ end
 function badGlucose(frame)
 	local frameH = frame:GetAttribute("height")
 	WowBlurryEffect:Show()
-	WowBlurryEffect:SetAlpha(.8)
+	WowBlurryEffect:SetAlpha(.6)
 	WowDiabetesFrameGlucoseLevelBar:SetStatusBarColor(1,0,0,1)
 	if(glucoseLevelString ~= "bad") then
 		ColorPrint(BAD_TEXT, "ffff0f0f")
@@ -122,10 +122,10 @@ function badGlucose(frame)
 	end
 end
 
--- Called when the status bar loads
-function WowDiabetesGlucoseLevelBar_OnLoad(statusBar)
+-- Called after the variables have loaded
+function WowDiabetesGlucoseLevelBar_Setup(statusBar)
 	statusBar:SetMinMaxValues(40,180)
-    statusBar:SetValue(glucoseLevel)
+	statusBar:SetValue(glucoseLevel)
     statusBar:SetStatusBarTexture("Interface\\RaidFrame\\Raid-Bar-Hp-Fill")
     WowDiabetesFrameGlucoseLevelString:SetText(string.format("%.0f", statusBar:GetValue()) .. " mg/dL")
 	ChangeGlucoseBarColor()
@@ -147,10 +147,11 @@ function WowDiabetes_OnEvent(frame, event, ...)
 		end
 	elseif event == "VARIABLES_LOADED" then
 		WowDiabetesFrameMedsAmountString:SetText(insulin)
-		WowDiabetesGlucoseLevelBar_OnLoad(WowDiabetesFrameGlucoseLevelBar)
+		WowDiabetesGlucoseLevelBar_Setup(WowDiabetesFrameGlucoseLevelBar)
 		function WowDiabetes_MinimapButton_Reposition()
 			WowDiabetes_MinimapButton:SetPoint("TOPLEFT","Minimap","TOPLEFT",52-(80*cos(WowDiabetes_Settings.MinimapPos)),(80*sin(WowDiabetes_Settings.MinimapPos))-52)
 		end
+		WowDiabetesGlucoseLevelBar_Setup(WowDiabetesFrameGlucoseLevelBar)
 	elseif event == "PLAYER_REGEN_DISABLED" then
 		WowDiabetes_HandleEnterCombat(...)
 	elseif event == "PLAYER_REGEN_ENABLED" then
@@ -312,7 +313,11 @@ end
 
 -- Show the frame entirely
 function WowDiabetes_MinimapButton_OnClick()
-	WowDiabetesFrame:Show()
+	if WowDiabetesFrame:IsShown() then
+		WowDiabetesFrame:Hide()
+	else
+		WowDiabetesFrame:Show()
+	end
 end
 
 -- Shows the frame entirely so player can check glucose levels
@@ -345,7 +350,6 @@ function WowDiabetesGlucoseLevelBar_OnValueChanged()
 	ChangeGlucoseBarColor()
 end
 
-<<<<<<< HEAD
 -- Move the minimap button
 function WowDiabetes_MinimapButton_DraggingFrame_OnUpdate()
 
@@ -357,9 +361,22 @@ function WowDiabetes_MinimapButton_DraggingFrame_OnUpdate()
 
 	WowDiabetes_Settings.MinimapPos = math.deg(math.atan2(ypos,xpos)) -- save the degrees we are relative to the minimap center
 	WowDiabetes_MinimapButton_Reposition() -- move the button
-=======
+end
+
+-- Show minimap tooltip
+function WowDiabetes_MinimapButton_OnEnter(self)
+	if self.dragging then
+		return
+	end
+	GameTooltip:SetOwner(self or UIParent, "ANCHOR_LEFT")
+	WowDiabetes_MinimapButton_Details(GameTooltip)
+end
+
+function WowDiabetes_MinimapButton_Details(tt, ldb)
+	tt:SetText(TITLE_TEXT)
+end
+
 SLASH_WOWDIABETES1, SLASH_WOWDIABETES2 = '/wowdiabetes', '/wd'
 function SlashCmdList.WOWDIABETES(msg, editbox)
 	WowDiabetesFrame:Show()
->>>>>>> origin/dev
 end

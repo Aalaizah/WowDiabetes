@@ -1,5 +1,5 @@
 <Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
-  <Frame name="WowDiabetesFrame" parent="UIParent" toplevel="true" movable="true" enableMouse="true">
+  <Frame name="WowDiabetesFrame" parent="UIParent" movable="true" enableMouse="true">
     <Size x="200" y="185" /> 
     <Anchors>
       <Anchor point="TOP" relativeTo="TargetFrame" relativePoint="BOTTOM">
@@ -113,6 +113,19 @@
           </OnClick>
         </Scripts>
       </Button>
+	  	<Button name="$parentCloseButton2" inherits="UIPanelButtonTemplate" text="CLOSE_BUTTON_TEXT" hidden="true">
+			<Size x="64" y="23" />
+			<Anchors>
+				<Anchor point="TOPLEFT">
+					<Offset x="113" y="-97" />
+				</Anchor>
+			</Anchors>
+			<Scripts>
+			  <OnClick>
+				WowDiabetesCloseButton_OnClick()
+			  </OnClick>
+			</Scripts>
+		</Button>
       <StatusBar name="$parentGlucoseLevelBar" inherits="AchievementProgressBarTemplate" toplevel="true">
         <Size x="150" y="14" />
         <Anchors>
@@ -134,9 +147,6 @@
 			</Layer>
 		</Layers>
         <Scripts>
-          <OnLoad>
-			WowDiabetesGlucoseLevelBar_OnLoad(self)
-          </OnLoad>
           <OnValueChanged>
             WowDiabetesGlucoseLevelBar_OnValueChanged()
           </OnValueChanged>
@@ -165,21 +175,25 @@
       </OnDragStop>
     </Scripts>
 	</Frame>
-	<!--<Frame name="WowBlurryEffect" parent="UIParent">
+	<Frame name="WowBlurryEffect" parent="UIParent">
 		<Size x="200" y="200"/>
 		<Anchors>
 			<Anchor point="CENTER"/>
 		</Anchors>
 		<Layers>
-			<Layer level="overlay">
+			<Layer level="OVERLAY">
 				<Texture file="blackout">
+					<Size>
+						<RelDimension x="256" y="64"/>
+					</Size>
 					<Anchors>
 						<Anchor point="CENTER"/>
 					</Anchors>
+					<Color r="0" g="0" b="0"/>
 				</Texture>
 			</Layer>
 		</Layers>
-	</Frame>-->
+	</Frame>
 	
 	<Button name="WowDiabetes_MinimapButton" parent="Minimap" enableMouse="true" movable="true" hidden="false">
 		<Size>
@@ -226,19 +240,30 @@
 		<HighlightTexture alphaMode="ADD" file="Interface\Minimap\UI-Minimap-ZoomButton-Highlight"/>
 		<Scripts>
 			<OnLoad>
-				this:RegisterForClicks("LeftButtonUp","RightButtonUp")
-				this:RegisterForDrag("LeftButton","RightButton")
+				self:RegisterForClicks("LeftButtonUp","RightButtonUp")
+				self:RegisterForDrag("LeftButton","RightButton")
 			</OnLoad>
+			<OnEnter>
+				if (not self.dragging) then
+					WowDiabetes_MinimapButton_OnEnter(self)
+				end
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide()
+			</OnLeave>
 			<OnDragStart>
-				this:LockHighlight()
+				self.dragging = true
+				GameTooltip:Hide()
+				self:LockHighlight()
 				WowDiabetes_MinimapButton_DraggingFrame:Show()
 			</OnDragStart>
 			<OnDragStop>
-				this:UnlockHighlight()
+				self.dragging = false
+				self:UnlockHighlight()
 				WowDiabetes_MinimapButton_DraggingFrame:Hide()
 			</OnDragStop>
 			<OnClick>
-				WowDiabetes_MinimapButton_OnClick() -- do your thing in here, arg1 is mouse button clicked
+				WowDiabetes_MinimapButton_OnClick()
 			</OnClick>
 		</Scripts>
 	</Button>
