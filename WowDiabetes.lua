@@ -213,6 +213,8 @@ function WowDiabetes_HandleBagUpdate(bagId)
 
 			if playerIsAboutToEat then
 				ColorPrint("Player ate: " .. link .. ", change in count: " .. count)
+				-- when foodList.lua is fully implemented
+				-- local foodVal = foodList[link]
 				local foodVal = foodList[itemName]
 				glucoseLevel = glucoseLevel + (foodVal / 10)
 				playerIsAboutToEat = false
