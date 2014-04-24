@@ -328,8 +328,6 @@ function WowDiabetesGlucoseButton_OnClick()
 	WowDiabetesFrameCloseButton:Show()
 	WowDiabetesFrameCloseButton2:Hide()
 	
-	-- used for testing(REMOVE LATER)
-	glucoseLevel = glucoseLevel - 5
 	WowDiabetesFrameGlucoseLevelBar:SetValue(glucoseLevel)
 end
 
