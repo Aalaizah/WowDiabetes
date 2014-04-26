@@ -224,7 +224,10 @@ function WowDiabetes_HandleBagUpdate(bagId)
 
 			if playerIsAboutToEat then
 				ColorPrint("Player ate: " .. link .. ", change in count: " .. count)
-				local foodVal = foodList[itemName]
+				-- when foodList.lua is fully implemented
+				local foodVal = foodList[itemId]
+				ColorPrint(foodVal)
+				-- local foodVal = foodList[itemName]
 				glucoseLevel = glucoseLevel + (foodVal / 10)
 				playerIsAboutToEat = false
 			elseif playerIsAboutToDrink then
@@ -327,10 +330,6 @@ function WowDiabetesGlucoseButton_OnClick()
 	WowDiabetesFrameGlucoseLevelString:Show()
 	WowDiabetesFrameCloseButton:Show()
 	WowDiabetesFrameCloseButton2:Hide()
-	
-	-- used for testing(REMOVE LATER)
-	glucoseLevel = glucoseLevel - 5
-	WowDiabetesFrameGlucoseLevelBar:SetValue(glucoseLevel)
 end
 
 -- Raise your glucose level when medicine is used

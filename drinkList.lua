@@ -1,0 +1,10 @@
+--Refreshing Spring Water
+--Ice Cold Milk
+--Melon Juice
+--Bottle of Pinot Noir
+--Skin of Dwarven Stout
+--Flask of Port
+--Flagon of Mead
+--Junglevine Wine
+--Rhapsody Malt
+--Thunder Ale
