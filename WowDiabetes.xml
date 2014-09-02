@@ -1,68 +1,68 @@
 <Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
-  <Frame name="WowDiabetesFrame" parent="UIParent" movable="true" enableMouse="true">
-    <Size x="200" y="185" /> 
-    <Anchors>
-      <Anchor point="TOP" relativeTo="TargetFrame" relativePoint="BOTTOM">
-        <Offset x="20" y="-20" />
-      </Anchor>
-    </Anchors>
-    <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
-      <BackgroundInsets>
-        <AbsInset left="11" right="12" top="12" bottom="11" />
-      </BackgroundInsets>
-      <TileSize>
-        <AbsValue val="32" />
-      </TileSize>
-      <EdgeSize>
-        <AbsValue val="32" />
-      </EdgeSize>
-    </Backdrop>
-    <Layers>
-      <Layer level="OVERLAY">
-        <FontString name="$parentGlucoseString" inherits="GameFontNormal" text="GLUCOSE_STRING_TEXT">
-          <Size x="64" y="20" />
-          <Anchors>
-            <Anchor point="TOPLEFT">
-              <Offset x="32" y="-35" />
-            </Anchor>
-          </Anchors>
-        </FontString>
-        <FontString name="$parentMedsString" inherits="GameFontNormal" text="MEDICINE_STRING_TEXT">
-          <Size x="64" y="20" />
-          <Anchors>
-            <Anchor point="TOPLEFT">
-              <Offset x="102" y="-35" />
-            </Anchor>
-          </Anchors>
-        </FontString>
-        <FontString name="$parentMedsAmountString" inherits="GameFontNormal">
-          <Size x="64" y="20" />
-          <Anchors>
-            <Anchor point="TOPLEFT">
-              <Offset x="102" y="-50" />
-            </Anchor>
-          </Anchors>
-        </FontString>
-        <FontString name="$parentGlucoseLevelString" inherits="GameFontNormal">
-          <Size x="134" y="20" />
-          <Anchors>
-            <Anchor point="TOPLEFT">
-              <Offset x="32" y="-96" />
-            </Anchor>
-          </Anchors>
-        </FontString>
-      </Layer>
-		<Layer level="ARTWORK">
-			<Texture file="Interface\DialogFrame\UI-DialogBox-Header">
-				<Size><AbsDimension x="256" y="64"/></Size>
-				<Anchors>
-					<Anchor point="CENTER" relativeTo="WowDiabetesFrame" relativePoint="TOP">
-						<Offset><AbsDimension x="0" y="-20"/></Offset>
-					</Anchor>
-				</Anchors>
-			</Texture>
-		</Layer>
-		<Layer level="OVERLAY">
+	<Frame name="WowDiabetesFrame" parent="UIParent" movable="true" enableMouse="true">
+		<Size x="200" y="185" /> 
+		<Anchors>
+			<Anchor point="TOP" relativeTo="TargetFrame" relativePoint="BOTTOM">
+				<Offset x="20" y="-20" />
+			</Anchor>
+		</Anchors>
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<BackgroundInsets>
+				<AbsInset left="11" right="12" top="12" bottom="11" />
+			</BackgroundInsets>
+			<TileSize>
+				<AbsValue val="32" />
+			</TileSize>
+			<EdgeSize>
+				<AbsValue val="32" />
+			</EdgeSize>
+		</Backdrop>
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="$parentGlucoseString" inherits="GameFontNormal" text="GLUCOSE_STRING_TEXT">
+					<Size x="64" y="20" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="32" y="-35" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentMedsString" inherits="GameFontNormal" text="MEDICINE_STRING_TEXT">
+					<Size x="64" y="20" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="102" y="-35" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentMedsAmountString" inherits="GameFontNormal">
+					<Size x="64" y="20" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="102" y="-50" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentGlucoseLevelString" inherits="GameFontNormal">
+					<Size x="134" y="20" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="32" y="-96" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+			<Layer level="ARTWORK">
+				<Texture file="Interface\DialogFrame\UI-DialogBox-Header">
+					<Size><AbsDimension x="256" y="64"/></Size>
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="WowDiabetesFrame" relativePoint="TOP">
+							<Offset><AbsDimension x="0" y="-20"/></Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="OVERLAY">
 			<FontString name="$parentString" inherits="GameFontNormal" text="TITLE_TEXT">
 				<Size x="134" y="20" />
 				<Anchors>
@@ -73,107 +73,107 @@
 			</FontString>
 		</Layer>
     </Layers>
-    <Frames>
-      <Button name="$parentGlucoseButton" inherits="UIPanelButtonTemplate" text="GLUCOSE_BUTTON_TEXT">
-        <Size x="64" y="23" />
-        <Anchors>
-          <Anchor point="TOPLEFT">
-            <Offset x="32" y="-70" />
-          </Anchor>
-        </Anchors>
-		 <Scripts>
-			<OnClick>
-				WowDiabetesGlucoseButton_OnClick()
-			</OnClick>
-		</Scripts>
-      </Button>
-      <Button name="$parentMedicineButton" inherits="UIPanelButtonTemplate" text="MEDICINE_BUTTON_TEXT">
-        <Size x="64" y="23" />
-        <Anchors>
-          <Anchor point="TOPLEFT">
-            <Offset x="102" y="-70" />
-          </Anchor>
-        </Anchors>
-		<Scripts>
-			<OnClick>
-				WowDiabetesMedicineButton_OnClick()
-			</OnClick>
-		</Scripts>
-      </Button>
-      <Button name="$parentCloseButton" inherits="UIPanelButtonTemplate" text="CLOSE_BUTTON_TEXT">
-        <Size x="64" y="23" />
-        <Anchors>
-          <Anchor point="TOPLEFT">
-            <Offset x="113" y="-141" />
-          </Anchor>
-        </Anchors>
-        <Scripts>
-          <OnClick>
-            WowDiabetesCloseButton_OnClick()
-          </OnClick>
-        </Scripts>
-      </Button>
-	  	<Button name="$parentCloseButton2" inherits="UIPanelButtonTemplate" text="CLOSE_BUTTON_TEXT" hidden="true">
-			<Size x="64" y="23" />
-			<Anchors>
-				<Anchor point="TOPLEFT">
-					<Offset x="113" y="-97" />
-				</Anchor>
-			</Anchors>
-			<Scripts>
-			  <OnClick>
-				WowDiabetesCloseButton_OnClick()
-			  </OnClick>
-			</Scripts>
-		</Button>
-      <StatusBar name="$parentGlucoseLevelBar" inherits="AchievementProgressBarTemplate" toplevel="true">
-        <Size x="150" y="14" />
-        <Anchors>
-          <Anchor point="BOTTOM">
-            <Offset x="2" y="53" />
-          </Anchor>
-        </Anchors>
-        <Backdrop bgFile=""/>
-		<Layers>
-			<Layer level="BACKGROUND">
-				<Texture file="Interface\RAIDFRAME\Raid-Bar-Hp-Bg">
-					<Size><AbsDimension x="150" y="28"/></Size>
-					<Anchors>
-						<Anchor point="TOP">
-							<Offset><AbsDimension x="0" y="-0"/></Offset>
-						</Anchor>
-					</Anchors>
-				</Texture>
-			</Layer>
-		</Layers>
-        <Scripts>
-          <OnValueChanged>
-            WowDiabetesGlucoseLevelBar_OnValueChanged()
-          </OnValueChanged>
-        </Scripts>
-      </StatusBar>
-    </Frames>
+		<Frames>
+			<Button name="$parentGlucoseButton" inherits="UIPanelButtonTemplate" text="GLUCOSE_BUTTON_TEXT">
+				<Size x="64" y="23" />
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="32" y="-70" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						WowDiabetesGlucoseButton_OnClick()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentMedicineButton" inherits="UIPanelButtonTemplate" text="MEDICINE_BUTTON_TEXT">
+				<Size x="64" y="23" />
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="102" y="-70" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						WowDiabetesMedicineButton_OnClick()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentCloseButton" inherits="UIPanelButtonTemplate" text="CLOSE_BUTTON_TEXT">
+				<Size x="64" y="23" />
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="113" y="-141" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						WowDiabetesCloseButton_OnClick()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentCloseButton2" inherits="UIPanelButtonTemplate" text="CLOSE_BUTTON_TEXT" hidden="true">
+				<Size x="64" y="23" />
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="113" y="-97" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+				  <OnClick>
+					WowDiabetesCloseButton_OnClick()
+				  </OnClick>
+				</Scripts>
+			</Button>
+			<StatusBar name="$parentGlucoseLevelBar" inherits="AchievementProgressBarTemplate" toplevel="true">
+				<Size x="150" y="14" />
+				<Anchors>
+					<Anchor point="BOTTOM">
+						<Offset x="2" y="53" />
+					</Anchor>
+				</Anchors>
+				<Backdrop bgFile=""/>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<Texture file="Interface\RAIDFRAME\Raid-Bar-Hp-Bg">
+							<Size><AbsDimension x="150" y="28"/></Size>
+							<Anchors>
+								<Anchor point="TOP">
+									<Offset><AbsDimension x="0" y="-0"/></Offset>
+								</Anchor>
+							</Anchors>
+						</Texture>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnValueChanged>
+						WowDiabetesGlucoseLevelBar_OnValueChanged()
+					</OnValueChanged>
+				</Scripts>
+			</StatusBar>
+		</Frames>
 	
-    <Scripts>
-      <OnLoad>
-        WowDiabetes_OnLoad(self)
-      </OnLoad>
-	  <OnEvent>
-		WowDiabetes_OnEvent(self, event, ...)
-	  </OnEvent>
-	  <OnUpdate>
-		WowDiabetes_OnUpdate(self, elapsed)
-	  </OnUpdate>
-	  <OnClick>
-		WowDiabetes_OnClickFrame()
-	  </OnClick>
-      <OnDragStart>
-        self:StartMoving()
-      </OnDragStart>
-      <OnDragStop>
-        self:StopMovingOrSizing()
-      </OnDragStop>
-    </Scripts>
+		<Scripts>
+			<OnLoad>
+				WowDiabetes_OnLoad(self)
+			</OnLoad>
+			<OnEvent>
+				WowDiabetes_OnEvent(self, event, ...)
+			</OnEvent>
+			<OnUpdate>
+				WowDiabetes_OnUpdate(self, elapsed)
+			</OnUpdate>
+			<OnClick>
+				WowDiabetes_OnClickFrame()
+			</OnClick>
+			<OnDragStart>
+				self:StartMoving()
+			</OnDragStart>
+			<OnDragStop>
+				self:StopMovingOrSizing()
+			</OnDragStop>
+		</Scripts>
 	</Frame>
 	<Frame name="WowBlurryEffect" parent="UIParent">
 		<Size x="200" y="200"/>
@@ -193,8 +193,7 @@
 				</Texture>
 			</Layer>
 		</Layers>
-	</Frame>
-	
+	</Frame>	
 	<Button name="WowDiabetes_MinimapButton" parent="Minimap" enableMouse="true" movable="true" hidden="false">
 		<Size>
 			<AbsDimension x="33" y="33"/>
