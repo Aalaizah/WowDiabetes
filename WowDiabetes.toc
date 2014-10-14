@@ -1,4 +1,4 @@
-## Interface: 50400
+## Interface: 60000
 ## Title: Wow Diabetes
 ## Title-deDE: WoW Suikerziekte
 ## Title-esES: WoW Diabetes
