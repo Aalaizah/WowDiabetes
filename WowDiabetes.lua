@@ -1,3 +1,5 @@
+--- add way to spit out data to give to website, GetUnitName("thistoon", true), + others
+
 -------------------------------------------------------------------------------
 -- Utility functions and variables
 -------------------------------------------------------------------------------
@@ -38,14 +40,8 @@ WowDiabetes_Settings = {
 }
 
 -- Glycemic Loads where g is the glicemic load of its food
-local foodList = {["Tough Hunk of Bread"] = 29.44, ["Freshly Baked Bread"] = 288, ["Moist Cornbread"] = 244.1, 
-	["Slitherskin Mackerel"] = 0, ["Longjaw Mud Snapper"] = 0, ["Bristle Whisker Catfish"] = 0, 
-	["Forest Mushroom Cap"] = 0, ["Red-speckled Mushroom"] = 0, ["Spongy Morel"] = 1, 
-	["Tough Jerky"] = 1, ["Haunch of Meat"] = 0, ["Mutton Chop"] = 0, 
-	["Darnassian Bleu"] = 0, ["Dalaran Sharp"] = 0, ["Dwarven Mild"] = 0, 
-	["Shiny Red Apple"] = 6.1, ["Tel'Abim Banana"] = 10.4, ["Snapvine Watermelon"] = 3.6}
-local drinkList = {"Refreshing Spring Water", "Ice Cold Milk", "Melon Juice", "Bottle of Pinot Noir", "Skin of Dwarven Stout", "Flask of Port", 
-	"Flagon of Mead", "Junglevine Wine", "Rhapsody Malt", "Thunder Ale"}
+local foodList = foodListTable
+local drinkList = drinkListTable
 
 -------------------------------------------------------------------------------
 -- Main AddOn logic
@@ -143,7 +139,11 @@ function WowDiabetes_OnEvent(frame, event, ...)
 			glucoseLevel = 90
 			glucoseLevelString = "good"
 			insulin = 10
+			insulinUsed = 0
+			foodEaten = 0
 			timeGood = 0
+			timeAbove = 0
+			timeBelow = 0
 		end
 	elseif event == "VARIABLES_LOADED" then
 		WowDiabetesFrameMedsAmountString:SetText(insulin)
@@ -181,6 +181,7 @@ function WowDiabetes_HandleExitCombat()
 	local checkGluc
 	ColorPrint("Player exited combat!")
 	insulin = insulin + 1
+	-- ADD SCALING HERE(possibly make it's own function the way color change is for the bar)
 	checkGluc = combatTimer % 5
 	newGlucose = combatTimer / 5
 	if checkGluc > newGlucose then
@@ -287,7 +288,7 @@ function WowDiabetes_ScanBag(bagId, returnChanges)
 end
 
 
--- If the frame has been completely open for longer than a minute, 
+-- If the frame has been completely open for longer than 15 seconds, 
 -- hide part of it so the player has to learn to keep track on their own
  function WowDiabetes_OnUpdate(self, elapsed)
 	if WowDiabetesFrameGlucoseLevelBar:IsShown() then
@@ -302,7 +303,6 @@ end
 		end
 	end
 	dayTimer = dayTimer + elapsed
-	--Gt/dt = (-p1-Xt)Gt+(p1 x Gb) + Rat/Vs
 	if dayTimer > 1440 then
 		dayTimer = 0
 	end
