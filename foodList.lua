@@ -12,7 +12,20 @@ foodListTable = {
 [8075]	--	Conjured Sourdogh
 [1487]	--	Conjured Pumpernickel
 [1114]	--	Conjured Rye
-[5349]	--	Conjured Muffin]]
+[5349]	--	Conjured Muffin
+[29394]	--	Lyribread
+[29449]	--	Bladespire Bagel
+[22019]	--	Conjured Croissant
+[32685]	--	Ogri'la Chicken Fingers
+[32686]	--	Mingo's Fortune Giblets
+[34062]	--	Conjured Mana Biscuit
+[34780]	--	Naaru Ration
+[38428]	--	Rock-Salted Pretzel
+[27855]	--	Mag'har Grainbread
+[28486]	--	Moser's Magnificent Muffin
+[20857]	--	Honey Bread
+[30816]	--	Spice Bread
+]]
 [4540] = 29.44, --Tough Hunk of Bread
 [4541] = 288, -- Freshly Baked Bread
 [4542] = 244.1, -- Moist Cornbread
@@ -58,6 +71,21 @@ foodListTable = {
 [12238]	--	Darkshore Grouper
 [6290]	--	Brilliant Smallfish
 [6299]	--	Sickly Looking Fish
+[29452]	--	Zangar Trout
+[33048]	--	Stewed Trout
+[33052]	--	Fisherman's Feast
+[33053]	--	Hot Buttered Trout
+[33825]	--	Skullfish Soup
+[27661]	--	Blackened Trout
+[27662]	--	Feltail Delight
+[27663]	--	Blackened Sporefish
+[27664]	--	Grilled Mudfish
+[27665]	--	Poached Bluefish
+[27666]	--	Golden Fish Sticks
+[27667]	--	Spicy Crawdad
+[27858]	--	Sunspring Carp
+[30155]	--	Clam Bar
+[33867]	--	Broiled Bloodfin
 ]]
 [787] = 0, -- Slitherskin Mackerel
 [4592] = 0, -- Longjaw Mud Snapper
@@ -68,6 +96,10 @@ foodListTable = {
 [8948]	--	Dried King Bolete
 [4608]	--	Raw Black Truffle
 [4607]	--	Delicious Cave Mold
+[29453]	--	Sporeggar Mushroom
+[24008]	--	Dried Mushroom Rations
+[24539]	--	Marsh Lichen
+[27859]	--	Zangar Caps
 ]]
 [4604] = 0, -- Forest Mushroom Cap
 [4605] = 0, -- Red-speckled Mushroom
@@ -130,6 +162,28 @@ foodListTable = {
 [12224]	--	Crispy Bat Wing
 [19223]	--	Darkmoon Dog
 [2681]	--	Roasted Boar Meat
+[29451]	--	Clefthoof Ribs
+[33872]	--	Spicy Hot Talbuk
+[27651]	--	Buzzard Bites
+[27655]	--	Ravager Dog
+[27657]	--	Blackened Basilisk
+[27658]	--	Roasted Clefthoof
+[27659]	--	Warp Burger
+[27660]	--	Talbuk Steak
+[27854]	--	Smoked Talbuk Venison
+[29292]	--	Helboar Bacon
+[30610]	--	Smoked Black Bear Meat
+[31672]	--	Mok'Nathal Shortribs
+[31673]	--	Crunchy Serpent
+[33866]	--	Stormchops
+[35563]	--	Charred Bear Kabobs
+[35565]	--	Juicy Bear Burger
+[24105]	--	Roasted Moongraze Tenderloin
+[27635]	--	Lynx Steak
+[22645]	--	Crunchy Spider Surprise
+[27636]	--	Bat Bites
+[33874]	--	Kibler's Bits
+[23495]	--	Springpaw Appetizer
 ]]
 [117] = 1, -- Tough Jerky
 [2287] = 0, -- Haunch of Meat
@@ -141,6 +195,9 @@ foodListTable = {
 [3927]	--	Fine Aged Cheddar
 [1707]	--	Stormwind Brie
 [17406]	--	Holiday Cheesewheel
+[29448]	--	Mag'har Mild Cheese
+[27857]	--	Garadar Sharp
+[30458]	--	Stromgarde Muenster
 ]]
 [2070] = 0, -- Darnassian Bleu
 [414] = 0, -- Dalaran Sharp
@@ -160,6 +217,12 @@ foodListTable = {
 [11584]	--	Cactus Apple Surprise
 [4656]	--	Small Pumpkin
 [5057]	--	Ripe Watermelon
+[28112]	--	Underspore Pod
+[29450]	--	Telaari Grapes
+[24009]	--	Dried Fruit Rations
+[27856]	--	Skethyl Berries
+[29393]	--	Diamond Berries
+[24072]	--	Sand Pear Pie
 ]]
 [4536] = 6.1, -- Shiny Red Apple
 [4537] = 10.4, -- Tel-Abim Banana
@@ -180,6 +243,12 @@ foodListTable = {
 [17404]	--	Blended Bean Brew
 [1401]	--	Riverpaw Tea Leaf
 [16166]	--	Bean Soup
+[30355]	--	Grilled Shadowmoon Tuber
+[30357]	--	Oronok's Tuber of Healing
+[30358]	--	Oronok's Tuber of Agility
+[30359]	--	Oronok's Tuber of Strength
+[30361]	--	Oronok's Tuber of Spell Power
+[24338]	--	Hellfire Spineleaf
 ]]
 
 -- Other
@@ -209,6 +278,13 @@ foodListTable = {
 [11109]	--	Special Chicken Feed
 [17197]	--	Gingerbread Cookie
 [17344]	--	Candy Cane
+[28501]	--	Ravager Egg Omelet
+[29292]	--	Helboar Bacon
+[29412]	--	Jessen's Special Slop
+[32721]	--	Skyguard Rations
+[38427]	--	Pickled Egg
+[23756]	--	Cookie's Jumbo Gumbo
+[33924]	--	Delicious Chocolate Cake
 ]]
 
 }

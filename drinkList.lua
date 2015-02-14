@@ -21,6 +21,22 @@ drinkListTable = {
 [7676]	--	Thistle Tea
 [5350]	--	Conjured Water
 [17198]	--	Winter Veil Egg Nog
+[22018]	--	Conjured Glacier Water
+[27860]	--	Purified Draenic Water
+[29395]	--	Ethermead
+[29401]	--	Sparkling Southshore Cider
+[30457]	--	Gilneas Sparkling Water
+[32453]	--	Star's Tears
+[32722]	--	Enriched Terocone Juice
+[33042]	--	Black Coffee
+[34411]	--	Hot Apple Cider
+[38431]	--	Blackrock Fortified Water
+[32668]	--	Dos Ogris
+[28399]	--	Filtered Draenic Water
+[30703]	--	Conjured Mountain Spring Water
+[38430]	--	Blackrock Mineral Water
+[32455]	--	Star's Lament
+[38429]	--	Blackrock Spring Water
 ]]
 [159] = 0 --Refreshing Spring Water
 [1179] = 2.43 --Ice Cold Milk
@@ -55,6 +71,15 @@ drinkListTable = {
 [20709]	--	Rumsey Rum Light
 [21114]	--	Rumsey Rum Dark
 [21151]	--	Rumsey Rum Black Label
+[32667]	--	Bash Ale
+[29454]	--	Silverwine
+[35720]	--	Lord of Frost's Private Label
+[23848]	--	Nethergarde Bitter
+[38466]	--	Sulfuron Slammer
+[38432]	--	Plugger's Blackrock Ale
+[28284]	--	Don Carlos Tequila
+[29112]	--	Cenarion Spirits
+[34832]	--	Captain Rumsey's Lager
 ]]
 
 }
