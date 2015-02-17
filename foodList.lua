@@ -2,6 +2,8 @@ foodListTable = {
 -- Vanilla
 -- Bread
 --[[
+
+-- Vanilla
 [19696]	--	Harvest Bread
 [23160]	--	Friendship Bread
 [4601]	--	Soft Banana Bread
@@ -13,6 +15,8 @@ foodListTable = {
 [1487]	--	Conjured Pumpernickel
 [1114]	--	Conjured Rye
 [5349]	--	Conjured Muffin
+
+-- BC
 [29394]	--	Lyribread
 [29449]	--	Bladespire Bagel
 [22019]	--	Conjured Croissant
@@ -47,8 +51,11 @@ foodListTable = {
 [82451]	--	Frybread
 [86508]	--	Fresh Bread
 [98121]	--	Amberseed Bun
-[105722]	--	Nutty Brew-Bun
+[105722] --	Nutty Brew-Bun
 [82450]	--	Cornmeal Biscuit
+
+-- WoD
+[117470] --	Thirteen Grain Loaf
 ]]
 [4540] = 29.44, --Tough Hunk of Bread
 [4541] = 288, -- Freshly Baked Bread
@@ -56,6 +63,8 @@ foodListTable = {
 
 --Fish
 --[[
+
+-- Vanilla
 [19996]	--	Harvest Fish
 [13935]	--	Baked Salmon
 [8957]	--	Spinefin Halibut
@@ -95,6 +104,8 @@ foodListTable = {
 [12238]	--	Darkshore Grouper
 [6290]	--	Brilliant Smallfish
 [6299]	--	Sickly Looking Fish
+
+-- BC
 [29452]	--	Zangar Trout
 [33048]	--	Stewed Trout
 [33052]	--	Fisherman's Feast
@@ -111,7 +122,8 @@ foodListTable = {
 [30155]	--	Clam Bar
 [33867]	--	Broiled Bloodfin
 
---[43492]	--	Haunted Herring
+-- WotLK
+[43492] -- Haunted Herring
 [43491]	--	Bad Clams
 [35951]	--	Poached Emperor Salmon
 [44049]	--	Freshly-Speared Emperor Salmon
@@ -182,6 +194,28 @@ foodListTable = {
 [74641]	--	Fish Cake
 [81175]	--	Crispy Dojani Eel
 [82448]	--	Smoked Squid Belly
+
+-- WoD
+[118512] --	Savory Savage Delight
+[122348] --	Buttered Sturgeon
+[111441] --	Grilled Gulper
+[111442] --	Sturgeon Stew
+[111444] --	Fat Sleeper Cakes
+[111445] --	Fiery Calamari
+[111446] --	Skulker Chowder
+[111447] --	Talador Surf and Turf
+[111452] --	Sleeper Surprise
+[111453] --	Calamari Crepes
+[111455] --	Saberfish Broth
+[111456] --	Grilled Saberfish
+[114238] --	Spiced Barbed Trout
+[118416] --	Fish Roe
+[118424] --	Blind Palefish
+[122347] --	Whiptail Fillet
+[122346] --	Jumbo Sea Dog
+[122345] --	Pickled Eel
+[122344] --	Salty Squid Roll
+[122343] --	Sleeper Sushi
 ]]
 [787] = 0, -- Slitherskin Mackerel
 [4592] = 0, -- Longjaw Mud Snapper
@@ -192,6 +226,8 @@ foodListTable = {
 [8948]	--	Dried King Bolete
 [4608]	--	Raw Black Truffle
 [4607]	--	Delicious Cave Mold
+
+-- BC
 [29453]	--	Sporeggar Mushroom
 [24008]	--	Dried Mushroom Rations
 [24539]	--	Marsh Lichen
@@ -212,10 +248,13 @@ foodListTable = {
 [81412]	--	Blanched needle Mushrooms
 [81916]	--	Humongous Fungus
 [98125]	--	Shaved Zangar Truffles
-[101749]	--	Stuffed Lushrooms
-[105717]	--	Rice-Wine Mushrooms
+[101749] --	Stuffed Lushrooms
+[105717] --	Rice-Wine Mushrooms
 [81404]	--	Dried Needle Mushrooms
 [81889]	--	Peppered Puffball
+
+-- WoD
+[115354] --	Sliced Zangar Buttons
 ]]
 [4604] = 0, -- Forest Mushroom Cap
 [4605] = 0, -- Red-speckled Mushroom
@@ -223,6 +262,8 @@ foodListTable = {
 
 -- Meat
 --[[
+
+-- Vanilla
 [19995]	--	Harvest Boar
 [21023]	--	Dirge's Kickin' Chimaerok Chops
 [21235]	--	Winter Veil Roast
@@ -278,6 +319,8 @@ foodListTable = {
 [12224]	--	Crispy Bat Wing
 [19223]	--	Darkmoon Dog
 [2681]	--	Roasted Boar Meat
+
+-- BC
 [29451]	--	Clefthoof Ribs
 [33872]	--	Spicy Hot Talbuk
 [27651]	--	Buzzard Bites
@@ -380,7 +423,7 @@ foodListTable = {
 [98116]	--	Freeze-Dried Hyena Jerky
 [98118]	--	Scorpion Crunchies
 [98122]	--	Camembert du Clefthoof
-[105723]	--	Peanut Pork Chops
+[105723] --	Peanut Pork Chops
 [74646]	--	Black Pepper Ribs and Shrimp
 [74649]	--	Braised Turtle
 [74654]	--	Wildfowl Roast
@@ -388,6 +431,24 @@ foodListTable = {
 [81917]	--	Mutton Stew
 [83097]	--	Tortoise Jerky
 [90457]	--	Mah's Warm Yak-Tail Stew
+
+-- WoD
+[111431] --	Hearty Elekk Steak
+[111433] --	Blackrock Ham
+[111434] --	Pan-Seared Talbuk
+[111436] --	Braised Riverbeast
+[111438] --	Clefthoof Sausages
+[111439] --	Steamed Scorpion
+[111449] --	Blackrock Barbecue
+[111454] --	Gorgrong Chowder
+[111544] --	Frostboar Jerky
+[115355] --	Marbled Clefthoof Steak
+[117473] --	Pickled Elekk Hooves
+[117474] --	Rylak Sausages
+[120293] --	Lukewarm Yak Roast Broth
+[117441] --	Elekk's Neck
+[115300] --	Marinated Elekk Steak
+[116407] --	Slow-Smoked Turkey
 ]]
 [117] = 1, -- Tough Jerky
 [2287] = 0, -- Haunch of Meat
@@ -399,6 +460,8 @@ foodListTable = {
 [3927]	--	Fine Aged Cheddar
 [1707]	--	Stormwind Brie
 [17406]	--	Holiday Cheesewheel
+
+-- BC
 [29448]	--	Mag'har Mild Cheese
 [27857]	--	Garadar Sharp
 [30458]	--	Stromgarde Muenster
@@ -419,6 +482,9 @@ foodListTable = {
 [81921]	--	Chilton Stilton
 [81401]	--	Yak Cheese Curds
 [81922]	--	Redridge Roquefort
+
+-- WoD
+[115352] --	Telmor-Aruuna Hard Cheese
 ]]
 [2070] = 0, -- Darnassian Bleu
 [414] = 0, -- Dalaran Sharp
@@ -426,6 +492,8 @@ foodListTable = {
 
 -- Fruit
 --[[
+
+-- Vanilla
 [19994]	--	Harvest Fruit
 [20031]	--	Essence Mango - No Longer in Game
 [20516]	--	Bobbing Apple
@@ -438,6 +506,8 @@ foodListTable = {
 [11584]	--	Cactus Apple Surprise
 [4656]	--	Small Pumpkin
 [5057]	--	Ripe Watermelon
+
+-- BC
 [28112]	--	Underspore Pod
 [29450]	--	Telaari Grapes
 [24009]	--	Dried Fruit Rations
@@ -470,12 +540,29 @@ foodListTable = {
 -- MoP
 [79320]	--	Half a Lovely Apple
 [81920]	--	Plump Fig
-[101745]	--	Mango Ice
-[101746]	--	Seasoned Pomfruit Slices
-[105720]	--	Candied Apple
+[101745] --	Mango Ice
+[101746] --	Seasoned Pomfruit Slices
+[105720] --	Candied Apple
 [81403]	--	Dried Peaches
 [86057]	--	Sliced Peaches
 [81919]	--	Red Raspberry
+
+-- WoD
+[118273] --	Perfect O'ruk Orange
+[118274] --	Perfect Fuzzy Pear
+[115353] --	Tanaan Sweetmelon
+[118050] --	Enchanted Apple
+[118051] --	Enchanted Orange
+[118268] --	Fuzzy Pear
+[118269] --	Greenskin Apple
+[118270] --	O'ruk Orange
+[118271] --	Ironpeel Plantain
+[118272] --	Giant Nagrand Cherry
+[118275] --	Perfect Nagrand Cherry
+[118276] --	Perfect Greenskin Apple
+[118277] --	Perfect Ironpeel Plantain
+[113290] --	Spirevine Fruit
+[112095] --	Half-Eaten Banana
 ]]
 [4536] = 6.1, -- Shiny Red Apple
 [4537] = 10.4, -- Tel-Abim Banana
@@ -483,6 +570,8 @@ foodListTable = {
 
 -- Vegetables
 --[[
+
+-- Vanilla
 [11951]	--	Whipper Root Tuber - No Longer in Game
 [18254]	--	Runn Tum Tuber Surprise
 [18255]	--	Runn Tum Tuber
@@ -496,6 +585,8 @@ foodListTable = {
 [17404]	--	Blended Bean Brew
 [1401]	--	Riverpaw Tea Leaf
 [16166]	--	Bean Soup
+
+-- BC
 [30355]	--	Grilled Shadowmoon Tuber
 [30357]	--	Oronok's Tuber of Healing
 [30358]	--	Oronok's Tuber of Agility
@@ -509,16 +600,25 @@ foodListTable = {
 [44855]	--	Teldrassil Sweet Potato
 
 -- Cata
+-- None
 
 -- MoP
 [86074]	--	Spicy Vegetable Chips
 [101748]	--	Spiced Blossom Soup
 [74643]	--	Sauteed Carrots
 [88398]	--	Root Veggie Stew
+
+-- WoD
+[111842]	--	Star Root Tuber
+[116408]	--	Herb-Infused Stuffing
+[116406]	--	Twice-Baked Sweet Potato
+[116405]	--	Congealed Cranberry Chutney
 ]]
 
 -- Other
 --[[
+
+-- Vanilla
 [21254]	--	Winter Veil Cookie
 [22895]	--	Conjured Cinnamon Roll
 [8950]	--	Homemade Cherry Pie
@@ -544,6 +644,8 @@ foodListTable = {
 [11109]	--	Special Chicken Feed
 [17197]	--	Gingerbread Cookie
 [17344]	--	Candy Cane
+
+-- BC
 [28501]	--	Ravager Egg Omelet
 [29292]	--	Helboar Bacon
 [29412]	--	Jessen's Special Slop
@@ -632,19 +734,19 @@ foodListTable = {
 [98111]	--	K.R.E - No Longer in Game
 [98124]	--	Bloodberry Tart
 [98126]	--	Mechanopeep Foi Gras
-[101630]	--	Noodle Cart Kit
-[101661]	--	Deluxe Noodle Cart Kit
-[101662]	--	Pandaren Treasure Noodle Cart Kit
-[101747]	--	Farmer's Delight
-[101750]	--	Fluffy Silkfeather Omelet
-[104339]	--	Harmonious River Noodles
-[104340]	--	Crazy Snake Noodles
-[104341]	--	Steaming Goat Noodles
-[104342]	--	Spicy Mushan Noodles
-[104343]	--	Golden Dragon Noodles
-[104344]	--	Lucky Mushroom Noodles
-[105724]	--	Fried Cheese Dumplings
-[108920]	--	Lemon Flower Puddiing
+[101630] --	Noodle Cart Kit
+[101661] --	Deluxe Noodle Cart Kit
+[101662] --	Pandaren Treasure Noodle Cart Kit
+[101747] --	Farmer's Delight
+[101750] --	Fluffy Silkfeather Omelet
+[104339] --	Harmonious River Noodles
+[104340] --	Crazy Snake Noodles
+[104341] --	Steaming Goat Noodles
+[104342] --	Spicy Mushan Noodles
+[104343] --	Golden Dragon Noodles
+[104344] --	Lucky Mushroom Noodles
+[105724] --	Fried Cheese Dumplings
+[108920] --	Lemon Flower Puddiing
 [74647]	--	Valley Stir Fry
 [86069]	--	Rice Pudding
 [86070]	--	Wildfowl Ginseng Soup
@@ -655,14 +757,34 @@ foodListTable = {
 [88379]	--	Grummlecake
 [88388]	--	Squirmy Delight
 [88586]	--	Chao Cookies
-[101616]	--	Noodle Soup
-[101617]	--	Deluxe Noodle Soup
-[101618]	--	Pandaren Treasure Noodle Soup
+[101616] --	Noodle Soup
+[101617] --	Deluxe Noodle Soup
+[101618] --	Pandaren Treasure Noodle Soup
 [77264]	--	Small Bamboo Shoot
 [77272]	--	Small Sugarcane Stalk
 [77273]	--	Small Rice Cake
 [93208]	--	Darkmoon P.I.E.
-[104314]	--	Dragon P.I.E
+[104314] --	Dragon P.I.E
+
+-- WoD
+[111437] --	Rylak Crepes
+[111450] --	Frosty Stew
+[111457] --	Feast of Blood
+[111458] --	Feast of the Waters
+[113509] --	Conjured Mana Fritter
+[115351] --	"Rylak Claws"
+[117469] --	Sugar Dusted Choux Twist
+[117471] --	Cocoa Flatcakes
+[117472] --	Grilled Gorgrond Surprise
+[118428] --	Legion Chili
+[118576] --	Savage Feast
+[120168] --	Pre-Mixed Pot of Noodles
+[116120] --	Tasty Talador Lunch
+[104196] --	Delectable Ogre Queasine
+[112449] --	Iron Horde Rations
+[116409] --	Gourmet Pumpkin Pie
+[114017] --	Steamwheedle Wagon Bomb
+[111522] --	Tikari & K.A.Y.T.
 ]]
 
 }

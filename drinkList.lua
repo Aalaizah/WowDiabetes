@@ -2,6 +2,8 @@ drinkListTable = {
 
 -- Non Alcoholic
 --[[
+
+-- Vanilla
 [8079]	--	Conjured Crystal Water
 [18300]	--	Hyjal Nectar
 [8766]	--	Morning Glory Dew
@@ -21,6 +23,8 @@ drinkListTable = {
 [7676]	--	Thistle Tea
 [5350]	--	Conjured Water
 [17198]	--	Winter Veil Egg Nog
+
+-- BC
 [22018]	--	Conjured Glacier Water
 [27860]	--	Purified Draenic Water
 [29395]	--	Ethermead
@@ -99,9 +103,17 @@ drinkListTable = {
 [89589]	--	Initiate's Serpent Brew
 [89596]	--	Initiate's Tiger Brew
 [89588]	--	Novice's Serpent Brew
-[895985]	--	Novice's Tiger Brew
+[89595] --	Novice's Tiger Brew
 [90660]	--	Black Tea
 [90659]	--	Jasmine Tea
+
+-- WoD
+[118897] --	Miner's Coffee
+[117452] --	Gorgrond Mineral Water
+[117475] --	Clefthoof Milk
+[101436] --	Icemother Milk
+[118900] --	Hol'bruk's Brutal Brew
+[120150] --	Blackrock Coffee
 ]]
 [159] = 0 --Refreshing Spring Water
 [1179] = 2.43 --Ice Cold Milk
@@ -109,6 +121,8 @@ drinkListTable = {
 
 -- Alcoholic
 --[[
+
+-- Vanilla
 [12003]	--	Dark Dwarven Lager - No Longer in Game
 [2595]	--	Jug of Badlands Bourbon
 [17402]	--	Greatfather's Winter Ale
@@ -136,6 +150,8 @@ drinkListTable = {
 [20709]	--	Rumsey Rum Light
 [21114]	--	Rumsey Rum Dark
 [21151]	--	Rumsey Rum Black Label
+
+-- BC
 [32667]	--	Bash Ale
 [29454]	--	Silverwine
 [35720]	--	Lord of Frost's Private Label
@@ -192,16 +208,16 @@ drinkListTable = {
 [83094]	--	Foote Tripel
 [86432]	--	Banana Infused Rum
 [87264]	--	Four Senses Brew
-[105700]	--	Kun-Lai Kicker
-[105701]	--	Greenstone Brew
-[105702]	--	Boomer Brew
-[105703]	--	Stormstout Brew
-[105704]	--	Yan-Zhu's Blazing Brew
-[105705]	--	Chani's Bitter Brew
-[105706]	--	Shado-Pan Brew
-[105707]	--	Unga Brew
-[105708]	--	Shimmering Amber-Brew
-[105711]	--	Funky Monkey Brew
+[105700] --	Kun-Lai Kicker
+[105701] --	Greenstone Brew
+[105702] --	Boomer Brew
+[105703] --	Stormstout Brew
+[105704] --	Yan-Zhu's Blazing Brew
+[105705] --	Chani's Bitter Brew
+[105706] --	Shado-Pan Brew
+[105707] --	Unga Brew
+[105708] --	Shimmering Amber-Brew
+[105711] --	Funky Monkey Brew
 [81407]	--	Four Wind Soju
 [82343]	--	Loraeron Lambic
 [83095]	--	Lagrave Stout
@@ -210,7 +226,23 @@ drinkListTable = {
 [89601]	--	Tiger Brew of Serenity
 [89683]	--	Hozen Cuervo
 [98157]	--	Big Blossom Brew
-[104316]	--	Spectral Grog
+[104316] --	Spectral Grog
+
+-- WoD
+[117439] --	"Da Bruisery" Hot & Wroth
+[117440] --	Peglegger's Porter
+[117442] --	Thunderbelly Mead
+[117454] --	Gorgrond Grapes
+[117457] --	Blood Apples
+[119022] --	Shadowmoon Sugar Pear Cider
+[119157] --	Saberon Cat-Sip
+[119324] --	Savage Remedy
+[120959] --	Pinchwistle "Nitro Fuel"
+[116917] --	Sailor Zazzuk's 180-Proof Rum
+[117453] --	"Da Bruisery" OPA
+[117568] --	Jug of Ironwine
+[117437] --	Skyreach Sunrise
+[113108] --	Ogre Moonshine
 ]]
 
 }
