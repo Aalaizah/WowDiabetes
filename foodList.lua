@@ -25,6 +25,21 @@ foodListTable = {
 [28486]	--	Moser's Magnificent Muffin
 [20857]	--	Honey Bread
 [30816]	--	Spice Bread
+
+-- WotLK
+[35950]	--	Sweet Potato Bread
+[42778]	--	Crusader's Rations
+[44609]	--	Fresh Dalaran Bread Slice
+[33449]	--	Crusty Flatbread
+[46691]	--	Bread of the Dead
+
+-- Cata
+[58261]	--	Buttery Wheat Roll
+[58260]	--	Pine Nut Bread
+[58275]	--	Hardtack
+[59227]	--	Rock-Hard Biscuit
+[49600]	--	Goblin Shortbread
+[49253]	--	Slightly Worm-Eaten Hardtack
 ]]
 [4540] = 29.44, --Tough Hunk of Bread
 [4541] = 288, -- Freshly Baked Bread
@@ -86,6 +101,58 @@ foodListTable = {
 [27858]	--	Sunspring Carp
 [30155]	--	Clam Bar
 [33867]	--	Broiled Bloodfin
+
+--[43492]	--	Haunted Herring
+[43491]	--	Bad Clams
+[35951]	--	Poached Emperor Salmon
+[44049]	--	Freshly-Speared Emperor Salmon
+[44071]	--	Slow-Roasted Eel
+[34759]	--	Smoked Rockfin
+[34760]	--	Grilled Bonescale
+[34761]	--	Sauteed Goby
+[34762]	--	Grilled Sculpin
+[34763]	--	Smoked Salmon
+[34764]	--	Poached Nettlefish
+[34765]	--	Pickled Fangtooth
+[34766]	--	Poached Northern Sculpin
+[34767]	--	Firecracker Salmon
+[34768]	--	Spicy Blue Nettlefish
+[34769]	--	Imperial Manta Steak
+[39691]	--	Succulent Orca Stew
+[42942]	--	Baked Manta Ray
+[42993]	--	Spicy Fried Herring
+[42998]	--	Cuttlesteak
+[42999]	--	Blackened Dragonfin
+[43000]	--	Dragonfin Filet
+[43015]	--	Fish Feast
+[43268]	--	Dalaran Clam Chowder
+[37452]	--	Fatty Bluefin
+[33451]	--	Fillet of Icefin
+[33004]	--	Clamlette Magnifique
+[42996]	--	Snapper Extreme
+
+-- Cata
+[58263]	--	Grilled Shark
+[62666]	--	Delicious Sagefish Tail
+[62651]	--	Lightly Fried Lurker
+[62652]	--	Seasoned Crab
+[62654]	--	Lavascale Fillet
+[62655]	--	Broiled Mountain Trout
+[62656]	--	Whitecrest Gumbo
+[62657]	--	Lurker Lunch
+[62659]	--	Hearty Seafood Soup
+[62660]	--	Pickled Guppy
+[62661]	--	Baked Rockfish
+[62663]	--	Lavascale Minestrone
+[62667]	--	Mushroom Sauce Mudfish
+[62668]	--	Blackbelly Sushi
+[62669]	--	Skewered Eel
+[62671]	--	Severed Sagefish Head
+[62290]	--	Seafood Magnifique Feast
+[68687]	--	Scalding Murglesnout
+[58262]	--	Sliced Raw Billfish
+[62677]	--	Fish Fry
+[58277]	--	Simmered Squid
 ]]
 [787] = 0, -- Slitherskin Mackerel
 [4592] = 0, -- Longjaw Mud Snapper
@@ -100,6 +167,17 @@ foodListTable = {
 [24008]	--	Dried Mushroom Rations
 [24539]	--	Marsh Lichen
 [27859]	--	Zangar Caps
+
+-- WotLK
+[35947]	--	Sparkling Frostcap
+[33452]	--	Honey-Spiced Lichen
+[41751]	--	Black Mushroom
+
+-- Cata
+[58267]	--	Scarlet Polypore
+[58266]	--	Violet Morel
+[59228]	--	Vile Purple Fungus
+[58279]	--	Tasty Puffball
 ]]
 [4604] = 0, -- Forest Mushroom Cap
 [4605] = 0, -- Red-speckled Mushroom
@@ -184,6 +262,77 @@ foodListTable = {
 [27636]	--	Bat Bites
 [33874]	--	Kibler's Bits
 [23495]	--	Springpaw Appetizer
+
+-- WotLK
+[43488]	--	Last Week's Mammoth
+[35953]	--	Mead Basted Caribou
+[38706]	--	Bowels 'n' Brains
+[40202]	--	Sizzling Grizzly Flank
+[41729]	--	Stewed Drakeflesh
+[42779]	--	Steaming Chicken Soup
+[44072]	--	Roasted Mystery Meat
+[44940]	--	Corn-Breaded Sausage
+[34125]	--	Shoveltusk Soup
+[34747]	--	Northern Stew
+[34748]	--	Mammoth Meal
+[34749]	--	Shoveltusk Steak
+[34750]	--	Worm Delight
+[34751]	--	Roasted Worg
+[34752]	--	Rhino Dogs
+[34753]	--	Great Feast
+[34754]	--	Mega Mammoth Meal
+[34755]	--	Tender Shoveltusk Steak
+[34756]	--	Spiced Worm Burger
+[34757]	--	Very Burnt Worg
+[34758]	--	Mighty Rhino Dogs
+[42994]	--	Rhinolicious Wormsteak
+[42995]	--	Hearty Rhino
+[42997]	--	Blackened Worg Steak
+[43001]	--	Tracker Snacks
+[43004]	--	Critter Bites
+[43005]	--	Spiced Mammoth Treats
+[44953]	--	Worg Tartare
+[40359]	--	Fresh Eagler Meat
+[33454]	--	Salted Venison
+[40357]	--	Grizzleberry Juice
+[46887]	--	Bountiful Feast
+[44838]	--	Slow-Roasted Turkey
+
+-- Cata
+[58269]	--	Massive Turkey Leg
+[73260]	--	Salty Sea Dog
+[62289]	--	Broiled Dragon Feast
+[62658]	--	Tender Baked Turtle
+[62662]	--	Grilled Dragon
+[62664]	--	Crocolisk Au Gratin
+[62665]	--	Basilisk Liverdog
+[60858]	--	Goblin Barbecue
+[62670]	--	Beer-Basted Crocolisk
+[62676]	--	Blackened Surprise
+[58268]	--	Roasted Beef
+[59232]	--	Unidentifiable Meat Dish
+[59231]	--	Oily Giblets
+[58280]	--	Stewed Rabbit
+[75027]	--	Teldrassil Tenderloin
+[75030]	--	Gnomeregan Gnuggets
+[75032]	--	Mulgore Meat Pie
+[75034]	--	Forsaken Foie Gras
+[75035]	--	Troll Tartare
+[75036]	--	Silvermoon Steak
+[75029]	--	Beer-Basted Short Ribs
+[67270]	--	Ursius Flank
+[67272]	--	Shy-Rotam Steak
+[67271]	--	Hell-Hoot Barbecue
+[61381]	--	Yance's Special Burger Patty
+[64641]	--	"Delicious" Worm Steak
+[46392]	--	Venison Steak
+[60377]	--	Lots 'o Meat Pie
+[62908]	--	Hari of the Dog
+[65730]	--	Stagwich
+[65731]	--	Yetichoke Hearts
+[62909]	--	"Bear" Steaks
+[67230]	--	Venison Jerky
+[57544]	--	Leftover Boar Meat
 ]]
 [117] = 1, -- Tough Jerky
 [2287] = 0, -- Haunch of Meat
@@ -198,6 +347,18 @@ foodListTable = {
 [29448]	--	Mag'har Mild Cheese
 [27857]	--	Garadar Sharp
 [30458]	--	Stromgarde Muenster
+
+-- WotLK
+[35952]	--	Briny Hardcheese
+[44607]	--	Aged Dalaran Sharp
+[33443]	--	Sour Goat Cheese
+[44608]	--	Dalaran Swiss
+[44749]	--	Salted Yeti Cheese
+
+-- Cata
+[58259]	--	Highland Sheep Cheese
+[58258]	--	Smoked String Cheese
+[58276]	--	Gilnean White
 ]]
 [2070] = 0, -- Darnassian Bleu
 [414] = 0, -- Dalaran Sharp
@@ -223,6 +384,28 @@ foodListTable = {
 [27856]	--	Skethyl Berries
 [29393]	--	Diamond Berries
 [24072]	--	Sand Pear Pie
+
+-- WotLK
+[35948]	--	Savory Snowplum
+[43087]	--	Crisp Dalaran Apple
+[43086]	--	Fresh Apple Juice
+[35949]	--	Tundra Berries
+[37252]	--	Frostberries
+[40356]	--	Grizzleberries
+[44854]	--	Tangy Wetland Cranberries
+[46784]	--	Ripe Elwynn Pumpkin
+[46793]	--	Tangy Southfury Cranberries
+[46796]	--	Ripe Tirisfal Pumpkin
+
+-- Cata
+[58265]	--	Highland Pomegranate
+[70924]	--	Eternal Eye of Elune
+[70925]	--	Eternal Lunar Pear
+[70926]	--	Eternal Moonberry
+[70927]	--	Eternal Sunfruit
+[58264]	--	Sour Green Apple
+[58278]	--	Tropical Sunfruit
+[60267]	--	Country Pumpkin
 ]]
 [4536] = 6.1, -- Shiny Red Apple
 [4537] = 10.4, -- Tel-Abim Banana
@@ -249,6 +432,14 @@ foodListTable = {
 [30359]	--	Oronok's Tuber of Strength
 [30361]	--	Oronok's Tuber of Spell Power
 [24338]	--	Hellfire Spineleaf
+
+-- WotLK
+[46797]	--	Mulgore Sweet Potato
+[44839]	--	Candied Sweet Potato
+[44855]	--	Teldrassil Sweet Potato
+
+-- Cata
+
 ]]
 
 -- Other
@@ -285,6 +476,62 @@ foodListTable = {
 [38427]	--	Pickled Egg
 [23756]	--	Cookie's Jumbo Gumbo
 [33924]	--	Delicious Chocolate Cake
+
+-- WotLK
+[43490]	--	Tasty Cupcake
+[43523]	--	Conjured Mana Strudel
+[42431]	--	Dalaran Brownie
+[42434]	--	Lovely Cake Slice
+[44722]	--	Aged Yolk
+[45932]	--	Black Jelly
+[42429]	--	Red Velvet Cupcake
+[43518]	--	Conjured Mana Pie
+[43478]	--	Gigantic Feast
+[43480]	--	Small Feast
+[44791]	--	Noblegarden Chocolate
+[44114]	--	Old Spices
+[44228]	--	Baby Spice
+[44837]	--	Spice Bread Stuffing
+[44840]	--	Cranberry Chutney
+[46690]	--	Candy Skull
+[44836]	--	Pumpkin Pie
+[42428]	--	Carrot Cupcake
+[42430]	--	Dalaran Doughnut
+[42432]	--	Berry Pie Slice
+[42433]	--	Chocolate Cake Slice
+
+-- Cata
+[65499]	--	Conjured Mana Cake
+[74921]	--	Darkmoon Doughnut
+[62649]	--	Fortune Cookie
+[62653]	--	Salted Eye
+[62680]	--	Chocolate Cookie
+[69243]	--	Ice Cream Cake Slice
+[65517]	--	Conjured Mana Lollipop
+[75028]	--	Stormwind Surprise
+[75031]	--	Draenic Dumplings
+[75033]	--	Green Ham & Eggs
+[65516]	--	Conjured Mana Cupcake
+[67273]	--	Chillwind Omelet
+[65515]	--	Conjured Mana Brownie
+[69244]	--	Ice Cream Bar
+[63691]	--	Brivelthwerp's Crunch Ice Cream Bar
+[65500]	--	Conjured Mana Cookie
+[63692]	--	Frozen "Cream" Custard
+[57519]	--	Cookie's Special Ramlette
+[61383]	--	Garr's Key Lime Pie
+[61985]	--	Banana Cocktail
+[63693]	--	Ooey Gooey Gelato
+[63694]	--	Silithid-Free Sorbet
+[57518]	--	Mr. Bubble's Shockingly Delicious Ice Cream
+[60375]	--	Cheery Cherry Pie
+[60378]	--	Plumpkin Pie
+[60379]	--	Mud Pie
+[58933]	--	Westfall Mud Pie
+[60268]	--	Hobo Surprise
+[69233]	--	Cone of Cold Horde
+[69027]	--	Cone of Cold Ally
+[69920]	--	Thrice-Spiced Crunchy Stew
 ]]
 
 }

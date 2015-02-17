@@ -37,6 +37,37 @@ drinkListTable = {
 [38430]	--	Blackrock Mineral Water
 [32455]	--	Star's Lament
 [38429]	--	Blackrock Spring Water
+
+-- WotLK
+[42777]	--	Crusader's Waterskin
+[41731]	--	Yeti Milk
+[33445]	--	Honeymint Tea
+[43236]	--	Star's Sorrow
+[33444]	--	Pungent Seal Whey
+[38698]	--	Bitter Plasma
+[44941]	--	Fresh-Squeezed Limeade
+[35954]	--	Sweetened Goat's Milk
+[37253]	--	Frostberry Juice
+[40357]	--	Grizzleberry Juice
+[44750]	--	Mountain Water
+
+-- Cata
+[58257]	--	Highland Spring Water
+[68140]	--	Invigorating Pineapple Punch
+[74822]	--	Sasparilla Sinker
+[62675]	--	Starfire Espresso
+[59029]	--	Greasy Whale Milk
+[59230]	--	Fungus Squeezings
+[58256]	--	Sparkling Oasis Water
+[58274]	--	Fresh Water
+[59229]	--	Murky Water
+[61382]	--	Garr's Limeade
+[63023]	--	Sweet Tea
+[60269]	--	Well Water
+[49397]	--	Half-Eaten Rat
+[49601]	--	Volcanic Spring Water
+[63530]	--	Refreshing Pineapple Punch
+[49254]	--	Tarp Collected Dew
 ]]
 [159] = 0 --Refreshing Spring Water
 [1179] = 2.43 --Ice Cold Milk
@@ -80,6 +111,44 @@ drinkListTable = {
 [28284]	--	Don Carlos Tequila
 [29112]	--	Cenarion Spirits
 [34832]	--	Captain Rumsey's Lager
+
+-- WotLK
+[39520]	--	Kungaloosh
+[44619]	--	Glass of Peaked Dalaran Red
+[44618]	--	Glass of Aged Dalaran Red
+[44616]	--	Glass of Dalaran White
+[44574]	--	Skin of Mulgore Firewater
+[40042]	--	Caraway Burnwine
+[44573]	--	Cup of Frog Venom Brew
+[40036]	--	Snowplum Brandy
+[44575]	--	Flask of Bitter Cactus Cider
+[44571]	--	Bottle of Silvermoon Port
+[38350]	--	Winterfin "Depth Charge"
+[40035]	--	Northrend Honey Mead
+[43695]	--	Half Full Bottle of Prison Moonshine
+[43696]	--	Half Empty Bottle of Prison Moonshine
+[44570]	--	Glass of Eversong Wine
+[44617]	--	Glass of Dalaran Red
+[44716]	--	Mysterious Fermented Liquid
+
+-- Cata
+[63251]	--	Mei's Masterful Brew
+[62672]	--	South Island Iced Tea
+[61986]	--	Tol Barad Coconut Rum
+[64639]	--	Silversnap Ice
+[61983]	--	Imported E.K. Ale
+[61984]	--	Potent Pineapple Punch
+[63299]	--	Sunkissed Wine
+[57543]	--	Stormhammer Stout
+[61384]	--	Doublerum
+[61982]	--	Fizzy Fruit Wine
+[62674]	--	Highland Spirits
+[62790]	--	Darkbrew Lager
+[63275]	--	Gilnean Fortified Brandy
+[63291]	--	Blood Red Ale
+[63292]	--	Disgusting Rotgut
+[63293]	--	Blackheart Grog
+[63296]	--	Embalming Fluid
 ]]
 
 }
