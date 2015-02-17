@@ -40,6 +40,15 @@ foodListTable = {
 [59227]	--	Rock-Hard Biscuit
 [49600]	--	Goblin Shortbread
 [49253]	--	Slightly Worm-Eaten Hardtack
+
+-- MoP
+[80618]	--	Conjured Mana Buns
+[81408]	--	Red Bean Bun
+[82451]	--	Frybread
+[86508]	--	Fresh Bread
+[98121]	--	Amberseed Bun
+[105722]	--	Nutty Brew-Bun
+[82450]	--	Cornmeal Biscuit
 ]]
 [4540] = 29.44, --Tough Hunk of Bread
 [4541] = 288, -- Freshly Baked Bread
@@ -153,6 +162,26 @@ foodListTable = {
 [58262]	--	Sliced Raw Billfish
 [62677]	--	Fish Fry
 [58277]	--	Simmered Squid
+
+-- MoP
+[74650]	--	Mogu Fish Stew
+[74653]	--	Steamed Crab Surprise
+[81410]	--	Green Curry Fish
+[82449]	--	Barnacle Bouillabaisse
+[86073]	--	Spicy Salmon
+[98123]	--	Whale Shark Caviar
+[105719]	--	Brew-Curried Whitefish
+[74645]	--	Eternal Blossom Fish
+[74652]	--	Fire Spirit Salmon
+[74655]	--	Twin Fish Platter
+[85504]	--	Krasarang Fritters
+[74636]	--	Golden Carp Consomme
+[74651]	--	Shrimp Dumplings
+[81402]	--	Toasted Fish Jerky
+[85501]	--	Viseclaw Soup
+[74641]	--	Fish Cake
+[81175]	--	Crispy Dojani Eel
+[82448]	--	Smoked Squid Belly
 ]]
 [787] = 0, -- Slitherskin Mackerel
 [4592] = 0, -- Longjaw Mud Snapper
@@ -178,6 +207,15 @@ foodListTable = {
 [58266]	--	Violet Morel
 [59228]	--	Vile Purple Fungus
 [58279]	--	Tasty Puffball
+
+-- MoP
+[81412]	--	Blanched needle Mushrooms
+[81916]	--	Humongous Fungus
+[98125]	--	Shaved Zangar Truffles
+[101749]	--	Stuffed Lushrooms
+[105717]	--	Rice-Wine Mushrooms
+[81404]	--	Dried Needle Mushrooms
+[81889]	--	Peppered Puffball
 ]]
 [4604] = 0, -- Forest Mushroom Cap
 [4605] = 0, -- Red-speckled Mushroom
@@ -333,6 +371,23 @@ foodListTable = {
 [62909]	--	"Bear" Steaks
 [67230]	--	Venison Jerky
 [57544]	--	Leftover Boar Meat
+
+-- MoP
+[81413]	--	Skewered Peanut Chicken
+[81918]	--	Pickled Pig's Snout
+[90135]	--	Thick-Cut Bacon
+[94535]	--	Grilled Dinosaur Haunch
+[98116]	--	Freeze-Dried Hyena Jerky
+[98118]	--	Scorpion Crunchies
+[98122]	--	Camembert du Clefthoof
+[105723]	--	Peanut Pork Chops
+[74646]	--	Black Pepper Ribs and Shrimp
+[74649]	--	Braised Turtle
+[74654]	--	Wildfowl Roast
+[74642]	--	Charbroiled Tiger Steak
+[81917]	--	Mutton Stew
+[83097]	--	Tortoise Jerky
+[90457]	--	Mah's Warm Yak-Tail Stew
 ]]
 [117] = 1, -- Tough Jerky
 [2287] = 0, -- Haunch of Meat
@@ -359,6 +414,11 @@ foodListTable = {
 [58259]	--	Highland Sheep Cheese
 [58258]	--	Smoked String Cheese
 [58276]	--	Gilnean White
+
+-- MoP
+[81921]	--	Chilton Stilton
+[81401]	--	Yak Cheese Curds
+[81922]	--	Redridge Roquefort
 ]]
 [2070] = 0, -- Darnassian Bleu
 [414] = 0, -- Dalaran Sharp
@@ -406,6 +466,16 @@ foodListTable = {
 [58264]	--	Sour Green Apple
 [58278]	--	Tropical Sunfruit
 [60267]	--	Country Pumpkin
+
+-- MoP
+[79320]	--	Half a Lovely Apple
+[81920]	--	Plump Fig
+[101745]	--	Mango Ice
+[101746]	--	Seasoned Pomfruit Slices
+[105720]	--	Candied Apple
+[81403]	--	Dried Peaches
+[86057]	--	Sliced Peaches
+[81919]	--	Red Raspberry
 ]]
 [4536] = 6.1, -- Shiny Red Apple
 [4537] = 10.4, -- Tel-Abim Banana
@@ -440,6 +510,11 @@ foodListTable = {
 
 -- Cata
 
+-- MoP
+[86074]	--	Spicy Vegetable Chips
+[101748]	--	Spiced Blossom Soup
+[74643]	--	Sauteed Carrots
+[88398]	--	Root Veggie Stew
 ]]
 
 -- Other
@@ -532,6 +607,62 @@ foodListTable = {
 [69233]	--	Cone of Cold Horde
 [69027]	--	Cone of Cold Ally
 [69920]	--	Thrice-Spiced Crunchy Stew
+
+-- MoP
+[87244]	--	Great Banquet of the Oven
+[74656]	--	Chun Tian Spring Rolls
+[74919]	--	Pandaren Banquet
+[75016]	--	Great Pandaren Banquet
+[80610]	--	Conjured Mana Pudding
+[81409]	--	Tangy Yogurt
+[81411]	--	Peach Pie
+[87226]	--	Banquet of the Grill
+[87228]	--	Great Banquet of the Grill
+[87230]	--	Banquet of the Wok
+[87232]	--	Great Banquet of the Wok
+[87234]	--	Banquet of the Pot
+[87236]	--	Great Banquet of the Pot
+[87238]	--	Banquet of the Steamer
+[87240]	--	Great Banquet of the Steamer
+[87242]	--	Banquet of the Oven
+[74648]	--	Sea Mist Rice Noodles
+[87246]	--	Banquet of the Brew
+[87248]	--	Great Banquet of the Brew
+[87253]	--	Perpetual Leftovers
+[98111]	--	K.R.E - No Longer in Game
+[98124]	--	Bloodberry Tart
+[98126]	--	Mechanopeep Foi Gras
+[101630]	--	Noodle Cart Kit
+[101661]	--	Deluxe Noodle Cart Kit
+[101662]	--	Pandaren Treasure Noodle Cart Kit
+[101747]	--	Farmer's Delight
+[101750]	--	Fluffy Silkfeather Omelet
+[104339]	--	Harmonious River Noodles
+[104340]	--	Crazy Snake Noodles
+[104341]	--	Steaming Goat Noodles
+[104342]	--	Spicy Mushan Noodles
+[104343]	--	Golden Dragon Noodles
+[104344]	--	Lucky Mushroom Noodles
+[105724]	--	Fried Cheese Dumplings
+[108920]	--	Lemon Flower Puddiing
+[74647]	--	Valley Stir Fry
+[86069]	--	Rice Pudding
+[86070]	--	Wildfowl Ginseng Soup
+[74644]	--	Swirling Mist Soup
+[81400]	--	Pounded Rice Cake
+[81405]	--	Boiled Silkworm Pupa
+[86026]	--	Perfectly Cooked Instant Noodles
+[88379]	--	Grummlecake
+[88388]	--	Squirmy Delight
+[88586]	--	Chao Cookies
+[101616]	--	Noodle Soup
+[101617]	--	Deluxe Noodle Soup
+[101618]	--	Pandaren Treasure Noodle Soup
+[77264]	--	Small Bamboo Shoot
+[77272]	--	Small Sugarcane Stalk
+[77273]	--	Small Rice Cake
+[93208]	--	Darkmoon P.I.E.
+[104314]	--	Dragon P.I.E
 ]]
 
 }

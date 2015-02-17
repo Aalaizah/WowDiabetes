@@ -68,6 +68,40 @@ drinkListTable = {
 [49601]	--	Volcanic Spring Water
 [63530]	--	Refreshing Pineapple Punch
 [49254]	--	Tarp Collected Dew
+
+-- MoP
+[81414]	--	Pearl Milk Tea
+[81923]	--	Cobo Cola
+[98127]	--	Dented Can of Kaja'Cola
+[105721]	--	Hot Papaya Milk
+[75037]	--	Jade Witch Brew
+[75026]	--	Ginseng Tea
+[81406]	--	Roasted Barley Tea
+[104348]	--	Timeless Tea
+[105700]	--	Kun-Lai Kicker
+[105701]	--	Greenstone Brew
+[80313]	--	Ling-Ting's Favorite Tea
+[81924]	--	Carbonated Water
+[88382]	--	Keenbean Kafa
+[88492]	--	Wicked Wikket
+[88529]	--	Sparkling Water
+[88530]	--	Bubbling Beverage
+[88532]	--	Lotus Water
+[88578]	--	Cup of Kafa
+[89593]	--	Serpent Brew of Fallen Blossoms
+[89600]	--	Tiger Brew of Fallen Blossoms
+[89592]	--	Serpent Brew of Meditation
+[89599]	--	Tiger Brew of Meditation
+[89591]	--	Serpent Brew of Pilgramage
+[89598]	--	Tiger Brew of Pilgrimage
+[89590]	--	Serpent Brew of Adversity
+[89597]	--	Tiger Brew of Adversity
+[89589]	--	Initiate's Serpent Brew
+[89596]	--	Initiate's Tiger Brew
+[89588]	--	Novice's Serpent Brew
+[895985]	--	Novice's Tiger Brew
+[90660]	--	Black Tea
+[90659]	--	Jasmine Tea
 ]]
 [159] = 0 --Refreshing Spring Water
 [1179] = 2.43 --Ice Cold Milk
@@ -149,6 +183,34 @@ drinkListTable = {
 [63292]	--	Disgusting Rotgut
 [63293]	--	Blackheart Grog
 [63296]	--	Embalming Fluid
+
+-- MoP
+[88531]	--	Lao Chin's Last Mug
+[75038]	--	Mad Brewer's Breakfast
+[81415]	--	Pandaren Plum Wine
+[82344]	--	Hearthglen Ambrosia
+[83094]	--	Foote Tripel
+[86432]	--	Banana Infused Rum
+[87264]	--	Four Senses Brew
+[105700]	--	Kun-Lai Kicker
+[105701]	--	Greenstone Brew
+[105702]	--	Boomer Brew
+[105703]	--	Stormstout Brew
+[105704]	--	Yan-Zhu's Blazing Brew
+[105705]	--	Chani's Bitter Brew
+[105706]	--	Shado-Pan Brew
+[105707]	--	Unga Brew
+[105708]	--	Shimmering Amber-Brew
+[105711]	--	Funky Monkey Brew
+[81407]	--	Four Wind Soju
+[82343]	--	Loraeron Lambic
+[83095]	--	Lagrave Stout
+[88490]	--	Triple-Distilled Brew
+[89594]	--	Serpent Brew of Serenity
+[89601]	--	Tiger Brew of Serenity
+[89683]	--	Hozen Cuervo
+[98157]	--	Big Blossom Brew
+[104316]	--	Spectral Grog
 ]]
 
 }
