@@ -192,6 +192,12 @@ function WowDiabetes_HandleExitCombat()
 	WowDiabetesFrameMedsAmountString:SetText(insulin)
 end
 
+function WowDiabetes_ScaleForInstances()
+	if(GetInstanceInfo() == "raid") then
+	
+	end
+end
+
 -- Called whenever a spell is cast, including usage of food/drink
 function WowDiabetes_HandleSpellCast(unitId, spell, rank, lineId, spellId)
 	if unitId == "player" then
