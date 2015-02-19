@@ -43,6 +43,9 @@ WowDiabetes_Settings = {
 local foodList = foodListTable
 local drinkList = drinkListTable
 
+-- Scaling Variable
+local scaleAmt = 5
+
 -------------------------------------------------------------------------------
 -- Main AddOn logic
 -------------------------------------------------------------------------------
@@ -173,6 +176,7 @@ end
 -- Called whenever the player enters combat
 function WowDiabetes_HandleEnterCombat()
 	ColorPrint("Player entered combat!")
+	WoWDiabetes_ScaleActivity()
 	combatTimer = 0
 end
 
@@ -182,8 +186,8 @@ function WowDiabetes_HandleExitCombat()
 	ColorPrint("Player exited combat!")
 	insulin = insulin + 1
 	-- ADD SCALING HERE(possibly make it's own function the way color change is for the bar)
-	checkGluc = combatTimer % 5
-	newGlucose = combatTimer / 5
+	checkGluc = combatTimer % scaleAmt
+	newGlucose = combatTimer / scaleAmt
 	if checkGluc > newGlucose then
 		newGlucose = checkGluc
 	end
@@ -192,7 +196,7 @@ function WowDiabetes_HandleExitCombat()
 	WowDiabetesFrameMedsAmountString:SetText(insulin)
 end
 
-function WowDiabetes_ScaleForInstances()
+function WowDiabetes_ScaleActivity()
 	if(GetInstanceInfo() == "raid") then
 	
 	end
@@ -231,10 +235,8 @@ function WowDiabetes_HandleBagUpdate(bagId)
 
 			if playerIsAboutToEat then
 				ColorPrint("Player ate: " .. link .. ", change in count: " .. count)
-				-- when foodList.lua is fully implemented
 				local foodVal = foodList[itemId]
 				ColorPrint(foodVal)
-				-- local foodVal = foodList[itemName]
 				glucoseLevel = glucoseLevel + (foodVal / 10)
 				playerIsAboutToEat = false
 			elseif playerIsAboutToDrink then
@@ -304,6 +306,8 @@ end
 			WowDiabetesFrameGlucoseLevelString:Hide()
 			WowDiabetesFrameCloseButton:Hide()
 			WowDiabetesFrameCloseButton2:Show()
+			WowDiabetesFrameWebsiteButton:Hide()
+			WowDiabetesFrameWebsiteButton2:Show()
 			WowDiabetesFrame:SetSize(200, 138)
 			meterTimer = 0
 		end
@@ -336,6 +340,8 @@ function WowDiabetesGlucoseButton_OnClick()
 	WowDiabetesFrameGlucoseLevelString:Show()
 	WowDiabetesFrameCloseButton:Show()
 	WowDiabetesFrameCloseButton2:Hide()
+	WowDiabetesFrameWebsiteButton:Show()
+	WowDiabetesFrameWebsiteButton2:Hide()
 end
 
 -- Raise your glucose level when medicine is used
@@ -346,6 +352,15 @@ function WowDiabetesMedicineButton_OnClick()
 		WowDiabetesFrameGlucoseLevelBar:SetValue(glucoseLevel)
 		insulin = insulin - 1
 		WowDiabetesFrameMedsAmountString:SetText(insulin)
+	end
+end
+
+-- Open the website panel for uploading/downloading your data
+function WowDiabetesWebsiteButton_OnClick()
+	if WowDiabetesFrameWebsiteFrame:IsShown() then
+		WowDiabetesFrameWebsiteFrame:Hide()
+	else
+		WowDiabetesFrameWebsiteFrame:Show()
 	end
 end
 

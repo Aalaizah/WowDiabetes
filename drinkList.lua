@@ -115,8 +115,8 @@ drinkListTable = {
 [118900] --	Hol'bruk's Brutal Brew
 [120150] --	Blackrock Coffee
 ]]
-[159] = 0 --Refreshing Spring Water
-[1179] = 2.43 --Ice Cold Milk
+[159] = 0, --Refreshing Spring Water
+[1179] = 2.43, --Ice Cold Milk
 [1205] = 13 -- Melon Juice
 
 -- Alcoholic

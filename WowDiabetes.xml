@@ -23,7 +23,7 @@
 					<Size x="64" y="20" />
 					<Anchors>
 						<Anchor point="TOPLEFT">
-							<Offset x="32" y="-35" />
+							<Offset x="24" y="-35" />
 						</Anchor>
 					</Anchors>
 				</FontString>
@@ -75,10 +75,10 @@
     </Layers>
 		<Frames>
 			<Button name="$parentGlucoseButton" inherits="UIPanelButtonTemplate" text="GLUCOSE_BUTTON_TEXT">
-				<Size x="64" y="23" />
+				<Size x="80" y="23" />
 				<Anchors>
 					<Anchor point="TOPLEFT">
-						<Offset x="32" y="-70" />
+						<Offset x="16" y="-70" />
 					</Anchor>
 				</Anchors>
 				<Scripts>
@@ -88,7 +88,7 @@
 				</Scripts>
 			</Button>
 			<Button name="$parentMedicineButton" inherits="UIPanelButtonTemplate" text="MEDICINE_BUTTON_TEXT">
-				<Size x="64" y="23" />
+				<Size x="80" y="23" />
 				<Anchors>
 					<Anchor point="TOPLEFT">
 						<Offset x="102" y="-70" />
@@ -101,10 +101,10 @@
 				</Scripts>
 			</Button>
 			<Button name="$parentCloseButton" inherits="UIPanelButtonTemplate" text="CLOSE_BUTTON_TEXT">
-				<Size x="64" y="23" />
+				<Size x="80" y="23" />
 				<Anchors>
 					<Anchor point="TOPLEFT">
-						<Offset x="113" y="-141" />
+						<Offset x="102" y="-141" />
 					</Anchor>
 				</Anchors>
 				<Scripts>
@@ -114,15 +114,41 @@
 				</Scripts>
 			</Button>
 			<Button name="$parentCloseButton2" inherits="UIPanelButtonTemplate" text="CLOSE_BUTTON_TEXT" hidden="true">
-				<Size x="64" y="23" />
+				<Size x="80" y="23" />
 				<Anchors>
 					<Anchor point="TOPLEFT">
-						<Offset x="113" y="-97" />
+						<Offset x="102" y="-97" />
 					</Anchor>
 				</Anchors>
 				<Scripts>
 				  <OnClick>
 					WowDiabetesCloseButton_OnClick()
+				  </OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentWebsiteButton" inherits="UIPanelButtonTemplate" text="Website">
+				<Size x="80" y="23" />
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="16" y="-141" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+				  <OnClick>
+					WowDiabetesWebsiteButton_OnClick()
+				  </OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentWebsiteButton2" inherits="UIPanelButtonTemplate" text="Website" hidden="true">
+				<Size x="80" y="23" />
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="16" y="-97" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+				  <OnClick>
+					WowDiabetesWebsiteButton_OnClick()
 				  </OnClick>
 				</Scripts>
 			</Button>
@@ -174,6 +200,51 @@
 				self:StopMovingOrSizing()
 			</OnDragStop>
 		</Scripts>
+	</Frame>
+	<Frame name="$parentWebsiteFrame" parent="WowDiabetesFrame" hidden="true">
+		<Size x="200" y="100"/>
+		<Anchors>
+			<Anchor point="TOPLEFT" relativepoint="BOTTOMLEFT"/>
+		</Anchors>
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<BackgroundInsets>
+				<AbsInset left="11" right="12" top="12" bottom="11" />
+			</BackgroundInsets>
+			<TileSize>
+				<AbsValue val="32" />
+			</TileSize>
+			<EdgeSize>
+				<AbsValue val="32" />
+			</EdgeSize>
+		</Backdrop>
+		<Frames>
+			<Button name="$parentUpload" inherits="UIPanelButtonTemplate" text="Upload">
+				<Size x="80" y="23" />
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="16" y="-60" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						WowDiabetesGlucoseButton_OnClick()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentDownload" inherits="UIPanelButtonTemplate" text="Download">
+				<Size x="80" y="23" />
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="102" y="-60" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						WowDiabetesGlucoseButton_OnClick()
+					</OnClick>
+				</Scripts>
+			</Button>
+		</Frames>
 	</Frame>
 	<Frame name="WowBlurryEffect" parent="UIParent">
 		<Size x="200" y="200"/>
