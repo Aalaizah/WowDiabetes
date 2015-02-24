@@ -126,7 +126,7 @@
 				  </OnClick>
 				</Scripts>
 			</Button>
-			<Button name="$parentWebsiteButton" inherits="UIPanelButtonTemplate" text="Website">
+			<!--<Button name="$parentWebsiteButton" inherits="UIPanelButtonTemplate" text="Website">
 				<Size x="80" y="23" />
 				<Anchors>
 					<Anchor point="TOPLEFT">
@@ -151,7 +151,7 @@
 					WowDiabetesWebsiteButton_OnClick()
 				  </OnClick>
 				</Scripts>
-			</Button>
+			</Button>-->
 			<StatusBar name="$parentGlucoseLevelBar" inherits="AchievementProgressBarTemplate" toplevel="true">
 				<Size x="150" y="14" />
 				<Anchors>
@@ -222,12 +222,12 @@
 				<Size x="80" y="23" />
 				<Anchors>
 					<Anchor point="TOPLEFT">
-						<Offset x="16" y="-60" />
+						<Offset x="16" y="-65" />
 					</Anchor>
 				</Anchors>
 				<Scripts>
 					<OnClick>
-						WowDiabetesGlucoseButton_OnClick()
+						WowDiabetesUploadButton_OnClick()
 					</OnClick>
 				</Scripts>
 			</Button>
@@ -235,15 +235,23 @@
 				<Size x="80" y="23" />
 				<Anchors>
 					<Anchor point="TOPLEFT">
-						<Offset x="102" y="-60" />
+						<Offset x="102" y="-65" />
 					</Anchor>
 				</Anchors>
 				<Scripts>
 					<OnClick>
-						WowDiabetesGlucoseButton_OnClick()
+						WowDiabetesDownloadButton_OnClick()
 					</OnClick>
 				</Scripts>
 			</Button>
+			<!--<Frame name="$parentInputFrame" parent="WowDiabetesFrameWebsiteFrame" inherits="InputScrollFrameTemplate">
+				<Size x="150" y="40"/>
+				<Anchors>
+					<Anchor point="TOP">
+						<Offset y="-20"/>
+					</Anchor>
+				</Anchors>
+			</Frame>-->
 		</Frames>
 	</Frame>
 	<Frame name="WowBlurryEffect" parent="UIParent">

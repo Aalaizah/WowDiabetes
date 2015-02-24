@@ -1,4 +1,4 @@
-## Interface: 60000
+## Interface: 60100
 ## Title: Wow Diabetes
 ## Title-deDE: WoW Suikerziekte
 ## Title-esES: WoW Diabetes
@@ -9,10 +9,10 @@
 ## Version: 1.1
 ## Author: Alexandria Mack, AJ Mandula, Zach Hoefler, Anna Sort
 
-Localization.enUS.lua
-Localization.deDE.lua
-Localization.esES.lua
-Localization.frFR.lua
+Localization\Localization.enUS.lua
+Localization\Localization.deDE.lua
+Localization\Localization.esES.lua
+Localization\Localization.frFR.lua
 
 foodList.lua
 drinkList.lua

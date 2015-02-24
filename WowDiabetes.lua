@@ -9,7 +9,7 @@ local L = WowDiabetesLocalization
 -- NOTE: Any inlined color changes (e.g. from links) will cancel out the color
 -- 
 local function ColorPrint(text, color)
-	color = color or "ff00ffff" -- Default to cyan
+	color = color or "6F0948ff" -- Default to cyan
 	print("|c" .. color .. text)
 end
 
@@ -30,6 +30,8 @@ isFirstTime = true
 local meterTimer = 0
 local dayTimer = 0
 local combatTimer = 0
+
+local insulinChance = 50
 
 -- screen res
 local screenRes = ""
@@ -176,30 +178,38 @@ end
 -- Called whenever the player enters combat
 function WowDiabetes_HandleEnterCombat()
 	ColorPrint("Player entered combat!")
-	WoWDiabetes_ScaleActivity()
 	combatTimer = 0
+end
+
+function WowDiabetes_ScaleActivity()
+	if(GetInstanceInfo() == "raid") then
+		scaleAmt = 10
+	else
+		scaleAmt = 5
+	end
 end
 
 -- Called whenever the player exits combat
 function WowDiabetes_HandleExitCombat()
 	local checkGluc
+	--local insulinCheck = 0
 	ColorPrint("Player exited combat!")
-	insulin = insulin + 1
-	-- ADD SCALING HERE(possibly make it's own function the way color change is for the bar)
+	insulinCheck = random(0,100)
+	ColorPrint(insulinCheck)
+	if insulinCheck > insulinChance then
+		insulin = insulin + 1
+	end
+	WowDiabetes_ScaleActivity()
+	--ColorPrint(scaleAmt)
 	checkGluc = combatTimer % scaleAmt
 	newGlucose = combatTimer / scaleAmt
-	if checkGluc > newGlucose then
+	ColorPrint(newGlucose .. " " .. checkGluc .. " " .. combatTimer)
+	if 0 > newGlucose then
 		newGlucose = checkGluc
 	end
 	glucoseLevel = glucoseLevel - newGlucose
 	WowDiabetesFrameGlucoseLevelBar:SetValue(glucoseLevel)
 	WowDiabetesFrameMedsAmountString:SetText(insulin)
-end
-
-function WowDiabetes_ScaleActivity()
-	if(GetInstanceInfo() == "raid") then
-	
-	end
 end
 
 -- Called whenever a spell is cast, including usage of food/drink
@@ -219,7 +229,7 @@ end
 -- Called whenever someone's buffs/debuffs (auras) change
 function WowDiabetes_HandleUnitAuraChanged(unitId)
 	if unitId == "player" then
-		ColorPrint("Player's auras (buffs/debuffs) changed!")
+		--ColorPrint("Player's auras (buffs/debuffs) changed!")
 	end
 end
 
@@ -237,14 +247,14 @@ function WowDiabetes_HandleBagUpdate(bagId)
 				ColorPrint("Player ate: " .. link .. ", change in count: " .. count)
 				local foodVal = foodList[itemId]
 				ColorPrint(foodVal)
-				glucoseLevel = glucoseLevel + (foodVal / 10)
+				glucoseLevel = glucoseLevel + (foodVal / 5)
 				playerIsAboutToEat = false
 			elseif playerIsAboutToDrink then
 				ColorPrint("Player drank: " .. link .. ", change in count: " .. count)
 				playerIsAboutToDrink = false
 			end
 		end
-		glucoseLevel = glucoseLevel + 1
+		--glucoseLevel = glucoseLevel + 1
 		WowDiabetesFrameGlucoseLevelBar:SetValue(glucoseLevel)
 	end
 end
@@ -306,8 +316,8 @@ end
 			WowDiabetesFrameGlucoseLevelString:Hide()
 			WowDiabetesFrameCloseButton:Hide()
 			WowDiabetesFrameCloseButton2:Show()
-			WowDiabetesFrameWebsiteButton:Hide()
-			WowDiabetesFrameWebsiteButton2:Show()
+			--WowDiabetesFrameWebsiteButton:Hide()
+			--WowDiabetesFrameWebsiteButton2:Show()
 			WowDiabetesFrame:SetSize(200, 138)
 			meterTimer = 0
 		end
@@ -340,8 +350,8 @@ function WowDiabetesGlucoseButton_OnClick()
 	WowDiabetesFrameGlucoseLevelString:Show()
 	WowDiabetesFrameCloseButton:Show()
 	WowDiabetesFrameCloseButton2:Hide()
-	WowDiabetesFrameWebsiteButton:Show()
-	WowDiabetesFrameWebsiteButton2:Hide()
+	--WowDiabetesFrameWebsiteButton:Show()
+	--WowDiabetesFrameWebsiteButton2:Hide()
 end
 
 -- Raise your glucose level when medicine is used
@@ -363,6 +373,19 @@ function WowDiabetesWebsiteButton_OnClick()
 		WowDiabetesFrameWebsiteFrame:Show()
 	end
 end
+
+-- Recreate the string if needed
+function WowDiabetesUploadButton_OnClick()
+	local exportString = CreateExportString()
+	
+end
+
+-- Take the input string and save the data back in
+function WowDiabetesDownloadButton_OnClick()
+
+end
+
+-- Create the String for uploading data
 
 -- Update string above status bar with the new glucose level
 function WowDiabetesGlucoseLevelBar_OnValueChanged()
