@@ -183,6 +183,7 @@
 		<Scripts>
 			<OnLoad>
 				WowDiabetes_OnLoad(self)
+				self.TimeSinceLastUpdate = 0
 			</OnLoad>
 			<OnEvent>
 				WowDiabetes_OnEvent(self, event, ...)

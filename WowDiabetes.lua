@@ -13,6 +13,9 @@ local function ColorPrint(text, color)
 	print("|c" .. color .. text)
 end
 
+-- Update interval for changing glucose
+WowDiabetes_UpdateInterval = 1.0
+
 -------------------------------------------------------------------------------
 -- Local variables
 -------------------------------------------------------------------------------
@@ -31,7 +34,8 @@ local meterTimer = 0
 local dayTimer = 0
 local combatTimer = 0
 
-local insulinChance = 50
+local insulinChance = 40
+local inCombat = false
 
 -- screen res
 local screenRes = ""
@@ -178,12 +182,15 @@ end
 -- Called whenever the player enters combat
 function WowDiabetes_HandleEnterCombat()
 	ColorPrint("Player entered combat!")
+	inCombat = true
 	combatTimer = 0
 end
 
 function WowDiabetes_ScaleActivity()
 	if(GetInstanceInfo() == "raid") then
-		scaleAmt = 10
+		scaleAmt = 60
+	elseif(GetInstanceInfo() == "party") then
+		scaleAmt = 45
 	else
 		scaleAmt = 5
 	end
@@ -195,7 +202,7 @@ function WowDiabetes_HandleExitCombat()
 	--local insulinCheck = 0
 	ColorPrint("Player exited combat!")
 	insulinCheck = random(0,100)
-	ColorPrint(insulinCheck)
+	--ColorPrint(insulinCheck)
 	if insulinCheck > insulinChance then
 		insulin = insulin + 1
 	end
@@ -207,7 +214,11 @@ function WowDiabetes_HandleExitCombat()
 	if 0 > newGlucose then
 		newGlucose = checkGluc
 	end
-	glucoseLevel = glucoseLevel - newGlucose
+	if glucoseLevel > 46 then
+		glucoseLevel = glucoseLevel - newGlucose
+	end
+	
+	combatTimer = 0
 	WowDiabetesFrameGlucoseLevelBar:SetValue(glucoseLevel)
 	WowDiabetesFrameMedsAmountString:SetText(insulin)
 end
@@ -309,24 +320,31 @@ end
 -- If the frame has been completely open for longer than 15 seconds, 
 -- hide part of it so the player has to learn to keep track on their own
  function WowDiabetes_OnUpdate(self, elapsed)
-	if WowDiabetesFrameGlucoseLevelBar:IsShown() then
-		meterTimer = meterTimer + elapsed
-		if meterTimer >= 15 then
-			WowDiabetesFrameGlucoseLevelBar:Hide()
-			WowDiabetesFrameGlucoseLevelString:Hide()
-			WowDiabetesFrameCloseButton:Hide()
-			WowDiabetesFrameCloseButton2:Show()
-			--WowDiabetesFrameWebsiteButton:Hide()
-			--WowDiabetesFrameWebsiteButton2:Show()
-			WowDiabetesFrame:SetSize(200, 138)
-			meterTimer = 0
+	self.TimeSinceLastUpdate = self.TimeSinceLastUpdate + elapsed
+	
+	while ( self.TimeSinceLastUpdate > WowDiabetes_UpdateInterval) do
+		if WowDiabetesFrameGlucoseLevelBar:IsShown() then
+			meterTimer = meterTimer + WowDiabetes_UpdateInterval
+			if meterTimer >= 10 then
+				WowDiabetesFrameGlucoseLevelBar:Hide()
+				WowDiabetesFrameGlucoseLevelString:Hide()
+				WowDiabetesFrameCloseButton:Hide()
+				WowDiabetesFrameCloseButton2:Show()
+				--WowDiabetesFrameWebsiteButton:Hide()
+				--WowDiabetesFrameWebsiteButton2:Show()
+				WowDiabetesFrame:SetSize(200, 138)
+				meterTimer = 0
+			end
 		end
+		dayTimer = dayTimer + WowDiabetes_UpdateInterval
+		if dayTimer > 1440 then
+			dayTimer = 0
+		end
+		combatTimer = combatTimer + WowDiabetes_UpdateInterval
+		
+		self.TimeSinceLastUpdate = self.TimeSinceLastUpdate - WowDiabetes_UpdateInterval
 	end
-	dayTimer = dayTimer + elapsed
-	if dayTimer > 1440 then
-		dayTimer = 0
-	end
-	combatTimer = combatTimer + elapsed
+
 end
 
 -- Hide the frame entirely
