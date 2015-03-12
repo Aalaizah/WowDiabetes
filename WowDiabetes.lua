@@ -257,8 +257,12 @@ function WowDiabetes_HandleBagUpdate(bagId)
 			if playerIsAboutToEat then
 				ColorPrint("Player ate: " .. link .. ", change in count: " .. count)
 				local foodVal = foodList[itemId]
-				ColorPrint(foodVal)
-				glucoseLevel = glucoseLevel + (foodVal / 5)
+				ColorPrint("Item: " .. itemName .. " Value: " .. foodVal)
+				if foodVal > 20 then
+					glucoseLevel = glucoseLevel + (foodVal / 5)
+				else
+					glucoseLevel = glucoseLevel + foodVal
+				end
 				playerIsAboutToEat = false
 			elseif playerIsAboutToDrink then
 				ColorPrint("Player drank: " .. link .. ", change in count: " .. count)
@@ -404,6 +408,17 @@ function WowDiabetesDownloadButton_OnClick()
 end
 
 -- Create the String for uploading data
+function WowDiabetes_CreateUploadString()
+	local tempName = GetUnitName("player", true)
+	local location = string.find(tempName, "-")
+	if location ~= nil then
+		Name = string.sub(tempName, 1, location)
+		Server = string.sub(tempName, location)
+	else
+		Name = tempName
+		Server = GetRealmName()
+	end
+end
 
 -- Update string above status bar with the new glucose level
 function WowDiabetesGlucoseLevelBar_OnValueChanged()
