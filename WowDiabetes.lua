@@ -398,13 +398,22 @@ end
 
 -- Recreate the string if needed
 function WowDiabetesUploadButton_OnClick()
-	local exportString = CreateExportString()
-	
+	local exportString = WowDiabetes_CreateUploadString()
 end
 
 -- Take the input string and save the data back in
-function WowDiabetesDownloadButton_OnClick()
-
+function WowDiabetesDownloadButton_OnClick(data)
+	
+	if data == nil
+		return "error"
+	end
+	
+	local tempData = { strsplit(",", data) }
+	
+	timeGood = tempData[3]
+	glucoseLevel = tempData[4]
+	insulin = tempData[5]
+	
 end
 
 -- Create the String for uploading data
@@ -418,6 +427,10 @@ function WowDiabetes_CreateUploadString()
 		Name = tempName
 		Server = GetRealmName()
 	end
+	
+	UploadString = (Name .. "," .. Server .. "," .. timeGood .. "," glucoseLevel .. "," insulin)
+	
+	--glucoseLevel, glucoseLevelString, insulin, timeGood
 end
 
 -- Update string above status bar with the new glucose level
