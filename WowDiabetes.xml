@@ -126,7 +126,7 @@
 				  </OnClick>
 				</Scripts>
 			</Button>
-			<!--<Button name="$parentWebsiteButton" inherits="UIPanelButtonTemplate" text="Website">
+			<Button name="$parentWebsiteButton" inherits="UIPanelButtonTemplate" text="Website">
 				<Size x="80" y="23" />
 				<Anchors>
 					<Anchor point="TOPLEFT">
@@ -151,7 +151,7 @@
 					WowDiabetesWebsiteButton_OnClick()
 				  </OnClick>
 				</Scripts>
-			</Button>-->
+			</Button>
 			<StatusBar name="$parentGlucoseLevelBar" inherits="AchievementProgressBarTemplate" toplevel="true">
 				<Size x="150" y="14" />
 				<Anchors>
@@ -202,7 +202,7 @@
 			</OnDragStop>
 		</Scripts>
 	</Frame>
-	<Frame name="$parentWebsiteFrame" parent="WowDiabetesFrame" hidden="true">
+	<Frame name="WebsiteFrame" parent="WowDiabetesFrame" hidden="true">
 		<Size x="200" y="100"/>
 		<Anchors>
 			<Anchor point="TOPLEFT" relativepoint="BOTTOMLEFT"/>
@@ -245,14 +245,17 @@
 					</OnClick>
 				</Scripts>
 			</Button>
-			<!--<Frame name="$parentInputFrame" parent="WowDiabetesFrameWebsiteFrame" inherits="InputScrollFrameTemplate">
-				<Size x="150" y="40"/>
+			<Frame name="$parentInputFrame" parent="WebsiteFrame" inherits="InputBoxTemplate">
+				<Size>
+					<AbsDimension x="150" y="40"/>
+				</Size>
 				<Anchors>
 					<Anchor point="TOP">
 						<Offset y="-20"/>
 					</Anchor>
 				</Anchors>
-			</Frame>-->
+				<Fontstring name="$parentText" inherits="GameFontNormal" text="hi"/>
+			</Frame>
 		</Frames>
 	</Frame>
 	<Frame name="WowBlurryEffect" parent="UIParent">

@@ -334,8 +334,8 @@ end
 				WowDiabetesFrameGlucoseLevelString:Hide()
 				WowDiabetesFrameCloseButton:Hide()
 				WowDiabetesFrameCloseButton2:Show()
-				--WowDiabetesFrameWebsiteButton:Hide()
-				--WowDiabetesFrameWebsiteButton2:Show()
+				WowDiabetesFrameWebsiteButton:Hide()
+				WowDiabetesFrameWebsiteButton2:Show()
 				WowDiabetesFrame:SetSize(200, 138)
 				meterTimer = 0
 			end
@@ -372,8 +372,8 @@ function WowDiabetesGlucoseButton_OnClick()
 	WowDiabetesFrameGlucoseLevelString:Show()
 	WowDiabetesFrameCloseButton:Show()
 	WowDiabetesFrameCloseButton2:Hide()
-	--WowDiabetesFrameWebsiteButton:Show()
-	--WowDiabetesFrameWebsiteButton2:Hide()
+	WowDiabetesFrameWebsiteButton:Show()
+	WowDiabetesFrameWebsiteButton2:Hide()
 end
 
 -- Raise your glucose level when medicine is used
@@ -389,22 +389,39 @@ end
 
 -- Open the website panel for uploading/downloading your data
 function WowDiabetesWebsiteButton_OnClick()
-	if WowDiabetesFrameWebsiteFrame:IsShown() then
-		WowDiabetesFrameWebsiteFrame:Hide()
+	if WebsiteFrame:IsShown() then
+		WebsiteFrame:Hide()
 	else
-		WowDiabetesFrameWebsiteFrame:Show()
+		WebsiteFrame:Show()
 	end
 end
 
+
+--[[scrollFrame.EditBox:SetWidth(scrollFrame:GetWidth())
+	scrollFrame.EditBox:SetMaxLetters(2400)
+	scrollFrame.CharCount:Hide()
+	scrollFrame.EditBox:SetFocus()
+	scrollFrame.EditBox:HighlightText()]]
+	
+	
 -- Recreate the string if needed
 function WowDiabetesUploadButton_OnClick()
-	local exportString = WowDiabetes_CreateUploadString()
+	--[[local exportString = WowDiabetes_CreateUploadString()
+	WebsiteFrameInputFrameEditBox:SetMaxLetters(100)
+	WebsiteFrameInputFrame.CharCount:Hide()
+	WebsiteFrameInputFrameEditBox:SetFocus()
+	WebsiteFrameInputFrameEditBox:SetText(exportString)
+	WebsiteFrameInputFrameEditBox:HighlightText()]]
 end
 
 -- Take the input string and save the data back in
-function WowDiabetesDownloadButton_OnClick(data)
-	
-	if data == nil
+function WowDiabetesDownloadButton_OnClick()
+	--WowDiabetes_SaveDownloadInfo(WebsiteFrameInputFrameEditBox:GetText())
+end
+
+function WowDiabetes_SaveDownloadInfo(data)
+		
+	if data == nil then
 		return "error"
 	end
 	
@@ -413,7 +430,6 @@ function WowDiabetesDownloadButton_OnClick(data)
 	timeGood = tempData[3]
 	glucoseLevel = tempData[4]
 	insulin = tempData[5]
-	
 end
 
 -- Create the String for uploading data
@@ -428,7 +444,7 @@ function WowDiabetes_CreateUploadString()
 		Server = GetRealmName()
 	end
 	
-	UploadString = (Name .. "," .. Server .. "," .. timeGood .. "," glucoseLevel .. "," insulin)
+	UploadString = (Name .. "," .. Server .. "," .. timeGood .. "," .. glucoseLevel .. "," .. insulin)
 	
 	--glucoseLevel, glucoseLevelString, insulin, timeGood
 end
