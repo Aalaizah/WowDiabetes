@@ -406,12 +406,9 @@ end
 	
 -- Recreate the string if needed
 function WowDiabetesUploadButton_OnClick()
-	--[[local exportString = WowDiabetes_CreateUploadString()
-	WebsiteFrameInputFrameEditBox:SetMaxLetters(100)
-	WebsiteFrameInputFrame.CharCount:Hide()
-	WebsiteFrameInputFrameEditBox:SetFocus()
-	WebsiteFrameInputFrameEditBox:SetText(exportString)
-	WebsiteFrameInputFrameEditBox:HighlightText()]]
+	local exportString = WowDiabetes_CreateUploadString()
+	WebsiteFrameEditBox:SetText(exportString)
+	WebsiteFrameEditBox:HighlightText()
 end
 
 -- Take the input string and save the data back in
@@ -445,7 +442,7 @@ function WowDiabetes_CreateUploadString()
 	end
 	
 	UploadString = (Name .. "," .. Server .. "," .. timeGood .. "," .. glucoseLevel .. "," .. insulin)
-	
+	return UploadString
 	--glucoseLevel, glucoseLevelString, insulin, timeGood
 end
 
