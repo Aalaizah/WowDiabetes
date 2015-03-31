@@ -1,14 +1,12 @@
-wow-diabetes
+Wow Diabetes
 ============
 
 WoW Addon for diabetes research
 
 ## Installation Instructions
 
-Instructions for how to download and install this add-on. http://tinyurl.com/wowdiabetes
+1. Download from http://www.curse.com/addons/wow/wow-diabetes, or https://github.com/amm4108/WowDiabetes(then move to step 2) or install it straight through the Curse Client(If done this way you're all set)
 
-## Bug Catching Add-on
+2. Move the folder into the World of Warcraft/Interface/AddOns Folder.
 
-I found an add-on that catches and writes down different Lua errors as our add-on is run. It will help a lot with debugging weird or hard to catch errors.
-
-http://www.curse.com/addons/wow/bugsack
+3. Restart the World of Warcraft Client.
