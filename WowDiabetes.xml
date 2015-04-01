@@ -245,17 +245,15 @@
 					</OnClick>
 				</Scripts>
 			</Button>
-					<EditBox name="$parentEditBox" parent="WebsiteFrame" letters="100">
-						<Size>
-							<AbsDimension x="200" y="20"/>
-						</Size>
-						<Anchors>
-							<Anchor point="TOP">
-								<Offset y="-20"/>
-							</Anchor>
-						</Anchors>
-						<Fontstring name="$parentText" inherits="GameFontNormal" text="hi"/>
-					</EditBox>
+			<EditBox name="$parentEditBox" parent="WebsiteFrame">
+				<Size x="160" y="20"/>
+				<Anchors>
+					<Anchor point="TOP">
+						<Offset y="-20"/>
+					</Anchor>
+				</Anchors>
+				<Fontstring name="$parentText" inherits="GameFontNormal"/>
+			</EditBox>
 		</Frames>
 	</Frame>
 	<Frame name="WowBlurryEffect" parent="UIParent">

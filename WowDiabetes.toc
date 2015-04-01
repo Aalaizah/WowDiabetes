@@ -5,8 +5,8 @@
 ## Title-frFR: WoW Diabète
 ## Notes: Mod used for diabetes research. Tracks eating/drinking, combat, etc.
 ## SavedVariables: MinimapPos, p1, p2, p3, Vs, Gb, Gt, Xt, Ipt, Rat
-## SavedVariablesPerCharacter: glucoseLevel, glucoseLevelString, insulin, timeGood
-## Version: 1.1
+## SavedVariablesPerCharacter: glucoseLevel, glucoseLevelString, insulin, insulinUsed, foodEaten, timeGood
+## Version: 2.0
 ## Author: Alexandria Mack, AJ Mandula, Zach Hoefler, Anna Sort
 
 Localization\Localization.enUS.lua

@@ -151,10 +151,13 @@ function WowDiabetes_OnEvent(frame, event, ...)
 			insulinUsed = 0
 			foodEaten = 0
 			timeGood = 0
-			timeAbove = 0
-			timeBelow = 0
 		end
 	elseif event == "VARIABLES_LOADED" then
+		glucoseLevel = tonumber(glucoseLevel)
+		insulin = tonumber(insulin)
+		insulinUsed = tonumber(insulinUsed)
+		foodEaten = tonumber(foodEaten)
+		timeGood = tonumber(timeGood)
 		WowDiabetesFrameMedsAmountString:SetText(insulin)
 		WowDiabetesGlucoseLevelBar_Setup(WowDiabetesFrameGlucoseLevelBar)
 		function WowDiabetes_MinimapButton_Reposition()
@@ -263,9 +266,11 @@ function WowDiabetes_HandleBagUpdate(bagId)
 				else
 					glucoseLevel = glucoseLevel + foodVal
 				end
+				foodEaten = foodEaten + 1
 				playerIsAboutToEat = false
 			elseif playerIsAboutToDrink then
 				ColorPrint("Player drank: " .. link .. ", change in count: " .. count)
+				foodEaten = foodEaten + 1
 				playerIsAboutToDrink = false
 			end
 		end
@@ -383,6 +388,7 @@ function WowDiabetesMedicineButton_OnClick()
 		glucoseLevel = glucoseLevel + insulinVal
 		WowDiabetesFrameGlucoseLevelBar:SetValue(glucoseLevel)
 		insulin = insulin - 1
+		insulinUsed = insulinUsed + 1
 		WowDiabetesFrameMedsAmountString:SetText(insulin)
 	end
 end
@@ -393,27 +399,21 @@ function WowDiabetesWebsiteButton_OnClick()
 		WebsiteFrame:Hide()
 	else
 		WebsiteFrame:Show()
+		WowDiabetesUploadButton_OnClick()
 	end
-end
-
-
---[[scrollFrame.EditBox:SetWidth(scrollFrame:GetWidth())
-	scrollFrame.EditBox:SetMaxLetters(2400)
-	scrollFrame.CharCount:Hide()
-	scrollFrame.EditBox:SetFocus()
-	scrollFrame.EditBox:HighlightText()]]
-	
+end	
 	
 -- Recreate the string if needed
 function WowDiabetesUploadButton_OnClick()
 	local exportString = WowDiabetes_CreateUploadString()
 	WebsiteFrameEditBox:SetText(exportString)
+	WebsiteFrameEditBox:SetMultiLine(true)
 	WebsiteFrameEditBox:HighlightText()
 end
 
 -- Take the input string and save the data back in
 function WowDiabetesDownloadButton_OnClick()
-	--WowDiabetes_SaveDownloadInfo(WebsiteFrameInputFrameEditBox:GetText())
+	WowDiabetes_SaveDownloadInfo(WebsiteFrameEditBox:GetText())
 end
 
 function WowDiabetes_SaveDownloadInfo(data)
@@ -427,6 +427,8 @@ function WowDiabetes_SaveDownloadInfo(data)
 	timeGood = tempData[3]
 	glucoseLevel = tempData[4]
 	insulin = tempData[5]
+	insulinUsed = tempData[6]
+	foodEaten = tempData[7]
 end
 
 -- Create the String for uploading data
@@ -441,9 +443,8 @@ function WowDiabetes_CreateUploadString()
 		Server = GetRealmName()
 	end
 	
-	UploadString = (Name .. "," .. Server .. "," .. timeGood .. "," .. glucoseLevel .. "," .. insulin)
+	UploadString = (Name .. "," .. Server .. "," .. timeGood .. "," .. glucoseLevel .. "," .. insulin .. "," .. insulinUsed .. "," .. foodEaten)
 	return UploadString
-	--glucoseLevel, glucoseLevelString, insulin, timeGood
 end
 
 -- Update string above status bar with the new glucose level
