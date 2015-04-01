@@ -219,7 +219,7 @@
 			</EdgeSize>
 		</Backdrop>
 		<Frames>
-			<Button name="$parentUpload" inherits="UIPanelButtonTemplate" text="Upload">
+			<Button name="$parentUpload" inherits="UIPanelButtonTemplate" text="UPLOAD_BUTTON_TEXT">
 				<Size x="80" y="23" />
 				<Anchors>
 					<Anchor point="TOPLEFT">
@@ -232,7 +232,7 @@
 					</OnClick>
 				</Scripts>
 			</Button>
-			<Button name="$parentDownload" inherits="UIPanelButtonTemplate" text="Download">
+			<Button name="$parentDownload" inherits="UIPanelButtonTemplate" text="DOWNLOAD_BUTTON_TEXT">
 				<Size x="80" y="23" />
 				<Anchors>
 					<Anchor point="TOPLEFT">
