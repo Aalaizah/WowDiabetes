@@ -31,7 +31,6 @@ isFirstTime = true
 
 -- timers
 local meterTimer = 0
-local dayTimer = 0
 local combatTimer = 0
 
 local insulinChance = 40
@@ -48,6 +47,10 @@ WowDiabetes_Settings = {
 -- Glycemic Loads where g is the glicemic load of its food
 local foodList = foodListTable
 local drinkList = drinkListTable
+
+local regionList = regionTable
+
+dayTimer = 0
 
 -- Scaling Variable
 local scaleAmt = 5
@@ -151,6 +154,7 @@ function WowDiabetes_OnEvent(frame, event, ...)
 			insulinUsed = 0
 			foodEaten = 0
 			timeGood = 0
+			dayTimer = 0
 		end
 	elseif event == "VARIABLES_LOADED" then
 		glucoseLevel = tonumber(glucoseLevel)
@@ -158,6 +162,7 @@ function WowDiabetes_OnEvent(frame, event, ...)
 		insulinUsed = tonumber(insulinUsed)
 		foodEaten = tonumber(foodEaten)
 		timeGood = tonumber(timeGood)
+		dayTimer = tonumber(dayTimer)
 		WowDiabetesFrameMedsAmountString:SetText(insulin)
 		WowDiabetesGlucoseLevelBar_Setup(WowDiabetesFrameGlucoseLevelBar)
 		function WowDiabetes_MinimapButton_Reposition()
@@ -345,9 +350,9 @@ end
 				meterTimer = 0
 			end
 		end
-		dayTimer = dayTimer + WowDiabetes_UpdateInterval
-		if dayTimer > 1440 then
-			dayTimer = 0
+		--dayTimer = dayTimer + WowDiabetes_UpdateInterval
+		if glucoseLevelString == "good" then
+			timeGood = timeGood + WowDiabetes_UpdateInterval
 		end
 		combatTimer = combatTimer + WowDiabetes_UpdateInterval
 		
@@ -424,17 +429,20 @@ function WowDiabetes_SaveDownloadInfo(data)
 	
 	local tempData = { strsplit(",", data) }
 	
-	timeGood = tempData[3]
-	glucoseLevel = tempData[4]
-	insulin = tempData[5]
-	insulinUsed = tempData[6]
-	foodEaten = tempData[7]
+	timeGood = tempData[4]
+	dayTimer = tempData[5]
+	glucoseLevel = tempData[6]
+	insulin = tempData[7]
+	insulinUsed = tempData[8]
+	foodEaten = tempData[9]
 end
 
 -- Create the String for uploading data
 function WowDiabetes_CreateUploadString()
 	local tempName = GetUnitName("player", true)
 	local location = string.find(tempName, "-")
+	--local region = regionList[GetCurrentRegion()]
+	--ColorPrint(regionList[GetCurrentRegion()])
 	if location ~= nil then
 		Name = string.sub(tempName, 1, location)
 		Server = string.sub(tempName, location)
@@ -443,7 +451,7 @@ function WowDiabetes_CreateUploadString()
 		Server = GetRealmName()
 	end
 	
-	UploadString = (Name .. "," .. Server .. "," .. timeGood .. "," .. glucoseLevel .. "," .. insulin .. "," .. insulinUsed .. "," .. foodEaten)
+	UploadString = (Name .. "," .. "US" .. "," .. Server .. "," .. timeGood .. "," .. dayTimer .. "," .. glucoseLevel .. "," .. insulin .. "," .. insulinUsed .. "," .. foodEaten)
 	return UploadString
 end
 

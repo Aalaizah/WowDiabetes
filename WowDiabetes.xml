@@ -126,7 +126,7 @@
 				  </OnClick>
 				</Scripts>
 			</Button>
-			<Button name="$parentWebsiteButton" inherits="UIPanelButtonTemplate" text="Website">
+			<Button name="$parentWebsiteButton" inherits="UIPanelButtonTemplate" text="WEBSITE_BUTTON_TEXT">
 				<Size x="80" y="23" />
 				<Anchors>
 					<Anchor point="TOPLEFT">
@@ -139,7 +139,7 @@
 				  </OnClick>
 				</Scripts>
 			</Button>
-			<Button name="$parentWebsiteButton2" inherits="UIPanelButtonTemplate" text="Website" hidden="true">
+			<Button name="$parentWebsiteButton2" inherits="UIPanelButtonTemplate" text="WEBSITE_BUTTON_TEXT" hidden="true">
 				<Size x="80" y="23" />
 				<Anchors>
 					<Anchor point="TOPLEFT">
