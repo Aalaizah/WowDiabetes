@@ -245,6 +245,25 @@
 					</OnClick>
 				</Scripts>
 			</Button>
+            <Frame name="$parentEditBackground" parent="WebsiteFrame">
+                <Size x="160" y="20"/>
+				<Anchors>
+					<Anchor point="TOP">
+						<Offset y="-20"/>
+					</Anchor>
+				</Anchors>
+                <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+                    <BackgroundInsets>
+                        <AbsInset left="11" right="12" top="12" bottom="11" />
+                    </BackgroundInsets>
+                    <TileSize>
+                        <AbsValue val="32" />
+                    </TileSize>
+                    <EdgeSize>
+                        <AbsValue val="32" />
+                    </EdgeSize>
+                </Backdrop>
+            </Frame>
 			<EditBox name="$parentEditBox" parent="WebsiteFrame">
 				<Size x="160" y="20"/>
 				<Anchors>
