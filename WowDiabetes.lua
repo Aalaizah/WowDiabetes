@@ -33,7 +33,7 @@ isFirstTime = true
 local meterTimer = 0
 local combatTimer = 0
 
-local insulinChance = 40
+local insulinChance = 65
 local inCombat = false
 
 -- screen res
@@ -99,7 +99,6 @@ function goodGlucose(frame)
 	WowBlurryEffect:Hide()
 	WowDiabetesFrameGlucoseLevelBar:SetStatusBarColor(0,1,0,1)
 	if glucoseLevelString ~= "good" then
-		ColorPrint(GOOD_TEXT, "ff00ff00")
 		frame:AddMessage(GOOD_TEXT, 0, 1, 0)
 		glucoseLevelString = "good"
 	end
@@ -111,7 +110,6 @@ function okayGlucose(frame)
 	WowBlurryEffect:SetAlpha(.4)
 	WowDiabetesFrameGlucoseLevelBar:SetStatusBarColor(1,1,0,1)
 	if(glucoseLevelString ~= "okay") then
-		ColorPrint(OKAY_TEXT, "ffffff00")
 		frame:AddMessage(OKAY_TEXT, 1, 1, 0)
 		glucoseLevelString = "okay"
 	end
@@ -124,7 +122,6 @@ function badGlucose(frame)
 	WowBlurryEffect:SetAlpha(.6)
 	WowDiabetesFrameGlucoseLevelBar:SetStatusBarColor(1,0,0,1)
 	if(glucoseLevelString ~= "bad") then
-		ColorPrint(BAD_TEXT, "ffff0f0f")
 		frame:AddMessage(BAD_TEXT, 1, 0, 0)
 		glucoseLevelString = "bad"
 	end
@@ -155,6 +152,11 @@ function WowDiabetes_OnEvent(frame, event, ...)
 			foodEaten = 0
 			timeGood = 0
 			dayTimer = 0
+        elseif insulinUsed == nil then
+            insulinUsed = 0
+            foodEaten = 0
+            timeGood = 0
+            dayTimer = 0
 		end
 	elseif event == "VARIABLES_LOADED" then
 		glucoseLevel = tonumber(glucoseLevel)
@@ -184,12 +186,12 @@ end
 
 -- Called whenever the user clicks on the main WowDiabetes frame
 function WowDiabetes_OnClickFrame()
-	ColorPrint("Frame clicked")
+	-- ColorPrint("Frame clicked")
 end
 
 -- Called whenever the player enters combat
 function WowDiabetes_HandleEnterCombat()
-	ColorPrint("Player entered combat!")
+	-- ColorPrint("Player entered combat!")
 	inCombat = true
 	combatTimer = 0
 end
@@ -207,18 +209,18 @@ end
 -- Called whenever the player exits combat
 function WowDiabetes_HandleExitCombat()
 	local checkGluc
-	--local insulinCheck = 0
-	ColorPrint("Player exited combat!")
+	-- local insulinCheck = 0
+	-- ColorPrint("Player exited combat!")
 	insulinCheck = random(0,100)
-	--ColorPrint(insulinCheck)
+	-- ColorPrint(insulinCheck)
 	if insulinCheck > insulinChance then
 		insulin = insulin + 1
 	end
 	WowDiabetes_ScaleActivity()
-	--ColorPrint(scaleAmt)
+	-- ColorPrint(scaleAmt)
 	checkGluc = combatTimer % scaleAmt
 	newGlucose = combatTimer / scaleAmt
-	ColorPrint(newGlucose .. " " .. checkGluc .. " " .. combatTimer)
+	-- ColorPrint(newGlucose .. " " .. checkGluc .. " " .. combatTimer)
 	if 0 > newGlucose then
 		newGlucose = checkGluc
 	end
@@ -236,9 +238,9 @@ function WowDiabetes_HandleSpellCast(unitId, spell, rank, lineId, spellId)
 	if unitId == "player" then
 		-- Check for food/drink
 		if spell == L["DRINK_AURA_NAME"] then
-			ColorPrint("Player is about to drink")
+			--ColorPrint("Player is about to drink")
 			playerIsAboutToDrink = true
-		elseif spell == L["FOOD_AURA_NAME"] then
+		elseif spell == L["FOOD_AURA_NAME"] or spell == L["REFRESHMENT_AURA_NAME"] then
 			ColorPrint("Player is about to eat")
 			playerIsAboutToEat = true
 		end
@@ -248,6 +250,16 @@ end
 -- Called whenever someone's buffs/debuffs (auras) change
 function WowDiabetes_HandleUnitAuraChanged(unitId)
 	if unitId == "player" then
+        checkFood = UnitAura(unitId, "Food")
+        checkDrink = UnitAura(unitId, "Drink")
+        --while (checkFood == "Food" or checkDrink == "Drink") do
+            if (playerIsAboutToEat ~= true or playerIsAboutToDrink ~= true) then
+                --ColorPrint("Ate a Feast")
+                playerIsAboutToEat = true
+            end
+        --end
+        playerIsAboutToEat = false
+        playerIsAboutToDrink = false
 		--ColorPrint("Player's auras (buffs/debuffs) changed!")
 	end
 end
@@ -256,7 +268,6 @@ end
 function WowDiabetes_HandleBagUpdate(bagId)
 	-- Update bag counts
 	local changedItems = WowDiabetes_ScanBag(bagId)
-
 	-- If necessary, print changed item(s)
 	if playerIsAboutToEat or playerIsAboutToDrink then
 		for itemId, count in pairs(changedItems) do
@@ -489,5 +500,10 @@ end
 
 SLASH_WOWDIABETES1, SLASH_WOWDIABETES2 = '/wowdiabetes', '/wd'
 function SlashCmdList.WOWDIABETES(msg, editbox)
-	WowDiabetesFrame:Show()
+    if msg == 'reset' then
+        glucoseLevel = 90
+        insulin = 10
+    else
+        WowDiabetesFrame:Show()
+    end
 end
