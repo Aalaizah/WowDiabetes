@@ -250,16 +250,6 @@ end
 -- Called whenever someone's buffs/debuffs (auras) change
 function WowDiabetes_HandleUnitAuraChanged(unitId)
 	if unitId == "player" then
-        checkFood = UnitAura(unitId, "Food")
-        checkDrink = UnitAura(unitId, "Drink")
-        --while (checkFood == "Food" or checkDrink == "Drink") do
-            if (playerIsAboutToEat ~= true or playerIsAboutToDrink ~= true) then
-                --ColorPrint("Ate a Feast")
-                playerIsAboutToEat = true
-            end
-        --end
-        playerIsAboutToEat = false
-        playerIsAboutToDrink = false
 		--ColorPrint("Player's auras (buffs/debuffs) changed!")
 	end
 end
@@ -270,9 +260,10 @@ function WowDiabetes_HandleBagUpdate(bagId)
 	local changedItems = WowDiabetes_ScanBag(bagId)
 	-- If necessary, print changed item(s)
 	if playerIsAboutToEat or playerIsAboutToDrink then
+    ColorPrint("Hello")
 		for itemId, count in pairs(changedItems) do
 			local itemName, link = GetItemInfo(itemId)
-
+            ColorPrint("Test")
 			if playerIsAboutToEat then
 				ColorPrint("Player ate: " .. link .. ", change in count: " .. count)
 				local foodVal = foodList[itemId]
@@ -286,6 +277,13 @@ function WowDiabetes_HandleBagUpdate(bagId)
 				playerIsAboutToEat = false
 			elseif playerIsAboutToDrink then
 				ColorPrint("Player drank: " .. link .. ", change in count: " .. count)
+                local drinkVal = drinkList[itemId]
+				ColorPrint("Item: " .. itemName .. " Value: " .. drinkVal)
+				if drinkVal > 20 then
+					glucoseLevel = glucoseLevel + (drinkVal / 5)
+				else
+					glucoseLevel = glucoseLevel + drinkVal
+				end
 				foodEaten = foodEaten + 1
 				playerIsAboutToDrink = false
 			end
@@ -430,6 +428,7 @@ end
 -- Take the input string and save the data back in
 function WowDiabetesDownloadButton_OnClick()
 	WowDiabetes_SaveDownloadInfo(WebsiteFrameEditBox:GetText())
+    ChangeGlucoseBarColor()
 end
 
 function WowDiabetes_SaveDownloadInfo(data)
@@ -440,12 +439,12 @@ function WowDiabetes_SaveDownloadInfo(data)
 	
 	local tempData = { strsplit(",", data) }
 	
-	timeGood = tempData[4]
-	dayTimer = tempData[5]
-	glucoseLevel = tempData[6]
-	insulin = tempData[7]
-	insulinUsed = tempData[8]
-	foodEaten = tempData[9]
+	timeGood = tonumber(tempData[4])
+	dayTimer = tonumber(tempData[5])
+	glucoseLevel = tonumber(tempData[6])
+	insulin = tonumber(tempData[7])
+	insulinUsed = tonumber(tempData[8])
+	foodEaten = tonumber(tempData[9])
 end
 
 -- Create the String for uploading data
