@@ -411,6 +411,7 @@ foodListTable = {
 [62909] = 5,	--	"Bear" Steaks
 [67230] = 4,	--	Venison Jerky
 [57544] = 0,	--	Leftover Boar Meat
+[49397] = 3,	--	Half-Eaten Rat
 
 -- MoP
 [81413] = 1,	--	Skewered Peanut Chicken
@@ -437,7 +438,7 @@ foodListTable = {
 [111438] = 4, --	Clefthoof Sausages
 [111439] = 1, --	Steamed Scorpion
 [111449] = 5, --	Blackrock Barbecue
-[111454] = 4, --	Gorgrong Chowder
+[111454] = 4, --	Gorgrond Chowder
 [111544] = 0, --	Frostboar Jerky
 [115355] = 5, --	Marbled Clefthoof Steak
 [117473] = 4, --	Pickled Elekk Hooves
