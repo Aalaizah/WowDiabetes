@@ -195,7 +195,6 @@ foodListTable = {
 [82448] = 0,	--	Smoked Squid Belly
 
 -- WoD
-[118512] = 0, --	Savory Savage Delight
 [122348] = 0, --	Buttered Sturgeon
 [111441] = 0, --	Grilled Gulper
 [111442] = 0, --	Sturgeon Stew
@@ -339,7 +338,6 @@ foodListTable = {
 [27636] = 0,	--	Bat Bites
 [33874] = 5,	--	Kibler's Bits
 [23495] = 3,	--	Springpaw Appetizer
-[29292] = 4,	--	Helboar Bacon
 
 -- WotLK
 [43488] = 0,	--	Last Week's Mammoth
