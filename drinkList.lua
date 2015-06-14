@@ -39,6 +39,8 @@ drinkListTable = {
 [38430] = 0,	--	Blackrock Mineral Water
 [32455] = 33,	--	Star's Lament
 [38429] = 0,	--	Blackrock Spring Water
+[33234] = 24,   --  Iced Berry Slush
+[33236] = 47,   --  Fizzy Faire Drink "Classic"
 
 -- WotLK
 [42777] = 0,	--	Crusader's Waterskin
@@ -69,6 +71,8 @@ drinkListTable = {
 [49601] = 0,	--	Volcanic Spring Water
 [63530] = 23,	--	Refreshing Pineapple Punch
 [49254] = 0,	--	Tarp Collected Dew
+[75028] = 38,	--	Stormwind Surprise
+
 
 -- MoP
 [81414] = 65,	--	Pearl Milk Tea

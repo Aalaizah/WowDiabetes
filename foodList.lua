@@ -338,6 +338,7 @@ foodListTable = {
 [27636] = 0,	--	Bat Bites
 [33874] = 5,	--	Kibler's Bits
 [23495] = 3,	--	Springpaw Appetizer
+[33254] = 4,    --  Forest Strider Drumstick
 
 -- WotLK
 [43488] = 0,	--	Last Week's Mammoth
@@ -641,6 +642,7 @@ foodListTable = {
 [38427] = 278,	--	Pickled Egg
 [23756] = 215,	--	Cookie's Jumbo Gumbo
 [33924] = 254,	--	Delicious Chocolate Cake
+[33246] = 234,  --  Funnel Cake
 
 -- WotLK
 [43490] = 280,	--	Tasty Cupcake
@@ -673,7 +675,6 @@ foodListTable = {
 [62680] = 290,	--	Chocolate Cookie
 [69243] = 225,	--	Ice Cream Cake Slice
 [65517] = 239,	--	Conjured Mana Lollipop
-[75028] = 238,	--	Stormwind Surprise
 [75031] = 238,	--	Draenic Dumplings
 [75033] = 213,	--	Green Ham & Eggs
 [65516] = 228,	--	Conjured Mana Cupcake
