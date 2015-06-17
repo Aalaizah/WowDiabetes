@@ -259,21 +259,20 @@ function WowDiabetes_HandleBagUpdate(bagId)
 	-- Update bag counts
 	local changedItems = WowDiabetes_ScanBag(bagId)
 	-- If necessary, print changed item(s)
-	if playerIsAboutToEat or playerIsAboutToDrink then
-    ColorPrint("Hello")
-		for itemId, count in pairs(changedItems) do
+	--if playerIsAboutToEat or playerIsAboutToDrink then
+   		for itemId, count in pairs(changedItems) do
 			local itemName, link = GetItemInfo(itemId)
-            ColorPrint("Test")
+            ColorPrint(itemName)
 			if playerIsAboutToEat then
 				ColorPrint("Player ate: " .. link .. ", change in count: " .. count)
 				local foodVal = foodList[itemId]
 				ColorPrint("Item: " .. itemName .. " Value: " .. foodVal)
-				if foodVal > 20 then
-					glucoseLevel = glucoseLevel + (foodVal / 5)
+              	if foodVal > 20 then
+				    glucoseLevel = glucoseLevel + (foodVal / 5)
 				else
-					glucoseLevel = glucoseLevel + foodVal
+				    glucoseLevel = glucoseLevel + foodVal
 				end
-				foodEaten = foodEaten + 1
+                foodEaten = foodEaten + 1
 				playerIsAboutToEat = false
 			elseif playerIsAboutToDrink then
 				ColorPrint("Player drank: " .. link .. ", change in count: " .. count)
@@ -290,7 +289,7 @@ function WowDiabetes_HandleBagUpdate(bagId)
 		end
 		--glucoseLevel = glucoseLevel + 1
 		WowDiabetesFrameGlucoseLevelBar:SetValue(glucoseLevel)
-	end
+	--end
 end
 
 -- Counts and stores the number of items in each bag

@@ -186,7 +186,6 @@ foodListTable = {
 [74652] = 0,	--	Fire Spirit Salmon
 [74655] = 0,	--	Twin Fish Platter
 [85504] = 0,	--	Krasarang Fritters
-[74636] = 0,	--	Golden Carp Consomme
 [74651] = 0,	--	Shrimp Dumplings
 [81402] = 0,	--	Toasted Fish Jerky
 [85501] = 0,	--	Viseclaw Soup
@@ -443,7 +442,6 @@ foodListTable = {
 [117473] = 4, --	Pickled Elekk Hooves
 [117474] = 5, --	Rylak Sausages
 [120293] = 4, --	Lukewarm Yak Roast Broth
-[117441] = 2, --	Elekk's Neck
 [115300] = 5, --	Marinated Elekk Steak
 [116407] = 3, --	Slow-Smoked Turkey
 
@@ -769,6 +767,5 @@ foodListTable = {
 [104196] = 215, --	Delectable Ogre Queasine
 [112449] = 246, --	Iron Horde Rations
 [116409] = 204, --	Gourmet Pumpkin Pie
-[114017] = 296, --	Steamwheedle Wagon Bomb
 [111522] = 232, --	Tikari & K.A.Y.T.
 }

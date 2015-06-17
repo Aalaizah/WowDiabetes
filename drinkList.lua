@@ -107,6 +107,7 @@ drinkListTable = {
 [89595] = 40, --	Novice's Tiger Brew
 [90660] = 19,	--	Black Tea
 [90659] = 22,	--	Jasmine Tea
+[74636] = 0,	--	Golden Carp Consomme
 
 -- WoD
 [118897] = 68, --	Miner's Coffee
@@ -242,4 +243,7 @@ drinkListTable = {
 [117568] = 279, --	Jug of Ironwine
 [117437] = 291, --	Skyreach Sunrise
 [113108] = 300, --	Ogre Moonshine
+[114017] = 296, --	Steamwheedle Wagon Bomb
+[117441] = 2, --	Elekk's Neck
+
 }
