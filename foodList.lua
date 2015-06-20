@@ -188,7 +188,6 @@ foodListTable = {
 [85504] = 0,	--	Krasarang Fritters
 [74651] = 0,	--	Shrimp Dumplings
 [81402] = 0,	--	Toasted Fish Jerky
-[85501] = 0,	--	Viseclaw Soup
 [74641] = 0,	--	Fish Cake
 [81175] = 0,	--	Crispy Dojani Eel
 [82448] = 0,	--	Smoked Squid Belly

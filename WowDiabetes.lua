@@ -241,7 +241,7 @@ function WowDiabetes_HandleSpellCast(unitId, spell, rank, lineId, spellId)
 			--ColorPrint("Player is about to drink")
 			playerIsAboutToDrink = true
 		elseif spell == L["FOOD_AURA_NAME"] or spell == L["REFRESHMENT_AURA_NAME"] then
-			ColorPrint("Player is about to eat")
+			-- ColorPrint("Player is about to eat")
 			playerIsAboutToEat = true
 		end
 	end
@@ -262,7 +262,7 @@ function WowDiabetes_HandleBagUpdate(bagId)
 	--if playerIsAboutToEat or playerIsAboutToDrink then
    		for itemId, count in pairs(changedItems) do
 			local itemName, link = GetItemInfo(itemId)
-            ColorPrint(itemName)
+            -- ColorPrint(itemName)
 			if playerIsAboutToEat then
 				ColorPrint("Player ate: " .. link .. ", change in count: " .. count)
 				local foodVal = foodList[itemId]

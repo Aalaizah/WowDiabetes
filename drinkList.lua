@@ -108,6 +108,7 @@ drinkListTable = {
 [90660] = 19,	--	Black Tea
 [90659] = 22,	--	Jasmine Tea
 [74636] = 0,	--	Golden Carp Consomme
+[85501] = 0,	--	Viseclaw Soup
 
 -- WoD
 [118897] = 68, --	Miner's Coffee
