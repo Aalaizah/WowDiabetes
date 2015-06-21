@@ -136,6 +136,7 @@ function WowDiabetesGlucoseLevelBar_Setup(statusBar)
 	ChangeGlucoseBarColor()
 end
 
+-- TODO clean up event handling
 -- Called whenever an event is triggered
 function WowDiabetes_OnEvent(frame, event, ...)
 	if event == "ADDON_LOADED" and ... == "WowDiabetes" then
@@ -183,6 +184,20 @@ function WowDiabetes_OnEvent(frame, event, ...)
 		WowDiabetes_HandleBagUpdate(...)
 	end
 end
+
+--[[ Cleaner way to do event handler
+local eventHandlers = {}
+function eventHandlers.PLAYER_REGEN_DISABLED(...)
+    do stuff in here
+end
+
+function eventHandlers.PLAYER_REGEN_ENABLED(...)
+    do stuff in here
+end
+
+local function WowDiabetes_OnEvent(frame, event, ...)
+    return eventHandlers[event](...)
+end ]]
 
 -- Called whenever the user clicks on the main WowDiabetes frame
 function WowDiabetes_OnClickFrame()
