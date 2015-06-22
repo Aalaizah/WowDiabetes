@@ -456,7 +456,7 @@ function WowDiabetes_CreateUploadString()
 		Server = GetRealmName()
 	end
 	
-	UploadString = (Name .. "," .. "US" .. "," .. Server .. "," .. timeGood .. "," .. dayTimer .. "," .. glucoseLevel .. "," .. insulin .. "," .. insulinUsed .. "," .. foodEaten)
+	UploadString = strjoin(",", Name, "US", Server, timeGood, dayTimer, glucoseLevel, insulin, insulinUsed, foodEaten)
 	return UploadString
 end
 
