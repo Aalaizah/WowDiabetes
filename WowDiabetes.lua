@@ -1,5 +1,3 @@
---- add way to spit out data to give to website, GetUnitName("thistoon", true), + others
-
 -------------------------------------------------------------------------------
 -- Utility functions and variables
 -------------------------------------------------------------------------------
@@ -16,6 +14,8 @@ end
 -- Update interval for changing glucose
 WowDiabetes_UpdateInterval = 1.0
 
+local eventHandlers = {}
+
 -------------------------------------------------------------------------------
 -- Local variables
 -------------------------------------------------------------------------------
@@ -27,7 +27,7 @@ local playerIsAboutToDrink = false
 local bagCounts = {}
 
 -- Boolean to check if first time loading
-isFirstTime = true
+local isFirstTime = true
 
 -- timers
 local meterTimer = 0
@@ -50,7 +50,7 @@ local drinkList = drinkListTable
 
 local regionList = regionTable
 
-dayTimer = 0
+local dayTimer = 0
 
 -- Scaling Variable
 local scaleAmt = 5
@@ -136,68 +136,49 @@ function WowDiabetesGlucoseLevelBar_Setup(statusBar)
 	ChangeGlucoseBarColor()
 end
 
--- TODO clean up event handling
 -- Called whenever an event is triggered
 function WowDiabetes_OnEvent(frame, event, ...)
-	if event == "ADDON_LOADED" and ... == "WowDiabetes" then
-		for bagId = 0, NUM_BAG_SLOTS do
-			WowDiabetes_ScanBag(bagId, false)
-		end
-		frame:UnregisterEvent("ADDON_LOADED")
-		frame:RegisterEvent("BAG_UPDATE")
-		if glucoseLevel == nil then
-			glucoseLevel = 90
-			glucoseLevelString = "good"
-			insulin = 10
-			insulinUsed = 0
-			foodEaten = 0
-			timeGood = 0
-			dayTimer = 0
+	return eventHandlers[event](frame, ...)
+end
+
+function eventHandlers.ADDON_LOADED(frame, ...)
+    if ... == "WowDiabetes" then
+        for bagId = 0, NUM_BAG_SLOTS do
+            WowDiabetes_ScanBag(bagId, false)
+        end
+        frame:UnregisterEvent("ADDON_LOADED")
+        frame:RegisterEvent("BAG_UPDATE")
+        if glucoseLevel == nil then
+            glucoseLevel = 90
+            glucoseLevelString = "good"
+            insulin = 10
+            insulinUsed = 0
+            foodEaten = 0
+            timeGood = 0
+            dayTimer = 0
         elseif insulinUsed == nil then
             insulinUsed = 0
             foodEaten = 0
             timeGood = 0
             dayTimer = 0
-		end
-	elseif event == "VARIABLES_LOADED" then
-		glucoseLevel = tonumber(glucoseLevel)
-		insulin = tonumber(insulin)
-		insulinUsed = tonumber(insulinUsed)
-		foodEaten = tonumber(foodEaten)
-		timeGood = tonumber(timeGood)
-		dayTimer = tonumber(dayTimer)
-		WowDiabetesFrameMedsAmountString:SetText(insulin)
-		WowDiabetesGlucoseLevelBar_Setup(WowDiabetesFrameGlucoseLevelBar)
-		function WowDiabetes_MinimapButton_Reposition()
-			WowDiabetes_MinimapButton:SetPoint("TOPLEFT","Minimap","TOPLEFT",52-(80*cos(WowDiabetes_Settings.MinimapPos)),(80*sin(WowDiabetes_Settings.MinimapPos))-52)
-		end
-		WowDiabetesGlucoseLevelBar_Setup(WowDiabetesFrameGlucoseLevelBar)
-	elseif event == "PLAYER_REGEN_DISABLED" then
-		WowDiabetes_HandleEnterCombat(...)
-	elseif event == "PLAYER_REGEN_ENABLED" then
-		WowDiabetes_HandleExitCombat(...)
-	elseif event == "UNIT_SPELLCAST_SUCCEEDED" then
-		WowDiabetes_HandleSpellCast(...)
-	elseif event == "UNIT_AURA" then
-		WowDiabetes_HandleUnitAuraChanged(...)
-	elseif event == "BAG_UPDATE" then
-		WowDiabetes_HandleBagUpdate(...)
+        end
+    end
+end
+
+function eventHandlers.VARIABLES_LOADED()
+    glucoseLevel = tonumber(glucoseLevel)
+    insulin = tonumber(insulin)
+	insulinUsed = tonumber(insulinUsed)
+	foodEaten = tonumber(foodEaten)
+	timeGood = tonumber(timeGood)
+	dayTimer = tonumber(dayTimer)
+	WowDiabetesFrameMedsAmountString:SetText(insulin)
+	WowDiabetesGlucoseLevelBar_Setup(WowDiabetesFrameGlucoseLevelBar)
+	function WowDiabetes_MinimapButton_Reposition()
+		WowDiabetes_MinimapButton:SetPoint("TOPLEFT","Minimap","TOPLEFT",52-(80*cos(WowDiabetes_Settings.MinimapPos)),(80*sin(WowDiabetes_Settings.MinimapPos))-52)
 	end
+	WowDiabetesGlucoseLevelBar_Setup(WowDiabetesFrameGlucoseLevelBar)
 end
-
---[[ Cleaner way to do event handler
-local eventHandlers = {}
-function eventHandlers.PLAYER_REGEN_DISABLED(...)
-    do stuff in here
-end
-
-function eventHandlers.PLAYER_REGEN_ENABLED(...)
-    do stuff in here
-end
-
-local function WowDiabetes_OnEvent(frame, event, ...)
-    return eventHandlers[event](...)
-end ]]
 
 -- Called whenever the user clicks on the main WowDiabetes frame
 function WowDiabetes_OnClickFrame()
@@ -205,7 +186,7 @@ function WowDiabetes_OnClickFrame()
 end
 
 -- Called whenever the player enters combat
-function WowDiabetes_HandleEnterCombat()
+function eventHandlers.PLAYER_REGEN_DISABLED()
 	-- ColorPrint("Player entered combat!")
 	inCombat = true
 	combatTimer = 0
@@ -222,7 +203,7 @@ function WowDiabetes_ScaleActivity()
 end
 
 -- Called whenever the player exits combat
-function WowDiabetes_HandleExitCombat()
+function eventHandlers.PLAYER_REGEN_ENABLED()
 	local checkGluc
 	-- local insulinCheck = 0
 	-- ColorPrint("Player exited combat!")
@@ -249,7 +230,7 @@ function WowDiabetes_HandleExitCombat()
 end
 
 -- Called whenever a spell is cast, including usage of food/drink
-function WowDiabetes_HandleSpellCast(unitId, spell, rank, lineId, spellId)
+function eventHandlers.UNIT_SPELLCAST_SUCCEEDED(frame, unitId, spell, rank, lineId, spellId)
 	if unitId == "player" then
 		-- Check for food/drink
 		if spell == L["DRINK_AURA_NAME"] then
@@ -263,14 +244,14 @@ function WowDiabetes_HandleSpellCast(unitId, spell, rank, lineId, spellId)
 end
 
 -- Called whenever someone's buffs/debuffs (auras) change
-function WowDiabetes_HandleUnitAuraChanged(unitId)
+function eventHandlers.UNIT_AURA(frame, unitId)
 	if unitId == "player" then
 		--ColorPrint("Player's auras (buffs/debuffs) changed!")
 	end
 end
 
 -- Called whenever there is a change in bags
-function WowDiabetes_HandleBagUpdate(bagId)
+function eventHandlers.BAG_UPDATE(frame, bagId)
 	-- Update bag counts
 	local changedItems = WowDiabetes_ScanBag(bagId)
 	-- If necessary, print changed item(s)
