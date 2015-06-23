@@ -254,9 +254,9 @@
 					</Anchor>
 				</Anchors>
 				<Fontstring name="$parentText" inherits="GameFontNormal"/>
-<Layers>
-    <Layer>
-            <Texture name="$parentLeft" file="Interface\ChatFrame\UI-ChatInputBorder-Left">
+                <Layers>
+                    <Layer>
+                        <Texture name="$parentLeft" file="Interface\ChatFrame\UI-ChatInputBorder-Left">
                             <Size>
                                 <AbsDimension x="32" y="32"/>
                             </Size>
@@ -292,8 +292,8 @@
                             </Anchors>
                             <TexCoords left="0" right="0.9375" top="0" bottom="1.0"/>
                         </Texture>
-                        </Layer>
-        </Layers>
+                    </Layer>
+                </Layers>
 			</EditBox>
 		</Frames>
         
