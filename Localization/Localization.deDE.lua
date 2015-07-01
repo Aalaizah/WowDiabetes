@@ -5,6 +5,8 @@ if GetLocale() == "deDE" then
 
 	WowDiabetesLocalization["DRINK_AURA_NAME"] = "Trinken"
 	WowDiabetesLocalization["FOOD_AURA_NAME"] = "Essen"
+    WowDiabetesLocalization["WEAK_ALCOHOL_AURA_NAME"] = "Schwacher Alkohol"
+    WowDiabetesLocalization["STRONG_ALCOHOL_AURA_NAME"] = "Starker Alkohol"
 
 	TITLE_TEXT = "WoW Suikerziekte"
 	GLUCOSE_STRING_TEXT = "Glucose"
