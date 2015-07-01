@@ -233,7 +233,7 @@ end
 function eventHandlers.UNIT_SPELLCAST_SUCCEEDED(frame, unitId, spell, rank, lineId, spellId)
 	if unitId == "player" then
 		-- Check for food/drink
-		if spell == L["DRINK_AURA_NAME"] then
+		if spell == L["DRINK_AURA_NAME"] or spell == L["WEAK_ALCOHOL_AURA_NAME"] or spell == L["STRONG_ALCOHOL_AURA_NAME"] then
 			--ColorPrint("Player is about to drink")
 			playerIsAboutToDrink = true
 		elseif spell == L["FOOD_AURA_NAME"] or spell == L["REFRESHMENT_AURA_NAME"] then

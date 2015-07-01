@@ -117,6 +117,7 @@ drinkListTable = {
 [101436] = 68, --	Icemother Milk
 [118900] = 26, --	Hol'bruk's Brutal Brew
 [120150] = 50, --	Blackrock Coffee
+[128385] = 0, --	Elemental-Distilled Water
 
 [159] = 0, --Refreshing Spring Water
 [1179] = 2.43, --Ice Cold Milk
@@ -246,5 +247,5 @@ drinkListTable = {
 [113108] = 300, --	Ogre Moonshine
 [114017] = 296, --	Steamwheedle Wagon Bomb
 [117441] = 2, --	Elekk's Neck
-
+[111522] = 232, --	Tikari & K.A.Y.T.
 }

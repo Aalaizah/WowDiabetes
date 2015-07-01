@@ -212,6 +212,8 @@ foodListTable = {
 [122345] = 0, --	Pickled Eel
 [122344] = 0, --	Salty Squid Roll
 [122343] = 0, --	Sleeper Sushi
+[126934] = 0, --	Lemon Herb Filet
+[126936] = 0, --	Sugar-Crusted Fish Feast
 
 [787] = 0, -- Slitherskin Mackerel
 [4592] = 0, -- Longjaw Mud Snapper
@@ -430,7 +432,7 @@ foodListTable = {
 -- WoD
 [111431] = 4, --	Hearty Elekk Steak
 [111433] = 5, --	Blackrock Ham
-[111434] = 1,--	Pan-Seared Talbuk
+[111434] = 1, --	Pan-Seared Talbuk
 [111436] = 1, --	Braised Riverbeast
 [111438] = 4, --	Clefthoof Sausages
 [111439] = 1, --	Steamed Scorpion
@@ -443,6 +445,8 @@ foodListTable = {
 [120293] = 4, --	Lukewarm Yak Roast Broth
 [115300] = 5, --	Marinated Elekk Steak
 [116407] = 3, --	Slow-Smoked Turkey
+[128219] = 6, --	Fel-Smoked Ham
+[128498] = 11, --	Fel Eggs and Ham
 
 [117] = 1, -- Tough Jerky
 [2287] = 0, -- Haunch of Meat
@@ -766,5 +770,5 @@ foodListTable = {
 [104196] = 215, --	Delectable Ogre Queasine
 [112449] = 246, --	Iron Horde Rations
 [116409] = 204, --	Gourmet Pumpkin Pie
-[111522] = 232, --	Tikari & K.A.Y.T.
+[126935] = 238	--	Fancy Darkmoon Feast
 }

@@ -2,6 +2,8 @@ WowDiabetesLocalization = {}
 WowDiabetesLocalization["DRINK_AURA_NAME"] = "Drink"
 WowDiabetesLocalization["FOOD_AURA_NAME"] = "Food"
 WowDiabetesLocalization["REFRESHMENT_AURA_NAME"] = "Refreshment"
+WowDiabetesLocalization["WEAK_ALCOHOL_AURA_NAME"] = "Weak Alcohol"
+WowDiabetesLocalization["STRONG_ALCOHOL_AURA_NAME"] = "Strong Alcohol"
 
 TITLE_TEXT = "WoW Diabetes"
 GLUCOSE_STRING_TEXT = "Glucose"
