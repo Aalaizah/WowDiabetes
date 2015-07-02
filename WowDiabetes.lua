@@ -47,7 +47,7 @@ WowDiabetes_Settings = {
 -- Glycemic Loads where g is the glicemic load of its food
 local foodList = foodListTable
 local drinkList = drinkListTable
-
+local feastList = feastListTable
 local regionList = regionTable
 
 local dayTimer = 0
@@ -243,10 +243,29 @@ function eventHandlers.UNIT_SPELLCAST_SUCCEEDED(frame, unitId, spell, rank, line
 	end
 end
 
+function changeGlucoseLevel(value)
+    if value > 20 then
+        glucoseLevel = glucoseLevel + (value / 5)
+    else
+        glucoseLevel = glucoseLevel + value
+    end
+    foodEaten = foodEaten + 1
+    playerIsAboutToDrink = false
+    playerIsAboutToEat = false
+end
+
 -- Called whenever someone's buffs/debuffs (auras) change
 function eventHandlers.UNIT_AURA(frame, unitId)
 	if unitId == "player" then
 		--ColorPrint("Player's auras (buffs/debuffs) changed!")
+        foodName, rank, icon, count, dispelType, foodDuration, foodExpires, caster, isStealable, shouldConsolidate, foodSpellID = UnitAura(unitId, "Food")
+        drinkName, rank, icon, count, dispelType, drinkDuration, drinkExpires, caster, isStealable, shouldConsolidate, drinkSpellID = UnitAura(unitId, "Drink")
+        if (foodSpellID and drinkSpellID and playerIsAboutToEat == false and playerIsAboutToDrink == false) then
+            glucoseValue = feastList[tostring(foodSpellID)..":"..tostring(drinkSpellID)]
+            if (glucoseValue) then
+                ColorPrint(glucoseValue)
+            end
+        end
 	end
 end
 
@@ -260,27 +279,15 @@ function eventHandlers.BAG_UPDATE(frame, bagId)
 			local itemName, link = GetItemInfo(itemId)
             -- ColorPrint(itemName)
 			if playerIsAboutToEat then
-				ColorPrint("Player ate: " .. link .. ", change in count: " .. count)
+				--ColorPrint("Player ate: " .. link .. ", change in count: " .. count)
 				local foodVal = foodList[itemId]
 				ColorPrint("Item: " .. itemName .. " Value: " .. foodVal)
-              	if foodVal > 20 then
-				    glucoseLevel = glucoseLevel + (foodVal / 5)
-				else
-				    glucoseLevel = glucoseLevel + foodVal
-				end
-                foodEaten = foodEaten + 1
-				playerIsAboutToEat = false
+              	changeGlucoseLevel(foodVal)
 			elseif playerIsAboutToDrink then
-				ColorPrint("Player drank: " .. link .. ", change in count: " .. count)
+				--ColorPrint("Player drank: " .. link .. ", change in count: " .. count)
                 local drinkVal = drinkList[itemId]
 				ColorPrint("Item: " .. itemName .. " Value: " .. drinkVal)
-				if drinkVal > 20 then
-					glucoseLevel = glucoseLevel + (drinkVal / 5)
-				else
-					glucoseLevel = glucoseLevel + drinkVal
-				end
-				foodEaten = foodEaten + 1
-				playerIsAboutToDrink = false
+				changeGlucoseLevel(drinkVal)
 			end
 		end
 		--glucoseLevel = glucoseLevel + 1

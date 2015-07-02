@@ -14,9 +14,10 @@ Localization\Localization.deDE.lua
 Localization\Localization.esES.lua
 Localization\Localization.frFR.lua
 
-foodList.lua
-drinkList.lua
-regionTable.lua
+Tables\foodList.lua
+Tables\drinkList.lua
+Tables\feastList.lua
+Tables\regionTable.lua
 
 WowDiabetes.lua
 WowDiabetes.xml
