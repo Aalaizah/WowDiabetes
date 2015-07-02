@@ -446,8 +446,7 @@ end
 function WowDiabetes_CreateUploadString()
 	local tempName = GetUnitName("player", true)
 	local location = string.find(tempName, "-")
-	--local region = regionList[GetCurrentRegion()]
-	--ColorPrint(regionList[GetCurrentRegion()])
+	local region = regionList[GetCurrentRegion()]
 	if location ~= nil then
 		Name = string.sub(tempName, 1, location)
 		Server = string.sub(tempName, location)
@@ -456,7 +455,7 @@ function WowDiabetes_CreateUploadString()
 		Server = GetRealmName()
 	end
 	
-	UploadString = strjoin(",", Name, "US", Server, timeGood, dayTimer, glucoseLevel, insulin, insulinUsed, foodEaten)
+	UploadString = strjoin(",", Name, region, Server, timeGood, dayTimer, glucoseLevel, insulin, insulinUsed, foodEaten)
 	return UploadString
 end
 
