@@ -260,8 +260,8 @@ function eventHandlers.UNIT_AURA(frame, unitId)
 		--ColorPrint("Player's auras (buffs/debuffs) changed!")
         foodName, rank, icon, count, dispelType, foodDuration, foodExpires, caster, isStealable, shouldConsolidate, foodSpellID = UnitAura(unitId, "Food")
         drinkName, rank, icon, count, dispelType, drinkDuration, drinkExpires, caster, isStealable, shouldConsolidate, drinkSpellID = UnitAura(unitId, "Drink")
-        if (foodSpellID and drinkSpellID and playerIsAboutToEat == false and playerIsAboutToDrink == false) then
-            glucoseValue = feastList[tostring(foodSpellID)..":"..tostring(drinkSpellID)]
+        glucoseValue = feastList[tostring(foodSpellID)..":"..tostring(drinkSpellID)]
+        if (glucoseValue and playerIsAboutToEat == false and playerIsAboutToDrink == false) then
             if (glucoseValue) then
                 ColorPrint(glucoseValue)
             end
