@@ -26,6 +26,10 @@ local playerIsAboutToDrink = false
 -- Keeps track of the items in the player's bags
 local bagCounts = {}
 
+-- Keeps track of the last item eaten
+local lastConsumed = 0
+local glucoseValue = 0
+
 -- Boolean to check if first time loading
 local isFirstTime = true
 
@@ -216,17 +220,16 @@ function eventHandlers.PLAYER_REGEN_ENABLED()
 	-- ColorPrint(scaleAmt)
 	checkGluc = combatTimer % scaleAmt
 	newGlucose = combatTimer / scaleAmt
+    newGlucose = newGlucose * (-1)
 	-- ColorPrint(newGlucose .. " " .. checkGluc .. " " .. combatTimer)
 	if 0 > newGlucose then
 		newGlucose = checkGluc
 	end
 	if glucoseLevel > 46 then
-		glucoseLevel = glucoseLevel - newGlucose
+		changeGlucoseLevel(newGlucose)
 	end
 	
 	combatTimer = 0
-	WowDiabetesFrameGlucoseLevelBar:SetValue(glucoseLevel)
-	WowDiabetesFrameMedsAmountString:SetText(insulin)
 end
 
 -- Called whenever a spell is cast, including usage of food/drink
@@ -249,23 +252,28 @@ function changeGlucoseLevel(value)
     else
         glucoseLevel = glucoseLevel + value
     end
+	WowDiabetesFrameGlucoseLevelBar:SetValue(glucoseLevel)
+	WowDiabetesFrameMedsAmountString:SetText(insulin)
     foodEaten = foodEaten + 1
-    playerIsAboutToDrink = false
-    playerIsAboutToEat = false
 end
 
 -- Called whenever someone's buffs/debuffs (auras) change
 function eventHandlers.UNIT_AURA(frame, unitId)
 	if unitId == "player" then
 		--ColorPrint("Player's auras (buffs/debuffs) changed!")
-        foodName, rank, icon, count, dispelType, foodDuration, foodExpires, caster, isStealable, shouldConsolidate, foodSpellID = UnitAura(unitId, "Food")
-        drinkName, rank, icon, count, dispelType, drinkDuration, drinkExpires, caster, isStealable, shouldConsolidate, drinkSpellID = UnitAura(unitId, "Drink")
-        glucoseValue = feastList[tostring(foodSpellID)..":"..tostring(drinkSpellID)]
-        if (glucoseValue and playerIsAboutToEat == false and playerIsAboutToDrink == false) then
-            if (glucoseValue) then
-                ColorPrint(glucoseValue)
-            end
-        end
+            foodName, rank, icon, count, dispelType, foodDuration, foodExpires, caster, isStealable, shouldConsolidate, foodSpellID = UnitAura(unitId, "Food")
+            drinkName, rank, icon, count, dispelType, drinkDuration, drinkExpires, caster, isStealable, shouldConsolidate, drinkSpellID = UnitAura(unitId, "Drink")
+            glucoseValue = feastList[tostring(foodSpellID)..":"..tostring(drinkSpellID)]
+	    if (glucoseValue and playerIsAboutToEat == false and playerIsAboutToDrink == false) then
+            playerIsAboutToEat = true
+            playerIsAboutToDrink = true
+            lastConsumed = foodList[glucoseValue]
+	    elseif (not glucoseValue and playerIsAboutToEat == true and playerIsAboutToDrink == true) then
+            changeGlucoseLevel(lastConsumed)
+            lastConsumed = 0
+            playerIsAboutToEat = false
+            playerIsAboutToDrink = false
+	    end
 	end
 end
 
@@ -388,13 +396,23 @@ end
 
 -- Shows the frame entirely so player can check glucose levels
 function WowDiabetesGlucoseButton_OnClick()
-	WowDiabetesFrame:SetSize(200, 185)
-	WowDiabetesFrameGlucoseLevelBar:Show()
-	WowDiabetesFrameGlucoseLevelString:Show()
-	WowDiabetesFrameCloseButton:Show()
-	WowDiabetesFrameCloseButton2:Hide()
-	WowDiabetesFrameWebsiteButton:Show()
-	WowDiabetesFrameWebsiteButton2:Hide()
+    if WowDiabetesFrameCloseButton2:IsShown() then
+        WowDiabetesFrame:SetSize(200, 185)
+        WowDiabetesFrameGlucoseLevelBar:Show()
+        WowDiabetesFrameGlucoseLevelString:Show()
+        WowDiabetesFrameCloseButton:Show()
+        WowDiabetesFrameCloseButton2:Hide()
+        WowDiabetesFrameWebsiteButton:Show()
+        WowDiabetesFrameWebsiteButton2:Hide()
+    else
+        WowDiabetesFrameGlucoseLevelBar:Hide()
+		WowDiabetesFrameGlucoseLevelString:Hide()
+		WowDiabetesFrameCloseButton:Hide()
+		WowDiabetesFrameCloseButton2:Show()
+		WowDiabetesFrameWebsiteButton:Hide()
+		WowDiabetesFrameWebsiteButton2:Show()
+		WowDiabetesFrame:SetSize(200, 138)
+    end
 end
 
 -- Raise your glucose level when medicine is used
@@ -447,6 +465,9 @@ function WowDiabetes_SaveDownloadInfo(data)
 	insulin = tonumber(tempData[7])
 	insulinUsed = tonumber(tempData[8])
 	foodEaten = tonumber(tempData[9])
+    
+	WowDiabetesFrameGlucoseLevelBar:SetValue(glucoseLevel)
+	WowDiabetesFrameMedsAmountString:SetText(insulin)
 end
 
 -- Create the String for uploading data

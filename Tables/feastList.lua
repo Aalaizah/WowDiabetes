@@ -1,3 +1,3 @@
 feastListTable = {
-["104934:104269"] = "Pandaren Banquet"
+["104934:104269"] = 74919
 }
